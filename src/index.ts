@@ -1,8 +1,11 @@
-import { createOptions } from './steps/index.js';
+import { analyzeProject, createOptions } from './steps/index.js';
 import type { CodemodOptions } from './types/index.js';
 
 export function runCodemod(codemodOptions: CodemodOptions): void {
   const options = createOptions(codemodOptions);
 
-  console.log(options);
+  // Prepare for migration
+  const context = analyzeProject(options);
+
+  console.log(context);
 }
