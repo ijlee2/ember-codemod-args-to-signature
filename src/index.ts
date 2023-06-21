@@ -1,4 +1,8 @@
-import { analyzeProject, createOptions } from './steps/index.js';
+import {
+  analyzeProject,
+  createOptions,
+  createTemplateOnlyComponents,
+} from './steps/index.js';
 import type { CodemodOptions } from './types/index.js';
 
 export function runCodemod(codemodOptions: CodemodOptions): void {
@@ -7,5 +11,6 @@ export function runCodemod(codemodOptions: CodemodOptions): void {
   // Prepare for migration
   const context = analyzeProject(options);
 
-  console.log(context);
+  // Update components
+  createTemplateOnlyComponents(context, options);
 }
