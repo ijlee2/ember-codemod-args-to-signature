@@ -2,6 +2,7 @@ import {
   analyzeProject,
   createOptions,
   createRegistries,
+  createSignatures,
   createTemplateOnlyComponents,
 } from './steps/index.js';
 import type { CodemodOptions } from './types/index.js';
@@ -14,5 +15,6 @@ export function runCodemod(codemodOptions: CodemodOptions): void {
 
   // Update components
   createTemplateOnlyComponents(context, options);
+  createSignatures(context, options);
   createRegistries(context, options);
 }
