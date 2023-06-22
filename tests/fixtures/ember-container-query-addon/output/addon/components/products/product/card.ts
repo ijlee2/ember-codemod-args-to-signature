@@ -3,8 +3,14 @@ import templateOnlyComponent from '@ember/component/template-only';
 import type { Product } from '../../../data/products';
 
 const ProductsProductCardComponent = templateOnlyComponent<{
-  product: Product;
-  redirectTo?: string;
+  Args: {
+    product: Product;
+    redirectTo?: string;
+  };
+  Blocks: {
+    default: [];
+  };
+  Element: null;
 }>();
 
 export default ProductsProductCardComponent;

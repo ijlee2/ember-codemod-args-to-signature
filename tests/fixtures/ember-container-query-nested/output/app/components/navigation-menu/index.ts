@@ -5,12 +5,18 @@ type MenuItem = {
   route: string;
 };
 
-interface Args {
-  menuItems: MenuItem[];
-  name?: string;
+interface NavigationMenuSignature {
+  Args: {
+    menuItems: MenuItem[];
+    name?: string;
+  };
+  Blocks: {
+    default: [];
+  };
+  Element: null;
 }
 
-const NavigationMenuComponent = templateOnlyComponent<Args>();
+const NavigationMenuComponent = templateOnlyComponent<NavigationMenuSignature>();
 
 export default NavigationMenuComponent;
 

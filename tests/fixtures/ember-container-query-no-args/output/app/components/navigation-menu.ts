@@ -1,6 +1,12 @@
 import templateOnlyComponent from '@ember/component/template-only';
 
-const NavigationMenuComponent = templateOnlyComponent();
+const NavigationMenuComponent = templateOnlyComponent<{
+  Args: {};
+  Blocks: {
+    default: [];
+  };
+  Element: null;
+}>();
 
 export default NavigationMenuComponent;
 

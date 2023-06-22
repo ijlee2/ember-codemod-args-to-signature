@@ -1,6 +1,12 @@
 import templateOnlyComponent from '@ember/component/template-only';
 
-const WidgetsWidget1Component = templateOnlyComponent<{}>();
+const WidgetsWidget1Component = templateOnlyComponent<{
+  Args: {};
+  Blocks: {
+    default: [];
+  };
+  Element: null;
+}>();
 
 export default WidgetsWidget1Component;
 

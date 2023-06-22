@@ -1,6 +1,12 @@
 import templateOnlyComponent from '@ember/component/template-only';
 
-const WidgetsWidget4MemoComponent = templateOnlyComponent();
+const WidgetsWidget4MemoComponent = templateOnlyComponent<{
+  Args: {};
+  Blocks: {
+    default: [];
+  };
+  Element: null;
+}>();
 
 export default WidgetsWidget4MemoComponent;
 
