@@ -2,10 +2,6 @@ import templateOnlyComponent from '@ember/component/template-only';
 
 interface UiFormInformationSignature {
   Args: {};
-  Blocks: {
-    default: [];
-  };
-  Element: null;
 }
 
 const UiFormInformationComponent =
