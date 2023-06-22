@@ -373,6 +373,24 @@ function createSignature(file: string, data: Data): string {
 
       return false;
     },
+
+    visitTSTypeReference(path) {
+      if (path.node.typeName.type !== 'Identifier') {
+        return false;
+      }
+
+      if (path.node.typeName.name !== interfaceName) {
+        return false;
+      }
+
+      if (path.node.typeName.name.endsWith('Signature')) {
+        return false;
+      }
+
+      path.node.typeName.name = `${data.entity.classifiedName}Signature['Args']`;
+
+      return false;
+    },
   });
 
   return AST.print(ast);
