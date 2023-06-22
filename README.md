@@ -2,7 +2,9 @@
 
 # ember-codemod-args-to-signature
 
-_Codemod to convert component `Args` to `Signature`_
+_Codemod to convert component `Args` to `Signature`_<sup>1</sup>
+
+<sup>1. Components without `Args` are also supported.</sup>
 
 
 ## Features
@@ -11,6 +13,20 @@ _Codemod to convert component `Args` to `Signature`_
 - Scaffolds [`Registry`](https://typed-ember.gitbook.io/glint/environments/ember/template-registry) for components
 - Preserves your code whenever possible
 - Focuses on maintainability and extensibility
+
+<div align="center">
+  <figure>
+    <img alt="A code diff to show what template-only components can look like before and after running ember-codemod-args-to-signature" src="https://github.com/ijlee2/ember-codemod-args-to-signature/assets/16869656/8f497f5b-e639-4ddb-87b3-be8110eb3c3b" width="640">
+    <br>
+    <figcaption>Template-only components</figcaption>
+  </figure>
+  <br><br>
+  <figure>
+    <img alt="A code diff to show what Glimmer components can look like before and after running ember-codemod-args-to-signature" src="https://github.com/ijlee2/ember-codemod-args-to-signature/assets/16869656/0aef880d-8dca-41c5-9447-81427a95bdcc" width="640">
+    <br>
+    <figcaption>Glimmer components</figcaption>
+  </figure>
+</div>
 
 
 ## Usage
