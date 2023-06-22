@@ -13,10 +13,6 @@ interface UiFormCheckboxSignature {
     label: string;
     onUpdate: ({ key, value }: { key: string; value: any }) => void;
   };
-  Blocks: {
-    default: [];
-  };
-  Element: null;
 }
 
 export default class UiFormCheckboxComponent extends Component<UiFormCheckboxSignature> {

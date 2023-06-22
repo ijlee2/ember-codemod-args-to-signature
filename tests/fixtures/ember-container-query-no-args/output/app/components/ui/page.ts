@@ -2,10 +2,6 @@ import Component from '@glimmer/component';
 
 interface UiPageSignature {
   Args: {};
-  Blocks: {
-    default: [];
-  };
-  Element: null;
 }
 
 export default class UiPageComponent extends Component<UiPageSignature> {}

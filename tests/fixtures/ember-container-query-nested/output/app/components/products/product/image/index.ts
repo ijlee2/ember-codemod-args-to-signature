@@ -4,11 +4,7 @@ import config from 'docs-app/config/environment';
 interface ProductsProductImageSignature {
   Args: {
     src: string;
-  };
-  Blocks: {
-    default: [];
-  };
-  Element: null;
+  }
 }
 
 class ProductsProductImageComponent extends Component<ProductsProductImageSignature> {

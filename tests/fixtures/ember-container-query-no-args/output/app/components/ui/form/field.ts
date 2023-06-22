@@ -3,10 +3,6 @@ import Component from '@glimmer/component';
 
 interface UiFormFieldSignature {
   Args: {};
-  Blocks: {
-    default: [];
-  };
-  Element: null;
 }
 
 export default class UiFormFieldComponent extends Component<UiFormFieldSignature> {

@@ -14,10 +14,6 @@ interface UiFormInputSignature {
     placeholder?: string;
     type?: string;
   };
-  Blocks: {
-    default: [];
-  };
-  Element: null;
 }
 
 export default class UiFormInputComponent extends Component<UiFormInputSignature> {

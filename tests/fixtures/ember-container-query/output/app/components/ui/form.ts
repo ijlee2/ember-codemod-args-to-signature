@@ -8,11 +8,7 @@ interface UiFormSignature {
     data?: Record<string, any>;
     instructions?: string;
     title?: string;
-  }
-  Blocks: {
-    default: [];
-  }
-  Element: null
+  };
 }
 
 export default class UiFormComponent extends Component<UiFormSignature> {

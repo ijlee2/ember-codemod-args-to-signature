@@ -13,10 +13,6 @@ interface UiFormTextareaSignature {
     onUpdate: ({ key, value }: { key: string; value: any }) => void;
     placeholder?: string;
   };
-  Blocks: {
-    default: [];
-  };
-  Element: null;
 }
 
 export default class UiFormTextareaComponent extends Component<UiFormTextareaSignature> {

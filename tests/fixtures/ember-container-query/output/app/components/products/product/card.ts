@@ -7,10 +7,6 @@ interface ProductsProductCardSignature {
     product: Product;
     redirectTo?: string;
   };
-  Blocks: {
-    default: [];
-  };
-  Element: null;
 }
 
 const ProductsProductCardComponent = templateOnlyComponent<ProductsProductCardSignature>();

@@ -3,10 +3,6 @@ import Component from '@glimmer/component';
 
 interface UiFormCheckboxSignature {
   Args: {};
-  Blocks: {
-    default: [];
-  };
-  Element: null;
 }
 
 export default class UiFormCheckboxComponent extends Component<UiFormCheckboxSignature> {
