@@ -79,24 +79,24 @@ function convertArgsToSignature({
       false,
     ),
 
-    b.tsPropertySignature(
-      b.identifier('Blocks'),
-      b.tsTypeAnnotation(
-        b.tsTypeLiteral([
-          b.tsPropertySignature(
-            b.identifier('default'),
-            b.tsTypeAnnotation(b.tsTupleType([])),
-          ),
-        ]),
-      ),
-      false,
-    ),
+    // b.tsPropertySignature(
+    //   b.identifier('Blocks'),
+    //   b.tsTypeAnnotation(
+    //     b.tsTypeLiteral([
+    //       b.tsPropertySignature(
+    //         b.identifier('default'),
+    //         b.tsTypeAnnotation(b.tsTupleType([])),
+    //       ),
+    //     ]),
+    //   ),
+    //   false,
+    // ),
 
-    b.tsPropertySignature(
-      b.identifier('Element'),
-      b.tsTypeAnnotation(b.tsNullKeyword()),
-      false,
-    ),
+    // b.tsPropertySignature(
+    //   b.identifier('Element'),
+    //   b.tsTypeAnnotation(b.tsNullKeyword()),
+    //   false,
+    // ),
   ];
 }
 
