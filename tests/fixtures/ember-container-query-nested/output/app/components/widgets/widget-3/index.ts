@@ -15,7 +15,7 @@ interface WidgetsWidget3Signature {
 export default class WidgetsWidget3Component extends Component<WidgetsWidget3Signature> {
   @tracked concertData = {} as Concert;
 
-  constructor(owner: unknown, args: WidgetsWidget3Args) {
+  constructor(owner: unknown, args: WidgetsWidget3Signature['Args']) {
     super(owner, args);
 
     this.loadData();

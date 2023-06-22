@@ -20,7 +20,7 @@ export default class WidgetsWidget3TourScheduleResponsiveImageComponent extends 
   @tracked imageSource?: string;
 
   @action setImageSource({ dimensions }: { dimensions: Dimensions }): void {
-    const { images } = this.args as ResponsiveImageArgs;
+    const { images } = this.args as WidgetsWidget3TourScheduleResponsiveImageSignature['Args'];
 
     this.imageSource = findBestFittingImage(images, dimensions);
   }
