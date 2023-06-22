@@ -3,10 +3,6 @@ import Component from '@glimmer/component';
 
 interface UiFormTextareaSignature {
   Args: {};
-  Blocks: {
-    default: [];
-  };
-  Element: null;
 }
 
 export default class UiFormTextareaComponent extends Component<UiFormTextareaSignature> {

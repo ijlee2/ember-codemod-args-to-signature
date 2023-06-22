@@ -4,11 +4,7 @@ import type { QueryResults } from 'ember-container-query';
 interface WidgetsWidget4MemoActionsSignature {
   Args: {
     cqFeatures?: QueryResults<'small' | 'large' | 'short'>;
-  };
-  Blocks: {
-    default: [];
-  };
-  Element: null;
+  }
 }
 
 const WidgetsWidget4MemoActionsComponent = templateOnlyComponent<WidgetsWidget4MemoActionsSignature>();

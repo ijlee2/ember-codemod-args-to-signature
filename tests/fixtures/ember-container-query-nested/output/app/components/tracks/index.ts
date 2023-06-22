@@ -2,10 +2,6 @@ import templateOnlyComponent from '@ember/component/template-only';
 
 interface TracksSignature {
   Args: {};
-  Blocks: {
-    default: [];
-  };
-  Element: null;
 }
 
 const TracksComponent =

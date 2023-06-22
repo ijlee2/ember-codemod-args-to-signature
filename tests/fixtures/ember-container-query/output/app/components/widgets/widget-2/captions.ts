@@ -19,10 +19,6 @@ interface WidgetsWidget2CaptionsSignature {
   Args: {
     summaries?: Summary[];
   };
-  Blocks: {
-    default: [];
-  };
-  Element: null;
 }
 
 export default class WidgetsWidget2CaptionsComponent extends Component<WidgetsWidget2CaptionsSignature> {

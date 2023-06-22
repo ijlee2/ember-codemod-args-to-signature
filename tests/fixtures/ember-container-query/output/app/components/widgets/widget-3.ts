@@ -6,10 +6,6 @@ import concertData from '../../data/concert';
 
 interface WidgetsWidget3Signature {
   Args: {};
-  Blocks: {
-    default: [];
-  };
-  Element: null;
 }
 
 export default class WidgetsWidget3Component extends Component<WidgetsWidget3Signature> {

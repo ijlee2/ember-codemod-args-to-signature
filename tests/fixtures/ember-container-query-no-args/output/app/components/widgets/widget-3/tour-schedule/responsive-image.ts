@@ -7,10 +7,6 @@ import { findBestFittingImage } from '../../../../utils/components/widgets/widge
 
 interface WidgetsWidget3TourScheduleResponsiveImageSignature {
   Args: {};
-  Blocks: {
-    default: [];
-  };
-  Element: null;
 }
 
 export default class WidgetsWidget3TourScheduleResponsiveImageComponent extends Component<WidgetsWidget3TourScheduleResponsiveImageSignature> {

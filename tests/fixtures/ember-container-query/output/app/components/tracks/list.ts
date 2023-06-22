@@ -7,10 +7,6 @@ type TracksListSignature = {
     numColumns?: number;
     tracks?: Track[];
   };
-  Blocks: {
-    default: [];
-  };
-  Element: null;
 };
 
 export default class TracksListComponent extends Component<TracksListSignature> {

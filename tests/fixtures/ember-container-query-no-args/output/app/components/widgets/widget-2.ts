@@ -10,10 +10,6 @@ import {
 
 interface WidgetsWidget2Signature {
   Args: {};
-  Blocks: {
-    default: [];
-  };
-  Element: null;
 }
 
 export default class WidgetsWidget2Component extends Component<WidgetsWidget2Signature> {

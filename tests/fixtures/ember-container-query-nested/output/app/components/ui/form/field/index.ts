@@ -6,11 +6,7 @@ interface UiFormFieldSignature {
     errorMessage?: string;
     isInline?: boolean;
     isWide?: boolean;
-  }
-  Blocks: {
-    default: [];
-  }
-  Element: null
+  };
 }
 
 export default class UiFormFieldComponent extends Component<UiFormFieldSignature> {

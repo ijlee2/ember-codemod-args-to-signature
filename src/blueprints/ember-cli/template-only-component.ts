@@ -2,10 +2,6 @@ import templateOnlyComponent from '@ember/component/template-only';
 
 interface <%= entity.classifiedName %>Signature {
   Args: {};
-  Blocks: {
-    default: [];
-  };
-  Element: null;
 }
 
 const <%= entity.classifiedName %>Component =

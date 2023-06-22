@@ -2,10 +2,6 @@ import Component from '@glimmer/component';
 
 interface <%= entity.classifiedName %>Signature {
   Args: {};
-  Blocks: {
-    default: [];
-  };
-  Element: null;
 }
 
 export default class <%= entity.classifiedName %>Component extends Component<<%= entity.classifiedName %>Signature> {}

@@ -2,10 +2,6 @@ import Component from '@glimmer/component';
 
 interface TracksListSignature {
   Args: {};
-  Blocks: {
-    default: [];
-  };
-  Element: null;
 }
 
 export default class TracksListComponent extends Component<TracksListSignature> {
