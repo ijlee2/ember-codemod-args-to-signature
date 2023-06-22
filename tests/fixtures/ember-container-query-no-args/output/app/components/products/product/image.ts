@@ -1,11 +1,11 @@
 import Component from '@glimmer/component';
 import config from 'docs-app/config/environment';
 
-class ProductsProductImage extends Component {
+class ProductsProductImageComponent extends Component {
   isTestEnvironment = config.environment === 'test';
 }
 
-export default ProductsProductImage;
+export default ProductsProductImageComponent;
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {

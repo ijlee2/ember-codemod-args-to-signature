@@ -1,8 +1,8 @@
 import Component from '@glimmer/component';
 
-const Header = class FooComponent extends Component {}
+const WidgetsWidget4MemoHeaderComponent = class FooComponent extends Component {}
 
-export default Header;
+export default WidgetsWidget4MemoHeaderComponent;
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {

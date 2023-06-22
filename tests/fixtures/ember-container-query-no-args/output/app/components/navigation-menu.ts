@@ -1,8 +1,8 @@
 import templateOnlyComponent from '@ember/component/template-only';
 
-const NavigationMenu = templateOnlyComponent();
+const NavigationMenuComponent = templateOnlyComponent();
 
-export default NavigationMenu;
+export default NavigationMenuComponent;
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {

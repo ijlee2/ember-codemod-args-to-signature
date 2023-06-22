@@ -10,9 +10,9 @@ interface Args {
   name?: string;
 }
 
-const NavigationMenu = templateOnlyComponent<Args>();
+const NavigationMenuComponent = templateOnlyComponent<Args>();
 
-export default NavigationMenu;
+export default NavigationMenuComponent;
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {

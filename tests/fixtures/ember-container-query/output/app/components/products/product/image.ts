@@ -5,11 +5,11 @@ interface ProductsProductImageArgs {
   src: string;
 }
 
-class ProductsProductImage extends Component<ProductsProductImageArgs> {
+class ProductsProductImageComponent extends Component<ProductsProductImageArgs> {
   isTestEnvironment = config.environment === 'test';
 }
 
-export default ProductsProductImage;
+export default ProductsProductImageComponent;
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {

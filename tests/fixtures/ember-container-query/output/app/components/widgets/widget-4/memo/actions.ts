@@ -5,7 +5,9 @@ interface WidgetsWidget4MemoActionsArgs {
   cqFeatures?: QueryResults<'small' | 'large' | 'short'>;
 }
 
-export default templateOnlyComponent<WidgetsWidget4MemoActionsArgs>();
+const WidgetsWidget4MemoActionsComponent = templateOnlyComponent<WidgetsWidget4MemoActionsArgs>();
+
+export default WidgetsWidget4MemoActionsComponent;
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {

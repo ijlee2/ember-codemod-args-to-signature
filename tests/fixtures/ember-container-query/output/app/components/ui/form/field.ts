@@ -7,7 +7,7 @@ interface UiFormFieldComponentArgs {
   isWide?: boolean;
 }
 
-export default class extends Component<UiFormFieldComponentArgs> {
+export default class UiFormFieldComponent extends Component<UiFormFieldComponentArgs> {
   inputId = guidFor(this);
 }
 

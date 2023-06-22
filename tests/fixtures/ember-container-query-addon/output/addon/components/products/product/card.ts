@@ -2,12 +2,12 @@ import templateOnlyComponent from '@ember/component/template-only';
 
 import type { Product } from '../../../data/products';
 
-const Component = templateOnlyComponent<{
+const ProductsProductCardComponent = templateOnlyComponent<{
   product: Product;
   redirectTo?: string;
 }>();
 
-export default Component;
+export default ProductsProductCardComponent;
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {

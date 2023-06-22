@@ -1,6 +1,8 @@
 import templateOnlyComponent from '@ember/component/template-only';
 
-export default templateOnlyComponent();
+const WidgetsWidget4MemoActionsComponent = templateOnlyComponent();
+
+export default WidgetsWidget4MemoActionsComponent;
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {

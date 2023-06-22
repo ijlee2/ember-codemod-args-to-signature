@@ -1,11 +1,11 @@
 import Component from '@glimmer/component';
 import type { QueryResults } from 'ember-container-query';
 
-const Header = class FooComponent extends Component<{
+const WidgetsWidget4MemoHeaderComponent = class FooComponent extends Component<{
   cqFeatures?: QueryResults<'small' | 'large' | 'short'>;
 }> {}
 
-export default Header;
+export default WidgetsWidget4MemoHeaderComponent;
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
