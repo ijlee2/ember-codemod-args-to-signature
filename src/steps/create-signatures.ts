@@ -145,13 +145,30 @@ function createSignature(file: string, data: Data): string {
 
       // When the interface is missing
       if (!typeParameters) {
+        if (path.parentPath.node.type !== 'VariableDeclaration') {
+          return false;
+        }
+
+        const index = path.parentPath.parentPath.parentPath.name;
+
+        path.parentPath.parentPath.parentPath.parentPath.value.splice(
+          index,
+          0,
+          AST.builders.tsInterfaceDeclaration(
+            AST.builders.identifier(`${data.entity.classifiedName}Signature`),
+            AST.builders.tsInterfaceBody(
+              convertArgsToSignature({
+                b: AST.builders,
+                nodes: [],
+              }),
+            ),
+          ),
+        );
+
         // @ts-ignore: Assume that types from external packages are correct
         path.node.typeParameters = AST.builders.tsTypeParameterInstantiation([
-          AST.builders.tsTypeLiteral(
-            convertArgsToSignature({
-              b: AST.builders,
-              nodes: [],
-            }),
+          AST.builders.tsTypeReference(
+            AST.builders.identifier(`${data.entity.classifiedName}Signature`),
           ),
         ]);
 
@@ -169,10 +186,28 @@ function createSignature(file: string, data: Data): string {
             break;
           }
 
-          typeParameter.members = convertArgsToSignature({
-            b: AST.builders,
-            nodes: typeParameter.members,
-          });
+          const index = path.parentPath.parentPath.parentPath.name;
+
+          path.parentPath.parentPath.parentPath.parentPath.value.splice(
+            index,
+            0,
+            AST.builders.tsInterfaceDeclaration(
+              AST.builders.identifier(`${data.entity.classifiedName}Signature`),
+              AST.builders.tsInterfaceBody(
+                convertArgsToSignature({
+                  b: AST.builders,
+                  nodes: typeParameter.members,
+                }),
+              ),
+            ),
+          );
+
+          // @ts-ignore: Assume that types from external packages are correct
+          path.node.typeParameters.params = [
+            AST.builders.tsTypeReference(
+              AST.builders.identifier(`${data.entity.classifiedName}Signature`),
+            ),
+          ];
 
           return false;
         }
@@ -199,13 +234,30 @@ function createSignature(file: string, data: Data): string {
 
       // When the interface is missing
       if (!typeParameters) {
-        path.node.superTypeParameters =
-          AST.builders.tsTypeParameterInstantiation([
-            AST.builders.tsTypeLiteral(
+        if (path.parentPath.node.type !== 'ExportDefaultDeclaration') {
+          return false;
+        }
+
+        const index = path.parentPath.name;
+
+        path.parentPath.parentPath.value.splice(
+          index,
+          0,
+          AST.builders.tsInterfaceDeclaration(
+            AST.builders.identifier(`${data.entity.classifiedName}Signature`),
+            AST.builders.tsInterfaceBody(
               convertArgsToSignature({
                 b: AST.builders,
                 nodes: [],
               }),
+            ),
+          ),
+        );
+
+        path.node.superTypeParameters =
+          AST.builders.tsTypeParameterInstantiation([
+            AST.builders.tsTypeReference(
+              AST.builders.identifier(`${data.entity.classifiedName}Signature`),
             ),
           ]);
 
@@ -223,10 +275,28 @@ function createSignature(file: string, data: Data): string {
             break;
           }
 
-          typeParameter.members = convertArgsToSignature({
-            b: AST.builders,
-            nodes: typeParameter.members,
-          });
+          const index = path.parentPath.name;
+
+          path.parentPath.parentPath.value.splice(
+            index,
+            0,
+            AST.builders.tsInterfaceDeclaration(
+              AST.builders.identifier(`${data.entity.classifiedName}Signature`),
+              AST.builders.tsInterfaceBody(
+                convertArgsToSignature({
+                  b: AST.builders,
+                  nodes: typeParameter.members,
+                }),
+              ),
+            ),
+          );
+
+          // @ts-ignore: Assume that types from external packages are correct
+          path.node.superTypeParameters.params = [
+            AST.builders.tsTypeReference(
+              AST.builders.identifier(`${data.entity.classifiedName}Signature`),
+            ),
+          ];
 
           return false;
         }
