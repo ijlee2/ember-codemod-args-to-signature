@@ -112,6 +112,156 @@ function createRegistry(file: string, data: Data): string {
   return AST.print(ast);
 }
 
+function renameComponent(file: string, data: Data): string {
+  const traverse = AST.traverse(true);
+
+  let baseComponentName: string | undefined;
+
+  let ast = traverse(file, {
+    visitImportDeclaration(path) {
+      const importPath = path.node.source.value;
+
+      switch (importPath) {
+        case '@ember/component/template-only':
+        case '@glimmer/component': {
+          // @ts-ignore: Assume that types from external packages are correct
+          baseComponentName = path.node.specifiers[0]!.local.name;
+
+          return false;
+        }
+      }
+
+      return false;
+    },
+  });
+
+  let newFile = AST.print(ast);
+
+  if (baseComponentName === undefined) {
+    return newFile;
+  }
+
+  let componentName: string | undefined;
+
+  ast = traverse(newFile, {
+    visitClassDeclaration(path) {
+      if (!path.node.superClass) {
+        return false;
+      }
+
+      // @ts-ignore: Assume that types from external packages are correct
+      if (path.node.superClass.name !== baseComponentName) {
+        return false;
+      }
+
+      if (!path.node.id) {
+        path.node.id = AST.builders.identifier(
+          `${data.entity.classifiedName}Component`,
+        );
+
+        return false;
+      }
+
+      componentName = path.node.id.name as string;
+      path.node.id.name = `${data.entity.classifiedName}Component`;
+
+      return false;
+    },
+
+    visitVariableDeclaration(path) {
+      const declaration = path.node.declarations[0]!;
+
+      // @ts-ignore: Assume that types from external packages are correct
+      switch (declaration.init.type) {
+        case 'CallExpression': {
+          // @ts-ignore: Assume that types from external packages are correct
+          if (declaration.init.callee.type !== 'Identifier') {
+            return false;
+          }
+
+          // @ts-ignore: Assume that types from external packages are correct
+          if (declaration.init.callee.name !== baseComponentName) {
+            return false;
+          }
+
+          // @ts-ignore: Assume that types from external packages are correct
+          componentName = declaration.id.name;
+          // @ts-ignore: Assume that types from external packages are correct
+          declaration.id.name = `${data.entity.classifiedName}Component`;
+
+          return false;
+        }
+
+        case 'ClassExpression': {
+          // @ts-ignore: Assume that types from external packages are correct
+          if (!declaration.init.superClass) {
+            return false;
+          }
+
+          // @ts-ignore: Assume that types from external packages are correct
+          if (declaration.init.superClass.name !== baseComponentName) {
+            return false;
+          }
+
+          // @ts-ignore: Assume that types from external packages are correct
+          componentName = declaration.id.name;
+          // @ts-ignore: Assume that types from external packages are correct
+          declaration.id.name = `${data.entity.classifiedName}Component`;
+
+          return false;
+        }
+      }
+
+      return false;
+    },
+  });
+
+  newFile = AST.print(ast);
+
+  ast = traverse(newFile, {
+    visitExportDefaultDeclaration(path) {
+      switch (path.node.declaration.type) {
+        case 'CallExpression': {
+          // @ts-ignore: Assume that types from external packages are correct
+          if (path.node.declaration.callee.name !== baseComponentName) {
+            return false;
+          }
+
+          const nodesToAdd = [
+            AST.builders.noop(),
+            AST.builders.exportDefaultDeclaration(
+              AST.builders.identifier(`${data.entity.classifiedName}Component`),
+            ),
+          ];
+
+          path.parentPath.value.push(...nodesToAdd);
+
+          return AST.builders.variableDeclaration('const', [
+            AST.builders.variableDeclarator(
+              AST.builders.identifier(`${data.entity.classifiedName}Component`),
+              path.node.declaration,
+            ),
+          ]);
+        }
+
+        case 'Identifier': {
+          if (path.node.declaration.name !== componentName) {
+            return false;
+          }
+
+          path.node.declaration.name = `${data.entity.classifiedName}Component`;
+
+          return false;
+        }
+      }
+
+      return false;
+    },
+  });
+
+  return AST.print(ast);
+}
+
 export function createRegistries(context: Context, options: Options): void {
   const { projectRoot } = options;
 
@@ -141,6 +291,7 @@ export function createRegistries(context: Context, options: Options): void {
         continue;
       }
 
+      file = renameComponent(file, data);
       file = createRegistry(file, data);
 
       fileMap.set(filePath, file);
