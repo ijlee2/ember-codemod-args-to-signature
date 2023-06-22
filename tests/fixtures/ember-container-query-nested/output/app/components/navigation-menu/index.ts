@@ -13,3 +13,10 @@ interface Args {
 const NavigationMenu = templateOnlyComponent<Args>();
 
 export default NavigationMenu;
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'NavigationMenu': typeof NavigationMenuComponent;
+    'navigation-menu': typeof NavigationMenuComponent;
+  }
+}

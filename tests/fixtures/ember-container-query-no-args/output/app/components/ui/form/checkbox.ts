@@ -37,3 +37,10 @@ export default class UiFormCheckboxComponent extends Component {
     }
   }
 }
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'Ui::Form::Checkbox': typeof UiFormCheckboxComponent;
+    'ui/form/checkbox': typeof UiFormCheckboxComponent;
+  }
+}

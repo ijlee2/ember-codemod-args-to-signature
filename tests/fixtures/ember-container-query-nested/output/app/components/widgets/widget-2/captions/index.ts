@@ -45,3 +45,10 @@ export default class extends Component<{ summaries?: Summary[]; }> {
     this.currentIndex = nextIndex;
   }
 }
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'Widgets::Widget2::Captions': typeof WidgetsWidget2CaptionsComponent;
+    'widgets/widget-2/captions': typeof WidgetsWidget2CaptionsComponent;
+  }
+}

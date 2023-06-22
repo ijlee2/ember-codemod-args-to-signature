@@ -19,3 +19,10 @@ export default class WidgetsWidget3Component extends Component<WidgetsWidget3Arg
     this.concertData = concertData;
   }
 }
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'Widgets::Widget3': typeof WidgetsWidget3Component;
+    'widgets/widget-3': typeof WidgetsWidget3Component;
+  }
+}

@@ -46,3 +46,10 @@ export default class UiFormInputComponent extends Component<InputComponentArgs> 
     onUpdate({ key, value });
   }
 }
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'Ui::Form::Input': typeof UiFormInputComponent;
+    'ui/form/input': typeof UiFormInputComponent;
+  }
+}

@@ -27,3 +27,10 @@ export default class UiFormComponent extends Component<UiFormComponentArgs> {
     };
   }
 }
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'Ui::Form': typeof UiFormComponent;
+    'ui/form': typeof UiFormComponent;
+  }
+}

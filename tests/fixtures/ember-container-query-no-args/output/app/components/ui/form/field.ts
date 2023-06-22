@@ -4,3 +4,10 @@ import Component from '@glimmer/component';
 export default class extends Component {
   inputId = guidFor(this);
 }
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'Ui::Form::Field': typeof UiFormFieldComponent;
+    'ui/form/field': typeof UiFormFieldComponent;
+  }
+}

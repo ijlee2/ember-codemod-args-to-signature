@@ -10,3 +10,10 @@ class ProductsProductImage extends Component<ProductsProductImageArgs> {
 }
 
 export default ProductsProductImage;
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'Products::Product::Image': typeof ProductsProductImageComponent;
+    'products/product/image': typeof ProductsProductImageComponent;
+  }
+}
