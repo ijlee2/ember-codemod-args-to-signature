@@ -1,13 +1,15 @@
 import { guidFor } from '@ember/object/internals';
 import Component from '@glimmer/component';
 
-export default class UiFormFieldComponent extends Component<{
+interface UiFormFieldSignature {
   Args: {};
   Blocks: {
     default: [];
   };
   Element: null;
-}> {
+}
+
+export default class UiFormFieldComponent extends Component<UiFormFieldSignature> {
   inputId = guidFor(this);
 }
 

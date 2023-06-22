@@ -8,13 +8,15 @@ import {
   createSummariesForCaptions,
 } from '../../../utils/components/widgets/widget-2';
 
-export default class WidgetsWidget2Component extends Component<{
+interface WidgetsWidget2Signature {
   Args: {};
   Blocks: {
     default: [];
   };
   Element: null;
-}> {
+}
+
+export default class WidgetsWidget2Component extends Component<WidgetsWidget2Signature> {
   @tracked data = [] as Data[];
   @tracked summaries = [] as Summary[];
 

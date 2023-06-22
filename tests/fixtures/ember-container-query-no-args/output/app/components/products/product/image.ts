@@ -1,13 +1,7 @@
 import Component from '@glimmer/component';
 import config from 'docs-app/config/environment';
 
-class ProductsProductImageComponent extends Component<{
-  Args: {};
-  Blocks: {
-    default: [];
-  };
-  Element: null;
-}> {
+class ProductsProductImageComponent extends Component {
   isTestEnvironment = config.environment === 'test';
 }
 

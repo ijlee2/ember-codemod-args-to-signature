@@ -1,12 +1,14 @@
 import Component from '@glimmer/component';
 
-export default class TracksListComponent extends Component<{
+interface TracksListSignature {
   Args: {};
   Blocks: {
     default: [];
   };
   Element: null;
-}> {
+}
+
+export default class TracksListComponent extends Component<TracksListSignature> {
   get numColumns(): number {
     const { numColumns } = this.args;
 

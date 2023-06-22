@@ -2,7 +2,7 @@ import templateOnlyComponent from '@ember/component/template-only';
 
 import type { Product } from '../../../../data/products';
 
-const ProductsProductCardComponent = templateOnlyComponent<{
+interface ProductsProductCardSignature {
   Args: {
     product: Product;
     redirectTo?: string;
@@ -11,7 +11,9 @@ const ProductsProductCardComponent = templateOnlyComponent<{
     default: [];
   };
   Element: null;
-}>();
+}
+
+const ProductsProductCardComponent = templateOnlyComponent<ProductsProductCardSignature>();
 
 export default ProductsProductCardComponent;
 

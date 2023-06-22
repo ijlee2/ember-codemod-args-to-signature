@@ -1,12 +1,6 @@
 import templateOnlyComponent from '@ember/component/template-only';
 
-const ProductsProductCardComponent = templateOnlyComponent<{
-  Args: {};
-  Blocks: {
-    default: [];
-  };
-  Element: null;
-}>();
+const ProductsProductCardComponent = templateOnlyComponent();
 
 export default ProductsProductCardComponent;
 
