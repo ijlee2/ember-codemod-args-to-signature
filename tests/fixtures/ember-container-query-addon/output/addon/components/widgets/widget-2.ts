@@ -8,7 +8,13 @@ import {
   createSummariesForCaptions,
 } from '../../utils/components/widgets/widget-2';
 
-export default class WidgetsWidget2Component extends Component<{}> {
+export default class WidgetsWidget2Component extends Component<{
+  Args: {};
+  Blocks: {
+    default: [];
+  };
+  Element: null;
+}> {
   @tracked data = [] as Data[];
   @tracked summaries = [] as Summary[];
 

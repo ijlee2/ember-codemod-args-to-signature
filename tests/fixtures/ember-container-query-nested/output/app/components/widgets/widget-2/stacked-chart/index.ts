@@ -2,11 +2,17 @@ import Component from '@glimmer/component';
 
 import type { Data } from '../../../../utils/components/widgets/widget-2';
 
-interface WidgetsWidget2StackedChartArgs {
-  data: Data[];
+interface WidgetsWidget2StackedChartSignature {
+  Args: {
+    data: Data[];
+  };
+  Blocks: {
+    default: [];
+  };
+  Element: null;
 }
 
-export default class WidgetsWidget2StackedChartComponent extends Component<WidgetsWidget2StackedChartArgs> {}
+export default class WidgetsWidget2StackedChartComponent extends Component<WidgetsWidget2StackedChartSignature> {}
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {

@@ -15,7 +15,15 @@ const colorSvg = modifier((container: Element, [color]: [string]) => {
   svgElement.style.setProperty('color', color);
 });
 
-export default class WidgetsWidget2CaptionsComponent extends Component<{ summaries?: Summary[]; }> {
+export default class WidgetsWidget2CaptionsComponent extends Component<{
+  Args: {
+    summaries?: Summary[];
+  };
+  Blocks: {
+    default: [];
+  };
+  Element: null;
+}> {
   colorSvg = colorSvg;
 
   @tracked currentIndex = 0;

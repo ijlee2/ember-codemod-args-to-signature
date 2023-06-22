@@ -1,20 +1,26 @@
 import { action, get } from '@ember/object';
 import Component from '@glimmer/component';
 
-interface InputComponentArgs {
-  changeset: Record<string, any>;
-  isDisabled?: boolean;
-  isReadOnly?: boolean;
-  isRequired?: boolean;
-  isWide?: boolean;
-  key: string;
-  label: string;
-  onUpdate: ({ key, value }: { key: string; value: any }) => void;
-  placeholder?: string;
-  type?: string;
+interface UiFormInputSignature {
+  Args: {
+    changeset: Record<string, any>;
+    isDisabled?: boolean;
+    isReadOnly?: boolean;
+    isRequired?: boolean;
+    isWide?: boolean;
+    key: string;
+    label: string;
+    onUpdate: ({ key, value }: { key: string; value: any }) => void;
+    placeholder?: string;
+    type?: string;
+  };
+  Blocks: {
+    default: [];
+  };
+  Element: null;
 }
 
-export default class UiFormInputComponent extends Component<InputComponentArgs> {
+export default class UiFormInputComponent extends Component<UiFormInputSignature> {
   get errorMessage(): string | undefined {
     const { isRequired } = this.args;
 

@@ -6,11 +6,17 @@ import { containerQuery, type Dimensions } from 'ember-container-query';
 import type { Image } from '../../../../data/concert';
 import { findBestFittingImage } from '../../../../utils/components/widgets/widget-3';
 
-interface ResponsiveImageArgs {
-  images: Image[];
+interface WidgetsWidget3TourScheduleResponsiveImageSignature {
+  Args: {
+    images: Image[];
+  };
+  Blocks: {
+    default: [];
+  };
+  Element: null;
 }
 
-export default class WidgetsWidget3TourScheduleResponsiveImageComponent extends Component<ResponsiveImageArgs> {
+export default class WidgetsWidget3TourScheduleResponsiveImageComponent extends Component<WidgetsWidget3TourScheduleResponsiveImageSignature> {
   @tracked imageSource?: string;
 
   @action setImageSource({ dimensions }: { dimensions: Dimensions }): void {

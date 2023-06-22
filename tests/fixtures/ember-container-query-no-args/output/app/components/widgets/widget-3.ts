@@ -4,7 +4,13 @@ import { tracked } from '@glimmer/tracking';
 import type { Concert } from '../../data/concert';
 import concertData from '../../data/concert';
 
-export default class WidgetsWidget3Component extends Component {
+export default class WidgetsWidget3Component extends Component<{
+  Args: {};
+  Blocks: {
+    default: [];
+  };
+  Element: null;
+}> {
   @tracked concertData = {} as Concert;
 
   constructor(owner: unknown, args: {}) {

@@ -3,13 +3,19 @@ import { guidFor } from '@ember/object/internals';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
-interface UiFormComponentArgs {
-  data?: Record<string, any>;
-  instructions?: string;
-  title?: string;
+interface UiFormSignature {
+  Args: {
+    data?: Record<string, any>;
+    instructions?: string;
+    title?: string;
+  }
+  Blocks: {
+    default: [];
+  }
+  Element: null
 }
 
-export default class UiFormComponent extends Component<UiFormComponentArgs> {
+export default class UiFormComponent extends Component<UiFormSignature> {
   formId = guidFor(this);
 
   @tracked changeset = this.args.data ?? ({} as Record<string, any>);

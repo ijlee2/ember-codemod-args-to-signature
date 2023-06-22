@@ -5,7 +5,13 @@ import { containerQuery, type Dimensions } from 'ember-container-query';
 
 import { findBestFittingImage } from '../../../../utils/components/widgets/widget-3';
 
-export default class WidgetsWidget3TourScheduleResponsiveImageComponent extends Component {
+export default class WidgetsWidget3TourScheduleResponsiveImageComponent extends Component<{
+  Args: {};
+  Blocks: {
+    default: [];
+  };
+  Element: null;
+}> {
   @tracked imageSource?: string;
 
   @action setImageSource({ dimensions }: { dimensions: Dimensions }): void {

@@ -3,7 +3,13 @@ import { guidFor } from '@ember/object/internals';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
-export default class UiFormComponent extends Component {
+export default class UiFormComponent extends Component<{
+  Args: {};
+  Blocks: {
+    default: [];
+  };
+  Element: null;
+}> {
   formId = guidFor(this);
 
   @tracked changeset = this.args.data ?? ({} as Record<string, any>);

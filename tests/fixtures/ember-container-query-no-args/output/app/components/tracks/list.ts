@@ -1,6 +1,12 @@
 import Component from '@glimmer/component';
 
-export default class TracksListComponent extends Component {
+export default class TracksListComponent extends Component<{
+  Args: {};
+  Blocks: {
+    default: [];
+  };
+  Element: null;
+}> {
   get numColumns(): number {
     const { numColumns } = this.args;
 

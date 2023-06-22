@@ -1,7 +1,13 @@
 import { action, get } from '@ember/object';
 import Component from '@glimmer/component';
 
-export default class UiFormTextareaComponent extends Component {
+export default class UiFormTextareaComponent extends Component<{
+  Args: {};
+  Blocks: {
+    default: [];
+  };
+  Element: null;
+}> {
   get errorMessage(): string | undefined {
     const { isRequired } = this.args;
 

@@ -1,19 +1,25 @@
 import { action, get } from '@ember/object';
 import Component from '@glimmer/component';
 
-interface TextareaComponentArgs {
-  changeset: Record<string, any>;
-  isDisabled?: boolean;
-  isReadOnly?: boolean;
-  isRequired?: boolean;
-  isWide?: boolean;
-  key: string;
-  label: string;
-  onUpdate: ({ key, value }: { key: string; value: any }) => void;
-  placeholder?: string;
+interface UiFormTextareaSignature {
+  Args: {
+    changeset: Record<string, any>;
+    isDisabled?: boolean;
+    isReadOnly?: boolean;
+    isRequired?: boolean;
+    isWide?: boolean;
+    key: string;
+    label: string;
+    onUpdate: ({ key, value }: { key: string; value: any }) => void;
+    placeholder?: string;
+  };
+  Blocks: {
+    default: [];
+  };
+  Element: null;
 }
 
-export default class UiFormTextareaComponent extends Component<TextareaComponentArgs> {
+export default class UiFormTextareaComponent extends Component<UiFormTextareaSignature> {
   get errorMessage(): string | undefined {
     const { isRequired } = this.args;
 

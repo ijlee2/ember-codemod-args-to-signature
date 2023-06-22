@@ -1,19 +1,25 @@
 import { action, get } from '@ember/object';
 import Component from '@glimmer/component';
 
-interface CheckboxArgs {
-  changeset: Record<string, any>;
-  isDisabled?: boolean;
-  isInline?: boolean;
-  isReadOnly?: boolean;
-  isRequired?: boolean;
-  isWide?: boolean;
-  key: string;
-  label: string;
-  onUpdate: ({ key, value }: { key: string; value: any }) => void;
+interface UiFormCheckboxSignature {
+  Args: {
+    changeset: Record<string, any>;
+    isDisabled?: boolean;
+    isInline?: boolean;
+    isReadOnly?: boolean;
+    isRequired?: boolean;
+    isWide?: boolean;
+    key: string;
+    label: string;
+    onUpdate: ({ key, value }: { key: string; value: any }) => void;
+  };
+  Blocks: {
+    default: [];
+  };
+  Element: null;
 }
 
-export default class UiFormCheckboxComponent extends Component<CheckboxArgs> {
+export default class UiFormCheckboxComponent extends Component<UiFormCheckboxSignature> {
   get errorMessage(): string | undefined {
     if (!this.args.isRequired) {
       return undefined;

@@ -1,7 +1,13 @@
 import { action, get } from '@ember/object';
 import Component from '@glimmer/component';
 
-export default class UiFormCheckboxComponent extends Component {
+export default class UiFormCheckboxComponent extends Component<{
+  Args: {};
+  Blocks: {
+    default: [];
+  };
+  Element: null;
+}> {
   get errorMessage(): string | undefined {
     if (!this.args.isRequired) {
       return undefined;

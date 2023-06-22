@@ -1,10 +1,16 @@
 import Component from '@glimmer/component';
 
-interface UiPageComponentArgs {
-  title: string;
+interface UiPageSignature {
+  Args: {
+    title: string;
+  };
+  Blocks: {
+    default: [];
+  };
+  Element: null;
 }
 
-export default class UiPageComponent extends Component<UiPageComponentArgs> {}
+export default class UiPageComponent extends Component<UiPageSignature> {}
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
