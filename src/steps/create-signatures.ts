@@ -188,6 +188,62 @@ function createSignature(file: string, data: Data): string {
 
       return false;
     },
+
+    visitClassDeclaration(path) {
+      // @ts-ignore: Assume that types from external packages are correct
+      if (path.node.superClass.name !== baseComponentName) {
+        return false;
+      }
+
+      const typeParameters = path.node.superTypeParameters;
+
+      // When the interface is missing
+      if (!typeParameters) {
+        path.node.superTypeParameters =
+          AST.builders.tsTypeParameterInstantiation([
+            AST.builders.tsTypeLiteral(
+              convertArgsToSignature({
+                b: AST.builders,
+                nodes: [],
+              }),
+            ),
+          ]);
+
+        return false;
+      }
+
+      const typeParameter = typeParameters.params[0]!;
+
+      switch (typeParameter.type) {
+        // When the interface is directly passed to the component
+        case 'TSTypeLiteral': {
+          const keys = getKeys(typeParameter.members);
+
+          if (isSignature(keys)) {
+            break;
+          }
+
+          typeParameter.members = convertArgsToSignature({
+            b: AST.builders,
+            nodes: typeParameter.members,
+          });
+
+          return false;
+        }
+
+        // When the interface is defined "outside"
+        case 'TSTypeReference': {
+          // @ts-ignore: Assume that types from external packages are correct
+          interfaceName = typeParameter.typeName.name;
+          // @ts-ignore: Assume that types from external packages are correct
+          typeParameter.typeName.name = `${data.entity.classifiedName}Signature`;
+
+          return false;
+        }
+      }
+
+      return false;
+    },
   });
 
   newFile = AST.print(ast);
