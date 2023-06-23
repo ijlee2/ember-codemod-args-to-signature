@@ -11,12 +11,7 @@ const codemodOptions: CodemodOptions = {
 };
 
 const context: Context = {
-  entities: new Map([
-    ['navigation-menu', new Set(['.hbs', '.ts'])],
-    ['products/product/card', new Set(['.hbs', '.js'])],
-    ['products/product/image', new Set(['.hbs', '.ts'])],
-    ['tracks', new Set(['.hbs', '.js'])],
-  ]),
+  entities: new Map(),
 };
 
 const options: Options = {

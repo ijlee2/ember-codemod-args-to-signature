@@ -18,7 +18,6 @@ const context: Context = {
     ['tracks', new Set(['.d.ts', '.hbs'])],
     ['tracks/list', new Set(['.hbs', '.ts'])],
     ['tracks/table', new Set(['.d.ts', '.hbs'])],
-    ['types', new Set(['.ts'])],
     ['ui/form', new Set(['.hbs', '.ts'])],
     ['ui/form/checkbox', new Set(['.hbs', '.ts'])],
     ['ui/form/field', new Set(['.hbs', '.ts'])],
