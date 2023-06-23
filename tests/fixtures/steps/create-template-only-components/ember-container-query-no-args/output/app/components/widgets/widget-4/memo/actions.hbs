@@ -1,0 +1,59 @@
+<div
+  data-test-memo-actions
+  local-class="actions {{if
+    (strict-or @cqFeatures.small @cqFeatures.short)
+    'minimal-layout'
+  }}"
+>
+  <button
+    aria-label="Comment"
+    local-class="button"
+    type="button"
+  >
+    {{svg-jar
+      "message-processing-outline"
+      class=(local-class "icon icon-comment")
+      desc="A speech bubble"
+      role="img"
+    }}
+  </button>
+
+  <button
+    aria-label="Repost"
+    local-class="button"
+    type="button"
+  >
+    {{svg-jar
+      "sync"
+      class=(local-class "icon icon-repost")
+      desc="Two circular arrows pointing to each other"
+      role="img"
+    }}
+  </button>
+
+  <button
+    aria-label="Like"
+    local-class="button"
+    type="button"
+  >
+    {{svg-jar
+      "heart-outline"
+      class=(local-class "icon")
+      desc="A heart"
+      role="img"
+    }}
+  </button>
+
+  <button
+    aria-label="Share"
+    local-class="button"
+    type="button"
+  >
+    {{svg-jar
+      "share-variant-outline"
+      class=(local-class "icon")
+      desc="A circular node that branches out to two circular nodes"
+      role="img"
+    }}
+  </button>
+</div>

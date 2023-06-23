@@ -1,0 +1,27 @@
+<ContainerQuery
+  @features={{hash
+    tall=(aspectRatio max=0.8)
+    square=(aspectRatio min=0.8 max=1.25)
+    wide=(aspectRatio min=1.25)
+  }}
+  @tagName="section"
+  local-class="container"
+>
+  <header>
+    <h2>Widget 1</h2>
+  </header>
+
+  <div local-class="items">
+    <div local-class="item-1">
+      <WidgetsWidget1Item @title="Item 1" />
+    </div>
+
+    <div local-class="item-2">
+      <WidgetsWidget1Item @title="Item 2" />
+    </div>
+
+    <div local-class="item-3">
+      <WidgetsWidget1Item @title="Item 3" />
+    </div>
+  </div>
+</ContainerQuery>
