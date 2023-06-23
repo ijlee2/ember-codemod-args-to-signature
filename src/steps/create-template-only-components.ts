@@ -8,26 +8,28 @@ import type { Context, Options } from '../types/index.js';
 import { blueprintsRoot } from '../utils/blueprints.js';
 import { getComponentFilePath, transformEntityName } from '../utils/files.js';
 
-function createBackingClass(entityName: string, options: Options): void {
-  const filePath = getComponentFilePath(options)(entityName);
+const blueprintFile = readFileSync(
+  join(blueprintsRoot, 'ember-cli/template-only-component.ts'),
+  'utf8',
+);
 
-  const blueprintFile = readFileSync(
-    join(blueprintsRoot, 'ember-cli/template-only-component.ts'),
-    'utf8',
-  );
+function createBackingClass(entityName: string, options: Options): string {
+  const entity = transformEntityName(entityName);
 
   const file = processTemplate(blueprintFile, {
-    entity: transformEntityName(entityName),
+    entity,
     options,
   });
 
-  createFiles(new Map([[filePath, file]]), options);
+  return file;
 }
 
 export function createTemplateOnlyComponents(
   context: Context,
   options: Options,
 ): void {
+  const fileMap = new Map<string, string>();
+
   for (const [entityName, extensions] of context.entities) {
     const hasBackingClass = extensions.has('.ts');
 
@@ -35,6 +37,11 @@ export function createTemplateOnlyComponents(
       continue;
     }
 
-    createBackingClass(entityName, options);
+    const filePath = getComponentFilePath(options)(entityName);
+    const file = createBackingClass(entityName, options);
+
+    fileMap.set(filePath, file);
   }
+
+  createFiles(fileMap, options);
 }
