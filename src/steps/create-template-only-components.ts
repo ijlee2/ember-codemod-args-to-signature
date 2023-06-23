@@ -3,7 +3,7 @@ import { join } from 'node:path';
 
 import { processTemplate } from '@codemod-utils/blueprints';
 import { classify, doubleColonize } from '@codemod-utils/ember-cli-string';
-import { createFiles, parseFilePath } from '@codemod-utils/files';
+import { createFiles } from '@codemod-utils/files';
 
 import type { Context, Options } from '../types/index.js';
 import { blueprintsRoot } from '../utils/blueprints.js';
@@ -13,7 +13,6 @@ function createBackingClass(entityName: string, options: Options): void {
   const entity = {
     classifiedName: classify(entityName),
     doubleColonizedName: doubleColonize(entityName),
-    fileName: parseFilePath(entityName).name,
     name: entityName,
   };
 
@@ -37,7 +36,7 @@ export function createTemplateOnlyComponents(
   options: Options,
 ): void {
   for (const [entityName, extensions] of context.entities) {
-    const hasBackingClass = extensions.has('.js') || extensions.has('.ts');
+    const hasBackingClass = extensions.has('.ts');
 
     if (hasBackingClass) {
       continue;

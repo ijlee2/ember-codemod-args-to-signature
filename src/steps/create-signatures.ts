@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { AST } from '@codemod-utils/ast-javascript';
-import { classify, doubleColonize } from '@codemod-utils/ember-cli-string';
+import { classify } from '@codemod-utils/ember-cli-string';
 import { createFiles } from '@codemod-utils/files';
 
 import type { Context, Options } from '../types/index.js';
@@ -12,47 +12,8 @@ import { getComponentFilePath } from '../utils/files.js';
 type Data = {
   entity: {
     classifiedName: string;
-    doubleColonizedName: string;
-    name: string;
   };
 };
-
-function cannotCreateSignature(file: string): boolean {
-  const traverse = AST.traverse(true);
-
-  let isClassicComponent = false;
-  let isComponent = false;
-
-  traverse(file, {
-    visitImportDeclaration(path) {
-      const importPath = path.node.source.value;
-
-      switch (importPath) {
-        case '@ember/component': {
-          isClassicComponent = true;
-          isComponent = true;
-
-          break;
-        }
-
-        case '@ember/component/template-only':
-        case '@glimmer/component': {
-          isComponent = true;
-
-          break;
-        }
-      }
-
-      return false;
-    },
-  });
-
-  if (!isComponent) {
-    return true;
-  }
-
-  return isClassicComponent;
-}
 
 function getKeys(nodes: unknown): Set<string> {
   type Node = { key: { name: string } };
@@ -413,18 +374,11 @@ export function createSignatures(context: Context, options: Options): void {
     const data = {
       entity: {
         classifiedName: classify(entityName),
-        doubleColonizedName: doubleColonize(entityName),
-        name: entityName,
       },
     };
 
     try {
       let file = readFileSync(join(projectRoot, filePath), 'utf8');
-
-      if (cannotCreateSignature(file)) {
-        continue;
-      }
-
       file = createSignature(file, data);
 
       fileMap.set(filePath, file);

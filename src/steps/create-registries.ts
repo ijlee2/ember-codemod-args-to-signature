@@ -17,36 +17,12 @@ type Data = {
   };
 };
 
-function cannotCreateRegistry(file: string): boolean {
+function hasRegistry(file: string): boolean {
   const traverse = AST.traverse(true);
 
   let hasRegistry = false;
-  let isClassicComponent = false;
-  let isComponent = false;
 
   traverse(file, {
-    visitImportDeclaration(path) {
-      const importPath = path.node.source.value;
-
-      switch (importPath) {
-        case '@ember/component': {
-          isClassicComponent = true;
-          isComponent = true;
-
-          break;
-        }
-
-        case '@ember/component/template-only':
-        case '@glimmer/component': {
-          isComponent = true;
-
-          break;
-        }
-      }
-
-      return false;
-    },
-
     visitTSModuleDeclaration(path) {
       // @ts-ignore: Assume that types from external packages are correct
       const moduleName = path.node.id.value;
@@ -59,11 +35,7 @@ function cannotCreateRegistry(file: string): boolean {
     },
   });
 
-  if (!isComponent) {
-    return true;
-  }
-
-  return hasRegistry || isClassicComponent;
+  return hasRegistry;
 }
 
 function createRegistry(file: string, data: Data): string {
@@ -287,7 +259,7 @@ export function createRegistries(context: Context, options: Options): void {
     try {
       let file = readFileSync(join(projectRoot, filePath), 'utf8');
 
-      if (cannotCreateRegistry(file)) {
+      if (hasRegistry(file)) {
         continue;
       }
 
