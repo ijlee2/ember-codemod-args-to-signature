@@ -2,21 +2,13 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { processTemplate } from '@codemod-utils/blueprints';
-import { classify, doubleColonize } from '@codemod-utils/ember-cli-string';
-import { createFiles, parseFilePath } from '@codemod-utils/files';
+import { createFiles } from '@codemod-utils/files';
 
 import type { Context, Options } from '../types/index.js';
 import { blueprintsRoot } from '../utils/blueprints.js';
-import { getComponentFilePath } from '../utils/files.js';
+import { getComponentFilePath, transformEntityName } from '../utils/files.js';
 
 function createBackingClass(entityName: string, options: Options): void {
-  const entity = {
-    classifiedName: classify(entityName),
-    doubleColonizedName: doubleColonize(entityName),
-    fileName: parseFilePath(entityName).name,
-    name: entityName,
-  };
-
   const filePath = getComponentFilePath(options)(entityName);
 
   const blueprintFile = readFileSync(
@@ -25,7 +17,7 @@ function createBackingClass(entityName: string, options: Options): void {
   );
 
   const file = processTemplate(blueprintFile, {
-    entity,
+    entity: transformEntityName(entityName),
     options,
   });
 
@@ -37,7 +29,7 @@ export function createTemplateOnlyComponents(
   options: Options,
 ): void {
   for (const [entityName, extensions] of context.entities) {
-    const hasBackingClass = extensions.has('.js') || extensions.has('.ts');
+    const hasBackingClass = extensions.has('.ts');
 
     if (hasBackingClass) {
       continue;
