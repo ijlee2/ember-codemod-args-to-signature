@@ -3,16 +3,17 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { AST } from '@codemod-utils/ast-javascript';
-import { classify } from '@codemod-utils/ember-cli-string';
 import { createFiles } from '@codemod-utils/files';
 
 import type { Context, Options } from '../types/index.js';
-import { getComponentFilePath } from '../utils/files.js';
+import {
+  getComponentFilePath,
+  type TransformedEntityName,
+  transformEntityName,
+} from '../utils/files.js';
 
 type Data = {
-  entity: {
-    classifiedName: string;
-  };
+  entity: TransformedEntityName;
 };
 
 function getKeys(nodes: unknown): Set<string> {
@@ -372,9 +373,7 @@ export function createSignatures(context: Context, options: Options): void {
     const filePath = getComponentFilePath(options)(entityName);
 
     const data = {
-      entity: {
-        classifiedName: classify(entityName),
-      },
+      entity: transformEntityName(entityName),
     };
 
     try {

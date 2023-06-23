@@ -3,18 +3,17 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { AST } from '@codemod-utils/ast-javascript';
-import { classify, doubleColonize } from '@codemod-utils/ember-cli-string';
 import { createFiles } from '@codemod-utils/files';
 
 import type { Context, Options } from '../types/index.js';
-import { getComponentFilePath } from '../utils/files.js';
+import {
+  getComponentFilePath,
+  type TransformedEntityName,
+  transformEntityName,
+} from '../utils/files.js';
 
 type Data = {
-  entity: {
-    classifiedName: string;
-    doubleColonizedName: string;
-    name: string;
-  };
+  entity: TransformedEntityName;
 };
 
 function hasRegistry(file: string): boolean {
@@ -249,11 +248,7 @@ export function createRegistries(context: Context, options: Options): void {
     const filePath = getComponentFilePath(options)(entityName);
 
     const data = {
-      entity: {
-        classifiedName: classify(entityName),
-        doubleColonizedName: doubleColonize(entityName),
-        name: entityName,
-      },
+      entity: transformEntityName(entityName),
     };
 
     try {
