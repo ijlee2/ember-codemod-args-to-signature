@@ -36,7 +36,5 @@ export function createTemplateOnlyComponents(
     }
 
     createBackingClass(entityName, options);
-
-    extensions.add('.ts');
   }
 }
