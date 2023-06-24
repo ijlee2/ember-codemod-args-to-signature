@@ -14,6 +14,7 @@ import {
 import {
   getBaseComponentName,
   hasRegistry,
+  passComponentNameToBaseComponent,
 } from './create-registries/index.js';
 
 type Data = {
@@ -73,86 +74,14 @@ function renameComponent(file: string, data: Data): string {
     return file;
   }
 
-  const traverse = AST.traverse(true);
-
-  let componentName: string | undefined;
-
-  let ast = traverse(file, {
-    visitClassDeclaration(path) {
-      if (!path.node.superClass) {
-        return false;
-      }
-
-      // @ts-ignore: Assume that types from external packages are correct
-      if (path.node.superClass.name !== baseComponentName) {
-        return false;
-      }
-
-      if (!path.node.id) {
-        path.node.id = AST.builders.identifier(
-          `${data.entity.classifiedName}Component`,
-        );
-
-        return false;
-      }
-
-      componentName = path.node.id.name as string;
-      path.node.id.name = `${data.entity.classifiedName}Component`;
-
-      return false;
-    },
-
-    visitVariableDeclaration(path) {
-      const declaration = path.node.declarations[0]!;
-
-      // @ts-ignore: Assume that types from external packages are correct
-      switch (declaration.init.type) {
-        case 'CallExpression': {
-          // @ts-ignore: Assume that types from external packages are correct
-          if (declaration.init.callee.type !== 'Identifier') {
-            return false;
-          }
-
-          // @ts-ignore: Assume that types from external packages are correct
-          if (declaration.init.callee.name !== baseComponentName) {
-            return false;
-          }
-
-          // @ts-ignore: Assume that types from external packages are correct
-          componentName = declaration.id.name;
-          // @ts-ignore: Assume that types from external packages are correct
-          declaration.id.name = `${data.entity.classifiedName}Component`;
-
-          return false;
-        }
-
-        case 'ClassExpression': {
-          // @ts-ignore: Assume that types from external packages are correct
-          if (!declaration.init.superClass) {
-            return false;
-          }
-
-          // @ts-ignore: Assume that types from external packages are correct
-          if (declaration.init.superClass.name !== baseComponentName) {
-            return false;
-          }
-
-          // @ts-ignore: Assume that types from external packages are correct
-          componentName = declaration.id.name;
-          // @ts-ignore: Assume that types from external packages are correct
-          declaration.id.name = `${data.entity.classifiedName}Component`;
-
-          return false;
-        }
-      }
-
-      return false;
-    },
+  const { componentName, newFile } = passComponentNameToBaseComponent(file, {
+    baseComponentName,
+    data,
   });
 
-  const newFile = AST.print(ast);
+  const traverse = AST.traverse(true);
 
-  ast = traverse(newFile, {
+  const ast = traverse(newFile, {
     visitExportDefaultDeclaration(path) {
       switch (path.node.declaration.type) {
         case 'CallExpression': {
