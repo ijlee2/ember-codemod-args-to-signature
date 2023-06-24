@@ -11,7 +11,10 @@ import {
   type TransformedEntityName,
   transformEntityName,
 } from '../utils/files.js';
-import { hasRegistry } from './create-registries/index.js';
+import {
+  getBaseComponentName,
+  hasRegistry,
+} from './create-registries/index.js';
 
 type Data = {
   entity: TransformedEntityName;
@@ -64,37 +67,17 @@ function createRegistry(file: string, data: Data): string {
 }
 
 function renameComponent(file: string, data: Data): string {
-  const traverse = AST.traverse(true);
-
-  let baseComponentName: string | undefined;
-
-  let ast = traverse(file, {
-    visitImportDeclaration(path) {
-      const importPath = path.node.source.value;
-
-      switch (importPath) {
-        case '@ember/component/template-only':
-        case '@glimmer/component': {
-          // @ts-ignore: Assume that types from external packages are correct
-          baseComponentName = path.node.specifiers[0]!.local.name;
-
-          return false;
-        }
-      }
-
-      return false;
-    },
-  });
-
-  let newFile = AST.print(ast);
+  const baseComponentName = getBaseComponentName(file);
 
   if (baseComponentName === undefined) {
-    return newFile;
+    return file;
   }
+
+  const traverse = AST.traverse(true);
 
   let componentName: string | undefined;
 
-  ast = traverse(newFile, {
+  let ast = traverse(file, {
     visitClassDeclaration(path) {
       if (!path.node.superClass) {
         return false;
@@ -167,7 +150,7 @@ function renameComponent(file: string, data: Data): string {
     },
   });
 
-  newFile = AST.print(ast);
+  const newFile = AST.print(ast);
 
   ast = traverse(newFile, {
     visitExportDefaultDeclaration(path) {
