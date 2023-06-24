@@ -13,6 +13,7 @@ import {
 } from '../utils/files.js';
 import {
   convertArgsToSignature,
+  getBaseComponentName,
   isSignature,
 } from './create-signatures/index.js';
 
@@ -21,37 +22,17 @@ type Data = {
 };
 
 function createSignature(file: string, data: Data): string {
-  const traverse = AST.traverse(true);
-
-  let baseComponentName: string | undefined;
-
-  let ast = traverse(file, {
-    visitImportDeclaration(path) {
-      const importPath = path.node.source.value;
-
-      switch (importPath) {
-        case '@ember/component/template-only':
-        case '@glimmer/component': {
-          // @ts-ignore: Assume that types from external packages are correct
-          baseComponentName = path.node.specifiers[0]!.local.name;
-
-          return false;
-        }
-      }
-
-      return false;
-    },
-  });
-
-  let newFile = AST.print(ast);
+  const baseComponentName = getBaseComponentName(file);
 
   if (baseComponentName === undefined) {
-    return newFile;
+    return file;
   }
+
+  const traverse = AST.traverse(true);
 
   let interfaceName: string | undefined;
 
-  ast = traverse(newFile, {
+  let ast = traverse(file, {
     visitCallExpression(path) {
       // @ts-ignore: Assume that types from external packages are correct
       const calleeName = path.node.callee.name;
@@ -232,7 +213,7 @@ function createSignature(file: string, data: Data): string {
     },
   });
 
-  newFile = AST.print(ast);
+  const newFile = AST.print(ast);
 
   if (interfaceName === undefined) {
     return newFile;
