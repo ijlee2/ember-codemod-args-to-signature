@@ -364,9 +364,9 @@ export function createSignatures(context: Context, options: Options): void {
   const fileMap = new Map<string, string>();
 
   for (const [entityName, extensions] of context.entities) {
-    const isTypeScript = extensions.has('.ts');
+    const hasBackingClass = extensions.has('.ts');
 
-    if (!isTypeScript) {
+    if (!hasBackingClass) {
       continue;
     }
 
