@@ -11,21 +11,14 @@ import {
   type TransformedEntityName,
   transformEntityName,
 } from '../utils/files.js';
-import { convertArgsToSignature } from './create-signatures/index.js';
+import {
+  convertArgsToSignature,
+  isSignature,
+} from './create-signatures/index.js';
 
 type Data = {
   entity: TransformedEntityName;
 };
-
-function getKeys(nodes: unknown): Set<string> {
-  type Node = { key: { name: string } };
-
-  return new Set((nodes as Node[]).map(({ key }) => key.name));
-}
-
-function isSignature(keys: Set<string>): boolean {
-  return keys.has('Args') || keys.has('Blocks') || keys.has('Element');
-}
 
 function createSignature(file: string, data: Data): string {
   const traverse = AST.traverse(true);
@@ -107,9 +100,7 @@ function createSignature(file: string, data: Data): string {
       switch (typeParameter.type) {
         // When the interface is directly passed to the component
         case 'TSTypeLiteral': {
-          const keys = getKeys(typeParameter.members);
-
-          if (isSignature(keys)) {
+          if (isSignature(typeParameter.members)) {
             break;
           }
 
@@ -196,9 +187,7 @@ function createSignature(file: string, data: Data): string {
       switch (typeParameter.type) {
         // When the interface is directly passed to the component
         case 'TSTypeLiteral': {
-          const keys = getKeys(typeParameter.members);
-
-          if (isSignature(keys)) {
+          if (isSignature(typeParameter.members)) {
             break;
           }
 
@@ -260,9 +249,7 @@ function createSignature(file: string, data: Data): string {
       path.node.id.name = `${data.entity.classifiedName}Signature`;
 
       const typeParameter = path.node.body;
-      const keys = getKeys(typeParameter.body);
-
-      if (isSignature(keys)) {
+      if (isSignature(typeParameter.body)) {
         return false;
       }
 
@@ -284,10 +271,9 @@ function createSignature(file: string, data: Data): string {
       path.node.id.name = `${data.entity.classifiedName}Signature`;
 
       const typeParameter = path.node.typeAnnotation;
-      // @ts-ignore: Assume that types from external packages are correct
-      const keys = getKeys(typeParameter.members);
 
-      if (isSignature(keys)) {
+      // @ts-ignore: Assume that types from external packages are correct
+      if (isSignature(typeParameter.members)) {
         return false;
       }
 
