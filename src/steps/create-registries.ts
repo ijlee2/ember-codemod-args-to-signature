@@ -15,6 +15,7 @@ import {
   getBaseComponentName,
   hasRegistry,
   passComponentNameToBaseComponent,
+  updateReferences,
 } from './create-registries/index.js';
 
 type Data = {
@@ -74,55 +75,19 @@ function renameComponent(file: string, data: Data): string {
     return file;
   }
 
-  const { componentName, newFile } = passComponentNameToBaseComponent(file, {
+  // eslint-disable-next-line prefer-const
+  let { componentName, newFile } = passComponentNameToBaseComponent(file, {
     baseComponentName,
     data,
   });
 
-  const traverse = AST.traverse(true);
+  ({ newFile } = updateReferences(newFile, {
+    baseComponentName,
+    componentName,
+    data,
+  }));
 
-  const ast = traverse(newFile, {
-    visitExportDefaultDeclaration(path) {
-      switch (path.node.declaration.type) {
-        case 'CallExpression': {
-          // @ts-ignore: Assume that types from external packages are correct
-          if (path.node.declaration.callee.name !== baseComponentName) {
-            return false;
-          }
-
-          const nodesToAdd = [
-            AST.builders.noop(),
-            AST.builders.exportDefaultDeclaration(
-              AST.builders.identifier(`${data.entity.classifiedName}Component`),
-            ),
-          ];
-
-          path.parentPath.value.push(...nodesToAdd);
-
-          return AST.builders.variableDeclaration('const', [
-            AST.builders.variableDeclarator(
-              AST.builders.identifier(`${data.entity.classifiedName}Component`),
-              path.node.declaration,
-            ),
-          ]);
-        }
-
-        case 'Identifier': {
-          if (path.node.declaration.name !== componentName) {
-            return false;
-          }
-
-          path.node.declaration.name = `${data.entity.classifiedName}Component`;
-
-          return false;
-        }
-      }
-
-      return false;
-    },
-  });
-
-  return AST.print(ast);
+  return newFile;
 }
 
 export function createRegistries(context: Context, options: Options): void {
