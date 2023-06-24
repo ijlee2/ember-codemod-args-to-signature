@@ -13,13 +13,10 @@ const blueprintFile = readFileSync(
   'utf8',
 );
 
-function createBackingClass(entityName: string, options: Options): string {
+function createBackingClass(entityName: string): string {
   const entity = transformEntityName(entityName);
 
-  const file = processTemplate(blueprintFile, {
-    entity,
-    options,
-  });
+  const file = processTemplate(blueprintFile, { entity });
 
   return file;
 }
@@ -38,7 +35,7 @@ export function createTemplateOnlyComponents(
     }
 
     const filePath = getComponentFilePath(options)(entityName);
-    const file = createBackingClass(entityName, options);
+    const file = createBackingClass(entityName);
 
     fileMap.set(filePath, file);
   }
