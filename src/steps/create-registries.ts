@@ -4,44 +4,12 @@ import { join } from 'node:path';
 import { createFiles } from '@codemod-utils/files';
 
 import type { Context, Options } from '../types/index.js';
-import {
-  getComponentFilePath,
-  type TransformedEntityName,
-  transformEntityName,
-} from '../utils/files.js';
+import { getComponentFilePath, transformEntityName } from '../utils/files.js';
 import {
   createRegistry,
-  getBaseComponentName,
   hasRegistry,
-  passComponentNameToBaseComponent,
-  updateReferences,
+  renameComponent,
 } from './create-registries/index.js';
-
-type Data = {
-  entity: TransformedEntityName;
-};
-
-function renameComponent(file: string, data: Data): string {
-  const baseComponentName = getBaseComponentName(file);
-
-  if (baseComponentName === undefined) {
-    return file;
-  }
-
-  // eslint-disable-next-line prefer-const
-  let { componentName, newFile } = passComponentNameToBaseComponent(file, {
-    baseComponentName,
-    data,
-  });
-
-  ({ newFile } = updateReferences(newFile, {
-    baseComponentName,
-    componentName,
-    data,
-  }));
-
-  return newFile;
-}
 
 export function createRegistries(context: Context, options: Options): void {
   const { projectRoot } = options;
