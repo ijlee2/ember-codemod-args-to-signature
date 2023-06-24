@@ -11,6 +11,7 @@ import {
   type TransformedEntityName,
   transformEntityName,
 } from '../utils/files.js';
+import { convertArgsToSignature } from './create-signatures/index.js';
 
 type Data = {
   entity: TransformedEntityName;
@@ -24,42 +25,6 @@ function getKeys(nodes: unknown): Set<string> {
 
 function isSignature(keys: Set<string>): boolean {
   return keys.has('Args') || keys.has('Blocks') || keys.has('Element');
-}
-
-function convertArgsToSignature({
-  b,
-  nodes,
-}: {
-  b: (typeof AST)['builders'];
-  nodes: unknown;
-}) {
-  return [
-    b.tsPropertySignature(
-      b.identifier('Args'),
-      // @ts-ignore: Assume that types from external packages are correct
-      b.tsTypeAnnotation(b.tsTypeLiteral(nodes)),
-      false,
-    ),
-
-    // b.tsPropertySignature(
-    //   b.identifier('Blocks'),
-    //   b.tsTypeAnnotation(
-    //     b.tsTypeLiteral([
-    //       b.tsPropertySignature(
-    //         b.identifier('default'),
-    //         b.tsTypeAnnotation(b.tsTupleType([])),
-    //       ),
-    //     ]),
-    //   ),
-    //   false,
-    // ),
-
-    // b.tsPropertySignature(
-    //   b.identifier('Element'),
-    //   b.tsTypeAnnotation(b.tsNullKeyword()),
-    //   false,
-    // ),
-  ];
 }
 
 function createSignature(file: string, data: Data): string {
