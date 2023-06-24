@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-import { AST } from '@codemod-utils/ast-javascript';
 import { createFiles } from '@codemod-utils/files';
 
 import type { Context, Options } from '../types/index.js';
@@ -12,6 +10,7 @@ import {
   transformEntityName,
 } from '../utils/files.js';
 import {
+  createRegistry,
   getBaseComponentName,
   hasRegistry,
   passComponentNameToBaseComponent,
@@ -21,52 +20,6 @@ import {
 type Data = {
   entity: TransformedEntityName;
 };
-
-function createRegistry(file: string, data: Data): string {
-  const traverse = AST.traverse(true);
-
-  const ast = traverse(file);
-
-  // @ts-ignore: Assume that types from external packages are correct
-  const nodes = ast.program.body;
-
-  const registryEntries = AST.builders.tsInterfaceBody([
-    AST.builders.tsPropertySignature(
-      AST.builders.stringLiteral(data.entity.doubleColonizedName),
-      AST.builders.tsTypeAnnotation(
-        AST.builders.tsTypeQuery(
-          AST.builders.identifier(`${data.entity.classifiedName}Component`),
-        ),
-      ),
-    ),
-    AST.builders.tsPropertySignature(
-      AST.builders.stringLiteral(data.entity.name),
-      AST.builders.tsTypeAnnotation(
-        AST.builders.tsTypeQuery(
-          AST.builders.identifier(`${data.entity.classifiedName}Component`),
-        ),
-      ),
-    ),
-  ]);
-
-  const registryNode = AST.builders.tsModuleDeclaration(
-    AST.builders.stringLiteral('@glint/environment-ember-loose/registry'),
-    AST.builders.tsModuleBlock([
-      AST.builders.exportDefaultDeclaration(
-        AST.builders.tsInterfaceDeclaration(
-          AST.builders.identifier('Registry'),
-          registryEntries,
-        ),
-      ),
-    ]),
-  );
-
-  registryNode.declare = true;
-
-  nodes.push(registryNode);
-
-  return AST.print(ast);
-}
 
 function renameComponent(file: string, data: Data): string {
   const baseComponentName = getBaseComponentName(file);
