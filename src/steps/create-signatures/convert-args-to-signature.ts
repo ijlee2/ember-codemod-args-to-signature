@@ -1,38 +1,31 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { AST } from '@codemod-utils/ast-javascript';
 
-type Options = {
-  b: (typeof AST)['builders'];
-  nodes: unknown[];
-};
-
-export function convertArgsToSignature(options: Options) {
-  const { b, nodes } = options;
-
+export function convertArgsToSignature(nodes: unknown[]) {
   return [
-    b.tsPropertySignature(
-      b.identifier('Args'),
+    AST.builders.tsPropertySignature(
+      AST.builders.identifier('Args'),
       // @ts-ignore: Assume that types from external packages are correct
-      b.tsTypeAnnotation(b.tsTypeLiteral(nodes)),
+      AST.builders.tsTypeAnnotation(AST.builders.tsTypeLiteral(nodes)),
       false,
     ),
 
-    // b.tsPropertySignature(
-    //   b.identifier('Blocks'),
-    //   b.tsTypeAnnotation(
-    //     b.tsTypeLiteral([
-    //       b.tsPropertySignature(
-    //         b.identifier('default'),
-    //         b.tsTypeAnnotation(b.tsTupleType([])),
+    // AST.builders.tsPropertySignature(
+    //   AST.builders.identifier('Blocks'),
+    //   AST.builders.tsTypeAnnotation(
+    //     AST.builders.tsTypeLiteral([
+    //       AST.builders.tsPropertySignature(
+    //         AST.builders.identifier('default'),
+    //         AST.builders.tsTypeAnnotation(AST.builders.tsTupleType([])),
     //       ),
     //     ]),
     //   ),
     //   false,
     // ),
 
-    // b.tsPropertySignature(
-    //   b.identifier('Element'),
-    //   b.tsTypeAnnotation(b.tsNullKeyword()),
+    // AST.builders.tsPropertySignature(
+    //   AST.builders.identifier('Element'),
+    //   AST.builders.tsTypeAnnotation(AST.builders.tsNullKeyword()),
     //   false,
     // ),
   ];

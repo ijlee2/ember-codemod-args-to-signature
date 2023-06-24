@@ -37,10 +37,7 @@ export function updateReferences(
         return false;
       }
 
-      typeParameter.body = convertArgsToSignature({
-        b: AST.builders,
-        nodes: typeParameter.body,
-      });
+      typeParameter.body = convertArgsToSignature(typeParameter.body);
 
       return false;
     },
@@ -62,11 +59,7 @@ export function updateReferences(
       }
 
       // @ts-ignore: Assume that types from external packages are correct
-      typeParameter.members = convertArgsToSignature({
-        b: AST.builders,
-        // @ts-ignore: Assume that types from external packages are correct
-        nodes: typeParameter.members,
-      });
+      typeParameter.members = convertArgsToSignature(typeParameter.members);
 
       return false;
     },

@@ -49,12 +49,7 @@ export function passSignatureToBaseComponent(
           0,
           AST.builders.tsInterfaceDeclaration(
             AST.builders.identifier(`${data.entity.classifiedName}Signature`),
-            AST.builders.tsInterfaceBody(
-              convertArgsToSignature({
-                b: AST.builders,
-                nodes: [],
-              }),
-            ),
+            AST.builders.tsInterfaceBody(convertArgsToSignature([])),
           ),
         );
 
@@ -85,10 +80,7 @@ export function passSignatureToBaseComponent(
             AST.builders.tsInterfaceDeclaration(
               AST.builders.identifier(`${data.entity.classifiedName}Signature`),
               AST.builders.tsInterfaceBody(
-                convertArgsToSignature({
-                  b: AST.builders,
-                  nodes: typeParameter.members,
-                }),
+                convertArgsToSignature(typeParameter.members),
               ),
             ),
           );
@@ -136,12 +128,7 @@ export function passSignatureToBaseComponent(
           0,
           AST.builders.tsInterfaceDeclaration(
             AST.builders.identifier(`${data.entity.classifiedName}Signature`),
-            AST.builders.tsInterfaceBody(
-              convertArgsToSignature({
-                b: AST.builders,
-                nodes: [],
-              }),
-            ),
+            AST.builders.tsInterfaceBody(convertArgsToSignature([])),
           ),
         );
 
@@ -172,10 +159,7 @@ export function passSignatureToBaseComponent(
             AST.builders.tsInterfaceDeclaration(
               AST.builders.identifier(`${data.entity.classifiedName}Signature`),
               AST.builders.tsInterfaceBody(
-                convertArgsToSignature({
-                  b: AST.builders,
-                  nodes: typeParameter.members,
-                }),
+                convertArgsToSignature(typeParameter.members),
               ),
             ),
           );
