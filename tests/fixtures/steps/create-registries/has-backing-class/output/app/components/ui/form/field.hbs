@@ -1,0 +1,35 @@
+<div
+  data-test-field-container
+  local-class="container
+    {{if @isInline 'is-inline'}}
+    {{if @isWide 'is-wide'}}
+    {{unless @errorMessage 'no-feedback'}}
+  "
+>
+  <div local-class="label">
+    {{yield (hash inputId=this.inputId) to="label"}}
+  </div>
+
+  <div local-class="field">
+    {{yield (hash inputId=this.inputId) to="field"}}
+  </div>
+
+  {{#if @errorMessage}}
+    <div local-class="feedback is-error">dback" "is-error"}}
+    >
+      {{svg-jar
+        "alert"
+        desc="A warning to indicate that the input field has an error"
+        role="img"
+      }}
+
+      <span
+        data-test-feedback
+        local-class="message"
+        role="alert"
+      >
+        {{@errorMessage}}
+      </span>
+    </div>
+  {{/if}}
+</div>
