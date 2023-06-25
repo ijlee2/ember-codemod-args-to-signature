@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.1.4 (2023-06-25)
+
+### Bug Fix
+* [#10](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/10) Added tests for create-signatures ([@ijlee2](https://github.com/ijlee2))
+
+### Enhancement
+* [#9](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/9) Refactored createRegistries ([@ijlee2](https://github.com/ijlee2))
+* [#8](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/8) Refactored createSignatures ([@ijlee2](https://github.com/ijlee2))
+
+### Internal
+* [#7](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/7) Allowed index.ts in tests/fixtures ([@ijlee2](https://github.com/ijlee2))
+
+### Documentation
+* [#11](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/11) Added tests for create-registries ([@ijlee2](https://github.com/ijlee2))
+* [#10](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/10) Added tests for create-signatures ([@ijlee2](https://github.com/ijlee2))
+
+### Committers: 1
+- Isaac Lee ([@ijlee2](https://github.com/ijlee2))
+
+
 ## 0.1.3 (2023-06-23)
 
 ### Bug Fix
