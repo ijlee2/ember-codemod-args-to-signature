@@ -16,7 +16,7 @@ export default class WidgetsWidget2Component extends Component<WidgetsWidget2Sig
   @tracked data = [] as Data[];
   @tracked summaries = [] as Summary[];
 
-  constructor(owner: unknown, args: {}) {
+  constructor(owner: unknown, args: WidgetsWidget2Signature['Args']) {
     super(owner, args);
 
     this.loadData();
