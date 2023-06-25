@@ -1,6 +1,7 @@
 import type { TransformedEntityName } from '../../utils/files.js';
 import { getBaseComponentName } from './get-base-component-name.js';
 import { passSignatureToBaseComponent } from './pass-signature-to-base-component.js';
+import { updateConstructor } from './update-constructor.js';
 import { updateReferences } from './update-references.js';
 
 type Data = {
@@ -19,6 +20,10 @@ export function createSignature(file: string, data: Data): string {
     baseComponentName,
     data,
   });
+
+  ({ newFile } = updateConstructor(newFile, {
+    data,
+  }));
 
   if (interfaceName === undefined) {
     return newFile;
