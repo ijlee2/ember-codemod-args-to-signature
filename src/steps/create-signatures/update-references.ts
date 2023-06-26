@@ -28,18 +28,16 @@ export function updateReferences(
         return false;
       }
 
-      // @ts-ignore: Assume that types from external packages are correct
-      path.node.id.name = `${data.entity.classifiedName}Signature`;
+      const nodes = path.node.body.body;
 
-      const typeParameter = path.node.body;
+      const body = isSignature(nodes)
+        ? AST.builders.tsInterfaceBody(nodes)
+        : AST.builders.tsInterfaceBody(convertArgsToSignature(nodes));
 
-      if (isSignature(typeParameter.body)) {
-        return false;
-      }
-
-      typeParameter.body = convertArgsToSignature(typeParameter.body);
-
-      return false;
+      return AST.builders.tsInterfaceDeclaration(
+        AST.builders.identifier(`${data.entity.classifiedName}Signature`),
+        body,
+      );
     },
 
     visitTSTypeAliasDeclaration(path) {
@@ -50,11 +48,14 @@ export function updateReferences(
 
       // @ts-ignore: Assume that types from external packages are correct
       const nodes = path.node.typeAnnotation.members;
-      const body = isSignature(nodes) ? nodes : convertArgsToSignature(nodes);
+
+      const body = isSignature(nodes)
+        ? AST.builders.tsInterfaceBody(nodes)
+        : AST.builders.tsInterfaceBody(convertArgsToSignature(nodes));
 
       return AST.builders.tsInterfaceDeclaration(
         AST.builders.identifier(`${data.entity.classifiedName}Signature`),
-        AST.builders.tsInterfaceBody(body),
+        body,
       );
     },
 
