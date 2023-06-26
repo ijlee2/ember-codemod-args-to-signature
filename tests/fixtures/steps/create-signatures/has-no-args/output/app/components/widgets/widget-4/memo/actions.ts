@@ -1,3 +1,7 @@
 import templateOnlyComponent from '@ember/component/template-only';
 
-export default templateOnlyComponent();
+interface WidgetsWidget4MemoActionsSignature {
+  Args: {};
+}
+
+export default templateOnlyComponent<WidgetsWidget4MemoActionsSignature>();
