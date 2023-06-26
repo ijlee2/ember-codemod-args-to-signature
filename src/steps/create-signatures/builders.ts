@@ -1,7 +1,7 @@
 import { AST } from '@codemod-utils/ast-javascript';
 
-export function convertArgsToSignature(nodes: unknown[]) {
-  return [
+export function convertArgsToSignature(nodes: unknown[] = []) {
+  return AST.builders.tsInterfaceBody([
     AST.builders.tsPropertySignature(
       AST.builders.identifier('Args'),
       // @ts-ignore: Assume that types from external packages are correct
@@ -27,5 +27,5 @@ export function convertArgsToSignature(nodes: unknown[]) {
     //   AST.builders.tsTypeAnnotation(AST.builders.tsNullKeyword()),
     //   false,
     // ),
-  ];
+  ]);
 }

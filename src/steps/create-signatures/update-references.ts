@@ -1,7 +1,7 @@
 import { AST } from '@codemod-utils/ast-javascript';
 
 import type { TransformedEntityName } from '../../utils/components.js';
-import { convertArgsToSignature } from './convert-args-to-signature.js';
+import { convertArgsToSignature } from './builders.js';
 import { isSignature } from './is-signature.js';
 
 type Options = {
@@ -32,7 +32,7 @@ export function updateReferences(
 
       const body = isSignature(nodes)
         ? AST.builders.tsInterfaceBody(nodes)
-        : AST.builders.tsInterfaceBody(convertArgsToSignature(nodes));
+        : convertArgsToSignature(nodes);
 
       return AST.builders.tsInterfaceDeclaration(
         AST.builders.identifier(`${data.entity.classifiedName}Signature`),
@@ -51,7 +51,7 @@ export function updateReferences(
 
       const body = isSignature(nodes)
         ? AST.builders.tsInterfaceBody(nodes)
-        : AST.builders.tsInterfaceBody(convertArgsToSignature(nodes));
+        : convertArgsToSignature(nodes);
 
       return AST.builders.tsInterfaceDeclaration(
         AST.builders.identifier(`${data.entity.classifiedName}Signature`),

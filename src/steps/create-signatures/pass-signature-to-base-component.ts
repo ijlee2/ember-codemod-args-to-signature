@@ -1,7 +1,7 @@
 import { AST } from '@codemod-utils/ast-javascript';
 
 import type { TransformedEntityName } from '../../utils/components.js';
-import { convertArgsToSignature } from './convert-args-to-signature.js';
+import { convertArgsToSignature } from './builders.js';
 import { isSignature } from './is-signature.js';
 
 type Options = {
@@ -51,7 +51,7 @@ export function passSignatureToBaseComponent(
                 AST.builders.identifier(
                   `${data.entity.classifiedName}Signature`,
                 ),
-                AST.builders.tsInterfaceBody(convertArgsToSignature([])),
+                convertArgsToSignature(),
               ),
             );
 
@@ -78,7 +78,7 @@ export function passSignatureToBaseComponent(
                 AST.builders.identifier(
                   `${data.entity.classifiedName}Signature`,
                 ),
-                AST.builders.tsInterfaceBody(convertArgsToSignature([])),
+                convertArgsToSignature(),
               ),
             );
 
@@ -115,9 +115,7 @@ export function passSignatureToBaseComponent(
             0,
             AST.builders.tsInterfaceDeclaration(
               AST.builders.identifier(`${data.entity.classifiedName}Signature`),
-              AST.builders.tsInterfaceBody(
-                convertArgsToSignature(typeParameter.members),
-              ),
+              convertArgsToSignature(typeParameter.members),
             ),
           );
 
@@ -167,7 +165,7 @@ export function passSignatureToBaseComponent(
                 AST.builders.identifier(
                   `${data.entity.classifiedName}Signature`,
                 ),
-                AST.builders.tsInterfaceBody(convertArgsToSignature([])),
+                convertArgsToSignature(),
               ),
             );
 
@@ -193,7 +191,7 @@ export function passSignatureToBaseComponent(
                 AST.builders.identifier(
                   `${data.entity.classifiedName}Signature`,
                 ),
-                AST.builders.tsInterfaceBody(convertArgsToSignature([])),
+                convertArgsToSignature(),
               ),
             );
 
@@ -229,9 +227,7 @@ export function passSignatureToBaseComponent(
             0,
             AST.builders.tsInterfaceDeclaration(
               AST.builders.identifier(`${data.entity.classifiedName}Signature`),
-              AST.builders.tsInterfaceBody(
-                convertArgsToSignature(typeParameter.members),
-              ),
+              convertArgsToSignature(typeParameter.members),
             ),
           );
 
@@ -282,7 +278,7 @@ export function passSignatureToBaseComponent(
                 AST.builders.identifier(
                   `${data.entity.classifiedName}Signature`,
                 ),
-                AST.builders.tsInterfaceBody(convertArgsToSignature([])),
+                convertArgsToSignature(),
               ),
             );
 
@@ -318,9 +314,7 @@ export function passSignatureToBaseComponent(
             0,
             AST.builders.tsInterfaceDeclaration(
               AST.builders.identifier(`${data.entity.classifiedName}Signature`),
-              AST.builders.tsInterfaceBody(
-                convertArgsToSignature(typeParameter.members),
-              ),
+              convertArgsToSignature(typeParameter.members),
             ),
           );
 
