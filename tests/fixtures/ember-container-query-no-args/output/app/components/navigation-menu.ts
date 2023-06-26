@@ -1,6 +1,10 @@
 import templateOnlyComponent from '@ember/component/template-only';
 
-const NavigationMenuComponent = templateOnlyComponent();
+interface NavigationMenuSignature {
+  Args: {};
+}
+
+const NavigationMenuComponent = templateOnlyComponent<NavigationMenuSignature>();
 
 export default NavigationMenuComponent;
 

@@ -1,7 +1,11 @@
 import Component from '@glimmer/component';
 import config from 'docs-app/config/environment';
 
-class ProductsProductImageComponent extends Component {
+interface ProductsProductImageSignature {
+  Args: {};
+}
+
+class ProductsProductImageComponent extends Component<ProductsProductImageSignature> {
   isTestEnvironment = config.environment === 'test';
 }
 

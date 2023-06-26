@@ -1,5 +1,9 @@
 import templateOnlyComponent from '@ember/component/template-only';
 
-const Component = templateOnlyComponent();
+interface ProductsProductCardSignature {
+  Args: {};
+}
+
+const Component = templateOnlyComponent<ProductsProductCardSignature>();
 
 export default Component;
