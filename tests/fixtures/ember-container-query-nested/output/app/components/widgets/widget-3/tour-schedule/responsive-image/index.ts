@@ -9,7 +9,7 @@ import { findBestFittingImage } from '../../../../../utils/components/widgets/wi
 interface WidgetsWidget3TourScheduleResponsiveImageSignature {
   Args: {
     images: Image[];
-  }
+  };
 }
 
 export default class WidgetsWidget3TourScheduleResponsiveImageComponent extends Component<WidgetsWidget3TourScheduleResponsiveImageSignature> {

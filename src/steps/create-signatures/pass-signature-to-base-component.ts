@@ -1,7 +1,7 @@
 import { AST } from '@codemod-utils/ast-javascript';
 
 import type { TransformedEntityName } from '../../utils/components.js';
-import { convertArgsToSignature } from './convert-args-to-signature.js';
+import { builderAddSignature, builderPassSignature } from './builders.js';
 import { isSignature } from './is-signature.js';
 
 type Options = {
@@ -25,10 +25,10 @@ export function passSignatureToBaseComponent(
 
   const ast = traverse(file, {
     visitCallExpression(path) {
-      // @ts-ignore: Assume that types from external packages are correct
-      const calleeName = path.node.callee.name;
-
-      if (calleeName !== baseComponentName) {
+      if (
+        path.node.callee.type !== 'Identifier' ||
+        path.node.callee.name !== baseComponentName
+      ) {
         return false;
       }
 
@@ -39,55 +39,33 @@ export function passSignatureToBaseComponent(
       if (!typeParameters) {
         switch (path.parentPath.node.type) {
           case 'ExportDefaultDeclaration': {
+            const identifier = `${data.entity.classifiedName}Signature`;
             const index = path.parentPath.name;
 
             path.parentPath.parentPath.value.splice(
               index,
               0,
-              AST.builders.tsInterfaceDeclaration(
-                AST.builders.identifier(
-                  `${data.entity.classifiedName}Signature`,
-                ),
-                AST.builders.tsInterfaceBody(convertArgsToSignature([])),
-              ),
+              builderAddSignature(identifier),
             );
 
             // @ts-ignore: Assume that types from external packages are correct
-            path.node.typeParameters =
-              AST.builders.tsTypeParameterInstantiation([
-                AST.builders.tsTypeReference(
-                  AST.builders.identifier(
-                    `${data.entity.classifiedName}Signature`,
-                  ),
-                ),
-              ]);
+            path.node.typeParameters = builderPassSignature(identifier);
 
             break;
           }
 
           case 'VariableDeclarator': {
+            const identifier = `${data.entity.classifiedName}Signature`;
             const index = path.parentPath.parentPath.parentPath.name;
 
             path.parentPath.parentPath.parentPath.parentPath.value.splice(
               index,
               0,
-              AST.builders.tsInterfaceDeclaration(
-                AST.builders.identifier(
-                  `${data.entity.classifiedName}Signature`,
-                ),
-                AST.builders.tsInterfaceBody(convertArgsToSignature([])),
-              ),
+              builderAddSignature(identifier),
             );
 
             // @ts-ignore: Assume that types from external packages are correct
-            path.node.typeParameters =
-              AST.builders.tsTypeParameterInstantiation([
-                AST.builders.tsTypeReference(
-                  AST.builders.identifier(
-                    `${data.entity.classifiedName}Signature`,
-                  ),
-                ),
-              ]);
+            path.node.typeParameters = builderPassSignature(identifier);
 
             break;
           }
@@ -105,25 +83,17 @@ export function passSignatureToBaseComponent(
             break;
           }
 
+          const identifier = `${data.entity.classifiedName}Signature`;
           const index = path.parentPath.parentPath.parentPath.name;
 
           path.parentPath.parentPath.parentPath.parentPath.value.splice(
             index,
             0,
-            AST.builders.tsInterfaceDeclaration(
-              AST.builders.identifier(`${data.entity.classifiedName}Signature`),
-              AST.builders.tsInterfaceBody(
-                convertArgsToSignature(typeParameter.members),
-              ),
-            ),
+            builderAddSignature(identifier, typeParameter.members),
           );
 
           // @ts-ignore: Assume that types from external packages are correct
-          path.node.typeParameters.params = [
-            AST.builders.tsTypeReference(
-              AST.builders.identifier(`${data.entity.classifiedName}Signature`),
-            ),
-          ];
+          path.node.typeParameters = builderPassSignature(identifier);
 
           return false;
         }
@@ -141,8 +111,11 @@ export function passSignatureToBaseComponent(
     },
 
     visitClassDeclaration(path) {
-      // @ts-ignore: Assume that types from external packages are correct
-      if (path.node.superClass.name !== baseComponentName) {
+      if (
+        !path.node.superClass ||
+        path.node.superClass.type !== 'Identifier' ||
+        path.node.superClass.name !== baseComponentName
+      ) {
         return false;
       }
 
@@ -152,53 +125,31 @@ export function passSignatureToBaseComponent(
       if (!typeParameters) {
         switch (path.parentPath.node.type) {
           case 'ExportDefaultDeclaration': {
+            const identifier = `${data.entity.classifiedName}Signature`;
             const index = path.parentPath.name;
 
             path.parentPath.parentPath.value.splice(
               index,
               0,
-              AST.builders.tsInterfaceDeclaration(
-                AST.builders.identifier(
-                  `${data.entity.classifiedName}Signature`,
-                ),
-                AST.builders.tsInterfaceBody(convertArgsToSignature([])),
-              ),
+              builderAddSignature(identifier),
             );
 
-            path.node.superTypeParameters =
-              AST.builders.tsTypeParameterInstantiation([
-                AST.builders.tsTypeReference(
-                  AST.builders.identifier(
-                    `${data.entity.classifiedName}Signature`,
-                  ),
-                ),
-              ]);
+            path.node.superTypeParameters = builderPassSignature(identifier);
 
             break;
           }
 
           case 'Program': {
+            const identifier = `${data.entity.classifiedName}Signature`;
             const index = path.name;
 
             path.parentPath.value.splice(
               index,
               0,
-              AST.builders.tsInterfaceDeclaration(
-                AST.builders.identifier(
-                  `${data.entity.classifiedName}Signature`,
-                ),
-                AST.builders.tsInterfaceBody(convertArgsToSignature([])),
-              ),
+              builderAddSignature(identifier),
             );
 
-            path.node.superTypeParameters =
-              AST.builders.tsTypeParameterInstantiation([
-                AST.builders.tsTypeReference(
-                  AST.builders.identifier(
-                    `${data.entity.classifiedName}Signature`,
-                  ),
-                ),
-              ]);
+            path.node.superTypeParameters = builderPassSignature(identifier);
 
             break;
           }
@@ -216,25 +167,16 @@ export function passSignatureToBaseComponent(
             break;
           }
 
+          const identifier = `${data.entity.classifiedName}Signature`;
           const index = path.parentPath.name;
 
           path.parentPath.parentPath.value.splice(
             index,
             0,
-            AST.builders.tsInterfaceDeclaration(
-              AST.builders.identifier(`${data.entity.classifiedName}Signature`),
-              AST.builders.tsInterfaceBody(
-                convertArgsToSignature(typeParameter.members),
-              ),
-            ),
+            builderAddSignature(identifier, typeParameter.members),
           );
 
-          // @ts-ignore: Assume that types from external packages are correct
-          path.node.superTypeParameters.params = [
-            AST.builders.tsTypeReference(
-              AST.builders.identifier(`${data.entity.classifiedName}Signature`),
-            ),
-          ];
+          path.node.superTypeParameters = builderPassSignature(identifier);
 
           return false;
         }
@@ -254,11 +196,11 @@ export function passSignatureToBaseComponent(
     },
 
     visitClassExpression(path) {
-      if (!path.node.superClass || path.node.superClass.type !== 'Identifier') {
-        return false;
-      }
-
-      if (path.node.superClass.name !== baseComponentName) {
+      if (
+        !path.node.superClass ||
+        path.node.superClass.type !== 'Identifier' ||
+        path.node.superClass.name !== baseComponentName
+      ) {
         return false;
       }
 
@@ -267,27 +209,16 @@ export function passSignatureToBaseComponent(
       if (!typeParameters) {
         switch (path.parentPath.node.type) {
           case 'VariableDeclarator': {
+            const identifier = `${data.entity.classifiedName}Signature`;
             const index = path.parentPath.parentPath.parentPath.name;
 
             path.parentPath.parentPath.parentPath.parentPath.value.splice(
               index,
               0,
-              AST.builders.tsInterfaceDeclaration(
-                AST.builders.identifier(
-                  `${data.entity.classifiedName}Signature`,
-                ),
-                AST.builders.tsInterfaceBody(convertArgsToSignature([])),
-              ),
+              builderAddSignature(identifier),
             );
 
-            path.node.superTypeParameters =
-              AST.builders.tsTypeParameterInstantiation([
-                AST.builders.tsTypeReference(
-                  AST.builders.identifier(
-                    `${data.entity.classifiedName}Signature`,
-                  ),
-                ),
-              ]);
+            path.node.superTypeParameters = builderPassSignature(identifier);
 
             break;
           }
@@ -305,25 +236,16 @@ export function passSignatureToBaseComponent(
             break;
           }
 
+          const identifier = `${data.entity.classifiedName}Signature`;
           const index = path.parentPath.parentPath.parentPath.name;
 
           path.parentPath.parentPath.parentPath.parentPath.value.splice(
             index,
             0,
-            AST.builders.tsInterfaceDeclaration(
-              AST.builders.identifier(`${data.entity.classifiedName}Signature`),
-              AST.builders.tsInterfaceBody(
-                convertArgsToSignature(typeParameter.members),
-              ),
-            ),
+            builderAddSignature(identifier, typeParameter.members),
           );
 
-          // @ts-ignore: Assume that types from external packages are correct
-          path.node.superTypeParameters.params = [
-            AST.builders.tsTypeReference(
-              AST.builders.identifier(`${data.entity.classifiedName}Signature`),
-            ),
-          ];
+          path.node.superTypeParameters = builderPassSignature(identifier);
 
           return false;
         }

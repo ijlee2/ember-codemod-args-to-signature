@@ -24,8 +24,10 @@ export function updateReferences(
     visitExportDefaultDeclaration(path) {
       switch (path.node.declaration.type) {
         case 'CallExpression': {
-          // @ts-ignore: Assume that types from external packages are correct
-          if (path.node.declaration.callee.name !== baseComponentName) {
+          if (
+            path.node.declaration.callee.type !== 'Identifier' ||
+            path.node.declaration.callee.name !== baseComponentName
+          ) {
             return false;
           }
 

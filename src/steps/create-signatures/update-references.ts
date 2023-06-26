@@ -1,7 +1,7 @@
 import { AST } from '@codemod-utils/ast-javascript';
 
 import type { TransformedEntityName } from '../../utils/components.js';
-import { convertArgsToSignature } from './convert-args-to-signature.js';
+import { builderAddSignature } from './builders.js';
 import { isSignature } from './is-signature.js';
 
 type Options = {
@@ -28,18 +28,17 @@ export function updateReferences(
         return false;
       }
 
-      // @ts-ignore: Assume that types from external packages are correct
-      path.node.id.name = `${data.entity.classifiedName}Signature`;
+      const identifier = `${data.entity.classifiedName}Signature`;
+      const nodes = path.node.body.body;
 
-      const typeParameter = path.node.body;
-
-      if (isSignature(typeParameter.body)) {
-        return false;
+      if (isSignature(nodes)) {
+        return AST.builders.tsInterfaceDeclaration(
+          AST.builders.identifier(identifier),
+          AST.builders.tsInterfaceBody(nodes),
+        );
       }
 
-      typeParameter.body = convertArgsToSignature(typeParameter.body);
-
-      return false;
+      return builderAddSignature(identifier, nodes);
     },
 
     visitTSTypeAliasDeclaration(path) {
@@ -48,26 +47,26 @@ export function updateReferences(
         return false;
       }
 
+      const identifier = `${data.entity.classifiedName}Signature`;
       // @ts-ignore: Assume that types from external packages are correct
       const nodes = path.node.typeAnnotation.members;
-      const body = isSignature(nodes) ? nodes : convertArgsToSignature(nodes);
 
-      return AST.builders.tsInterfaceDeclaration(
-        AST.builders.identifier(`${data.entity.classifiedName}Signature`),
-        AST.builders.tsInterfaceBody(body),
-      );
+      if (isSignature(nodes)) {
+        return AST.builders.tsInterfaceDeclaration(
+          AST.builders.identifier(identifier),
+          AST.builders.tsInterfaceBody(nodes),
+        );
+      }
+
+      return builderAddSignature(identifier, nodes);
     },
 
     visitTSTypeReference(path) {
-      if (path.node.typeName.type !== 'Identifier') {
-        return false;
-      }
-
-      if (path.node.typeName.name !== interfaceName) {
-        return false;
-      }
-
-      if (path.node.typeName.name.endsWith('Signature')) {
+      if (
+        path.node.typeName.type !== 'Identifier' ||
+        path.node.typeName.name !== interfaceName ||
+        path.node.typeName.name.endsWith('Signature')
+      ) {
         return false;
       }
 
