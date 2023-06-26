@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { AST } from '@codemod-utils/ast-javascript';
 
 import type { TransformedEntityName } from '../../utils/files.js';
@@ -29,7 +28,7 @@ export function updateConstructor(
         return false;
       }
 
-      const args = path.node.params[1];
+      const args = path.node.params[1]!;
 
       // @ts-ignore: Assume that types from external packages are correct
       args.typeAnnotation = AST.builders.tsTypeAnnotation(

@@ -1,6 +1,10 @@
-function getKeys(nodes: unknown[]): Set<string> {
-  type Node = { key: { name: string } };
+type Node = {
+  key: {
+    name: string;
+  };
+};
 
+function getKeys(nodes: unknown[]): Set<string> {
   return new Set((nodes as Node[]).map(({ key }) => key.name));
 }
 

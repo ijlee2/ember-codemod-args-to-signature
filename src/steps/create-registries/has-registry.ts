@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { AST } from '@codemod-utils/ast-javascript';
 
 export function hasRegistry(file: string): boolean {

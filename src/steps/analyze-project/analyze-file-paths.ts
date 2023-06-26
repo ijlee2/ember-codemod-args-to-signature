@@ -5,14 +5,13 @@ import { parseFilePath } from '@codemod-utils/files';
 import type { Entities } from '../../types/index.js';
 
 export function analyzeFilePaths(filePaths: string[]): Entities {
-  const entities = new Map<string, Set<string>>();
+  const entities: Entities = new Map();
 
   filePaths.forEach((filePath) => {
     const { dir, ext, name } = parseFilePath(filePath);
     const entityName = join(dir, name);
 
     if (entities.has(entityName)) {
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       entities.get(entityName)!.add(ext);
 
       return;
