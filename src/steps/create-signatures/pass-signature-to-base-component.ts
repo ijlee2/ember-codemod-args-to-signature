@@ -25,7 +25,10 @@ export function passSignatureToBaseComponent(
 
   const ast = traverse(file, {
     visitCallExpression(path) {
-      // @ts-ignore: Assume that types from external packages are correct
+      if (path.node.callee.type !== 'Identifier') {
+        return false;
+      }
+
       const calleeName = path.node.callee.name;
 
       if (calleeName !== baseComponentName) {
@@ -141,7 +144,10 @@ export function passSignatureToBaseComponent(
     },
 
     visitClassDeclaration(path) {
-      // @ts-ignore: Assume that types from external packages are correct
+      if (!path.node.superClass || path.node.superClass.type !== 'Identifier') {
+        return false;
+      }
+
       if (path.node.superClass.name !== baseComponentName) {
         return false;
       }
