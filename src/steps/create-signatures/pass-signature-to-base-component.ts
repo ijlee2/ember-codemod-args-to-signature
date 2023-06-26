@@ -25,13 +25,10 @@ export function passSignatureToBaseComponent(
 
   const ast = traverse(file, {
     visitCallExpression(path) {
-      if (path.node.callee.type !== 'Identifier') {
-        return false;
-      }
-
-      const calleeName = path.node.callee.name;
-
-      if (calleeName !== baseComponentName) {
+      if (
+        path.node.callee.type !== 'Identifier' ||
+        path.node.callee.name !== baseComponentName
+      ) {
         return false;
       }
 
@@ -114,11 +111,11 @@ export function passSignatureToBaseComponent(
     },
 
     visitClassDeclaration(path) {
-      if (!path.node.superClass || path.node.superClass.type !== 'Identifier') {
-        return false;
-      }
-
-      if (path.node.superClass.name !== baseComponentName) {
+      if (
+        !path.node.superClass ||
+        path.node.superClass.type !== 'Identifier' ||
+        path.node.superClass.name !== baseComponentName
+      ) {
         return false;
       }
 
@@ -199,11 +196,11 @@ export function passSignatureToBaseComponent(
     },
 
     visitClassExpression(path) {
-      if (!path.node.superClass || path.node.superClass.type !== 'Identifier') {
-        return false;
-      }
-
-      if (path.node.superClass.name !== baseComponentName) {
+      if (
+        !path.node.superClass ||
+        path.node.superClass.type !== 'Identifier' ||
+        path.node.superClass.name !== baseComponentName
+      ) {
         return false;
       }
 

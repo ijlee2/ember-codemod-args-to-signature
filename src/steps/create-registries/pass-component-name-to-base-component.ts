@@ -23,12 +23,11 @@ export function passComponentNameToBaseComponent(
 
   const ast = traverse(file, {
     visitClassDeclaration(path) {
-      if (!path.node.superClass) {
-        return false;
-      }
-
-      // @ts-ignore: Assume that types from external packages are correct
-      if (path.node.superClass.name !== baseComponentName) {
+      if (
+        !path.node.superClass ||
+        path.node.superClass.type !== 'Identifier' ||
+        path.node.superClass.name !== baseComponentName
+      ) {
         return false;
       }
 
@@ -49,16 +48,17 @@ export function passComponentNameToBaseComponent(
     visitVariableDeclaration(path) {
       const declaration = path.node.declarations[0]!;
 
+      if (declaration.type !== 'VariableDeclarator') {
+        return false;
+      }
+
       // @ts-ignore: Assume that types from external packages are correct
       switch (declaration.init.type) {
         case 'CallExpression': {
-          // @ts-ignore: Assume that types from external packages are correct
-          if (declaration.init.callee.type !== 'Identifier') {
-            return false;
-          }
-
-          // @ts-ignore: Assume that types from external packages are correct
-          if (declaration.init.callee.name !== baseComponentName) {
+          if (
+            declaration.init.callee.type !== 'Identifier' ||
+            declaration.init.callee.name !== baseComponentName
+          ) {
             return false;
           }
 
@@ -71,13 +71,11 @@ export function passComponentNameToBaseComponent(
         }
 
         case 'ClassExpression': {
-          // @ts-ignore: Assume that types from external packages are correct
-          if (!declaration.init.superClass) {
-            return false;
-          }
-
-          // @ts-ignore: Assume that types from external packages are correct
-          if (declaration.init.superClass.name !== baseComponentName) {
+          if (
+            !declaration.init.superClass ||
+            declaration.init.superClass.type !== 'Identifier' ||
+            declaration.init.superClass.name !== baseComponentName
+          ) {
             return false;
           }
 

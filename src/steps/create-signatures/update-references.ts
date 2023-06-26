@@ -62,15 +62,11 @@ export function updateReferences(
     },
 
     visitTSTypeReference(path) {
-      if (path.node.typeName.type !== 'Identifier') {
-        return false;
-      }
-
-      if (path.node.typeName.name !== interfaceName) {
-        return false;
-      }
-
-      if (path.node.typeName.name.endsWith('Signature')) {
+      if (
+        path.node.typeName.type !== 'Identifier' ||
+        path.node.typeName.name !== interfaceName ||
+        path.node.typeName.name.endsWith('Signature')
+      ) {
         return false;
       }
 
