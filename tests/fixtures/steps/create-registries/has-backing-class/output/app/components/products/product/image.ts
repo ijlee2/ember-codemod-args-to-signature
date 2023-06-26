@@ -4,7 +4,7 @@ import config from 'docs-app/config/environment';
 interface ProductsProductImageSignature {
   Args: {
     src: string;
-  }
+  };
 }
 
 class ProductsProductImageComponent extends Component<ProductsProductImageSignature> {
