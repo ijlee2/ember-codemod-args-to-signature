@@ -1,6 +1,6 @@
 {
   "name": "ember-codemod-args-to-signature",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Codemod to component convert Args to Signature",
   "keywords": [
     "codemod",
@@ -61,7 +61,7 @@
     "eslint-config-prettier": "^8.8.0",
     "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-n": "^16.0.0",
+    "eslint-plugin-n": "^16.0.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-plugin-typescript-sort-keys": "^2.3.0",

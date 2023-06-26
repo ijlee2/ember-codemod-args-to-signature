@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.5 (2023-06-26)
+
+### Bug Fix
+* [#15](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/15) Addressed edge cases ([@ijlee2](https://github.com/ijlee2))
+* [#14](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/14) Standardized the signature ([@ijlee2](https://github.com/ijlee2))
+
+### Enhancement
+* [#16](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/16) Refactored code for building AST ([@ijlee2](https://github.com/ijlee2))
+* [#13](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/13) Refactored code ([@ijlee2](https://github.com/ijlee2))
+
+### Committers: 1
+- Isaac Lee ([@ijlee2](https://github.com/ijlee2))
+
+
 ## 0.1.4 (2023-06-25)
 
 ### Bug Fix
