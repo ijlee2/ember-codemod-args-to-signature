@@ -1,5 +1,7 @@
-import type { TransformedEntityName } from '../../utils/files.js';
-import { getBaseComponentName } from './get-base-component-name.js';
+import {
+  getBaseComponent,
+  type TransformedEntityName,
+} from '../../utils/components.js';
 import { passComponentNameToBaseComponent } from './pass-component-name-to-base-component.js';
 import { updateReferences } from './update-references.js';
 
@@ -8,7 +10,7 @@ type Data = {
 };
 
 export function renameComponent(file: string, data: Data): string {
-  const baseComponentName = getBaseComponentName(file);
+  const { baseComponentName } = getBaseComponent(file);
 
   if (baseComponentName === undefined) {
     return file;

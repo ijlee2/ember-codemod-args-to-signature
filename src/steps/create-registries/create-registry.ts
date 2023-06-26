@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { AST } from '@codemod-utils/ast-javascript';
 
-import type { TransformedEntityName } from '../../utils/files.js';
+import type { TransformedEntityName } from '../../utils/components.js';
 
 type Data = {
   entity: TransformedEntityName;

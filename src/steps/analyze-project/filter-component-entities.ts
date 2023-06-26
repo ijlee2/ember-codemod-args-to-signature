@@ -1,40 +1,17 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-import { AST } from '@codemod-utils/ast-javascript';
-
 import type { Entities, Options } from '../../types/index.js';
-import { getComponentFilePath } from '../../utils/files.js';
+import {
+  getBaseComponent,
+  getComponentFilePath,
+} from '../../utils/components.js';
 
 function isSupported(file: string): boolean {
-  const traverse = AST.traverse(true);
+  const { importPath } = getBaseComponent(file);
 
-  let isClassicComponent = false;
-  let isComponent = false;
-
-  traverse(file, {
-    visitImportDeclaration(path) {
-      const importPath = path.node.source.value;
-
-      switch (importPath) {
-        case '@ember/component': {
-          isClassicComponent = true;
-          isComponent = true;
-
-          break;
-        }
-
-        case '@ember/component/template-only':
-        case '@glimmer/component': {
-          isComponent = true;
-
-          break;
-        }
-      }
-
-      return false;
-    },
-  });
+  const isComponent = importPath !== undefined;
+  const isClassicComponent = importPath === '@ember/component';
 
   return isComponent && !isClassicComponent;
 }

@@ -1,16 +1,23 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-import { createFiles } from '@codemod-utils/files';
+import {
+  createFiles,
+  type FileContent,
+  type FilePath,
+} from '@codemod-utils/files';
 
 import type { Context, Options } from '../types/index.js';
-import { getComponentFilePath, transformEntityName } from '../utils/files.js';
+import {
+  getComponentFilePath,
+  transformEntityName,
+} from '../utils/components.js';
 import { createSignature } from './create-signatures/index.js';
 
 export function createSignatures(context: Context, options: Options): void {
   const { projectRoot } = options;
 
-  const fileMap = new Map<string, string>();
+  const fileMap = new Map<FilePath, FileContent>();
 
   for (const [entityName, extensions] of context.entities) {
     const hasBackingClass = extensions.has('.ts');
