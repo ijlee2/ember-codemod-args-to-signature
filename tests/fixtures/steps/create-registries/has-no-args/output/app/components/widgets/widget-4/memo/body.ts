@@ -1,6 +1,10 @@
 import Component from '@glimmer/component';
 
-const WidgetsWidget4MemoBodyComponent = class extends Component {}
+interface WidgetsWidget4MemoBodySignature {
+  Args: {};
+}
+
+const WidgetsWidget4MemoBodyComponent = class extends Component<WidgetsWidget4MemoBodySignature> {}
 
 export default WidgetsWidget4MemoBodyComponent;
 
