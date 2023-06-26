@@ -1,7 +1,7 @@
 import { AST } from '@codemod-utils/ast-javascript';
 
 import type { TransformedEntityName } from '../../utils/components.js';
-import { convertArgsToSignature } from './builders.js';
+import { builderAddSignature } from './builders.js';
 import { isSignature } from './is-signature.js';
 
 type Options = {
@@ -28,16 +28,17 @@ export function updateReferences(
         return false;
       }
 
+      const identifier = `${data.entity.classifiedName}Signature`;
       const nodes = path.node.body.body;
 
-      const body = isSignature(nodes)
-        ? AST.builders.tsInterfaceBody(nodes)
-        : convertArgsToSignature(nodes);
+      if (isSignature(nodes)) {
+        return AST.builders.tsInterfaceDeclaration(
+          AST.builders.identifier(identifier),
+          AST.builders.tsInterfaceBody(nodes),
+        );
+      }
 
-      return AST.builders.tsInterfaceDeclaration(
-        AST.builders.identifier(`${data.entity.classifiedName}Signature`),
-        body,
-      );
+      return builderAddSignature(identifier, nodes);
     },
 
     visitTSTypeAliasDeclaration(path) {
@@ -46,17 +47,18 @@ export function updateReferences(
         return false;
       }
 
+      const identifier = `${data.entity.classifiedName}Signature`;
       // @ts-ignore: Assume that types from external packages are correct
       const nodes = path.node.typeAnnotation.members;
 
-      const body = isSignature(nodes)
-        ? AST.builders.tsInterfaceBody(nodes)
-        : convertArgsToSignature(nodes);
+      if (isSignature(nodes)) {
+        return AST.builders.tsInterfaceDeclaration(
+          AST.builders.identifier(identifier),
+          AST.builders.tsInterfaceBody(nodes),
+        );
+      }
 
-      return AST.builders.tsInterfaceDeclaration(
-        AST.builders.identifier(`${data.entity.classifiedName}Signature`),
-        body,
-      );
+      return builderAddSignature(identifier, nodes);
     },
 
     visitTSTypeReference(path) {
