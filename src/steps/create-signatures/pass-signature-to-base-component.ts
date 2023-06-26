@@ -37,27 +37,61 @@ export function passSignatureToBaseComponent(
 
       // When the interface is missing
       if (!typeParameters) {
-        if (path.parentPath.node.type !== 'VariableDeclaration') {
-          return false;
+        switch (path.parentPath.node.type) {
+          case 'ExportDefaultDeclaration': {
+            const index = path.parentPath.name;
+
+            path.parentPath.parentPath.value.splice(
+              index,
+              0,
+              AST.builders.tsInterfaceDeclaration(
+                AST.builders.identifier(
+                  `${data.entity.classifiedName}Signature`,
+                ),
+                AST.builders.tsInterfaceBody(convertArgsToSignature([])),
+              ),
+            );
+
+            // @ts-ignore: Assume that types from external packages are correct
+            path.node.typeParameters =
+              AST.builders.tsTypeParameterInstantiation([
+                AST.builders.tsTypeReference(
+                  AST.builders.identifier(
+                    `${data.entity.classifiedName}Signature`,
+                  ),
+                ),
+              ]);
+
+            break;
+          }
+
+          case 'VariableDeclarator': {
+            const index = path.parentPath.parentPath.parentPath.name;
+
+            path.parentPath.parentPath.parentPath.parentPath.value.splice(
+              index,
+              0,
+              AST.builders.tsInterfaceDeclaration(
+                AST.builders.identifier(
+                  `${data.entity.classifiedName}Signature`,
+                ),
+                AST.builders.tsInterfaceBody(convertArgsToSignature([])),
+              ),
+            );
+
+            // @ts-ignore: Assume that types from external packages are correct
+            path.node.typeParameters =
+              AST.builders.tsTypeParameterInstantiation([
+                AST.builders.tsTypeReference(
+                  AST.builders.identifier(
+                    `${data.entity.classifiedName}Signature`,
+                  ),
+                ),
+              ]);
+
+            break;
+          }
         }
-
-        const index = path.parentPath.parentPath.parentPath.name;
-
-        path.parentPath.parentPath.parentPath.parentPath.value.splice(
-          index,
-          0,
-          AST.builders.tsInterfaceDeclaration(
-            AST.builders.identifier(`${data.entity.classifiedName}Signature`),
-            AST.builders.tsInterfaceBody(convertArgsToSignature([])),
-          ),
-        );
-
-        // @ts-ignore: Assume that types from external packages are correct
-        path.node.typeParameters = AST.builders.tsTypeParameterInstantiation([
-          AST.builders.tsTypeReference(
-            AST.builders.identifier(`${data.entity.classifiedName}Signature`),
-          ),
-        ]);
 
         return false;
       }
@@ -116,27 +150,59 @@ export function passSignatureToBaseComponent(
 
       // When the interface is missing
       if (!typeParameters) {
-        if (path.parentPath.node.type !== 'ExportDefaultDeclaration') {
-          return false;
+        switch (path.parentPath.node.type) {
+          case 'ExportDefaultDeclaration': {
+            const index = path.parentPath.name;
+
+            path.parentPath.parentPath.value.splice(
+              index,
+              0,
+              AST.builders.tsInterfaceDeclaration(
+                AST.builders.identifier(
+                  `${data.entity.classifiedName}Signature`,
+                ),
+                AST.builders.tsInterfaceBody(convertArgsToSignature([])),
+              ),
+            );
+
+            path.node.superTypeParameters =
+              AST.builders.tsTypeParameterInstantiation([
+                AST.builders.tsTypeReference(
+                  AST.builders.identifier(
+                    `${data.entity.classifiedName}Signature`,
+                  ),
+                ),
+              ]);
+
+            break;
+          }
+
+          case 'Program': {
+            const index = path.name;
+
+            path.parentPath.value.splice(
+              index,
+              0,
+              AST.builders.tsInterfaceDeclaration(
+                AST.builders.identifier(
+                  `${data.entity.classifiedName}Signature`,
+                ),
+                AST.builders.tsInterfaceBody(convertArgsToSignature([])),
+              ),
+            );
+
+            path.node.superTypeParameters =
+              AST.builders.tsTypeParameterInstantiation([
+                AST.builders.tsTypeReference(
+                  AST.builders.identifier(
+                    `${data.entity.classifiedName}Signature`,
+                  ),
+                ),
+              ]);
+
+            break;
+          }
         }
-
-        const index = path.parentPath.name;
-
-        path.parentPath.parentPath.value.splice(
-          index,
-          0,
-          AST.builders.tsInterfaceDeclaration(
-            AST.builders.identifier(`${data.entity.classifiedName}Signature`),
-            AST.builders.tsInterfaceBody(convertArgsToSignature([])),
-          ),
-        );
-
-        path.node.superTypeParameters =
-          AST.builders.tsTypeParameterInstantiation([
-            AST.builders.tsTypeReference(
-              AST.builders.identifier(`${data.entity.classifiedName}Signature`),
-            ),
-          ]);
 
         return false;
       }
@@ -199,27 +265,33 @@ export function passSignatureToBaseComponent(
       const typeParameters = path.node.superTypeParameters;
 
       if (!typeParameters) {
-        if (path.parentPath.node.type !== 'VariableDeclarator') {
-          return false;
+        switch (path.parentPath.node.type) {
+          case 'VariableDeclarator': {
+            const index = path.parentPath.parentPath.parentPath.name;
+
+            path.parentPath.parentPath.parentPath.parentPath.value.splice(
+              index,
+              0,
+              AST.builders.tsInterfaceDeclaration(
+                AST.builders.identifier(
+                  `${data.entity.classifiedName}Signature`,
+                ),
+                AST.builders.tsInterfaceBody(convertArgsToSignature([])),
+              ),
+            );
+
+            path.node.superTypeParameters =
+              AST.builders.tsTypeParameterInstantiation([
+                AST.builders.tsTypeReference(
+                  AST.builders.identifier(
+                    `${data.entity.classifiedName}Signature`,
+                  ),
+                ),
+              ]);
+
+            break;
+          }
         }
-
-        const index = path.parentPath.parentPath.parentPath.name;
-
-        path.parentPath.parentPath.parentPath.parentPath.value.splice(
-          index,
-          0,
-          AST.builders.tsInterfaceDeclaration(
-            AST.builders.identifier(`${data.entity.classifiedName}Signature`),
-            AST.builders.tsInterfaceBody(convertArgsToSignature([])),
-          ),
-        );
-
-        path.node.superTypeParameters =
-          AST.builders.tsTypeParameterInstantiation([
-            AST.builders.tsTypeReference(
-              AST.builders.identifier(`${data.entity.classifiedName}Signature`),
-            ),
-          ]);
 
         return false;
       }
