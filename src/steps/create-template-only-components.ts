@@ -10,7 +10,10 @@ import {
 
 import type { Context, Options } from '../types/index.js';
 import { blueprintsRoot } from '../utils/blueprints.js';
-import { getComponentFilePath, transformEntityName } from '../utils/files.js';
+import {
+  getComponentFilePath,
+  transformEntityName,
+} from '../utils/components.js';
 
 const blueprintFile = readFileSync(
   join(blueprintsRoot, 'ember-cli/template-only-component.ts'),

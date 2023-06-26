@@ -1,6 +1,6 @@
 import { AST } from '@codemod-utils/ast-javascript';
 
-import type { TransformedEntityName } from '../../utils/files.js';
+import type { TransformedEntityName } from '../../utils/components.js';
 import { convertArgsToSignature } from './convert-args-to-signature.js';
 import { isSignature } from './is-signature.js';
 

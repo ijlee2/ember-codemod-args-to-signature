@@ -1,4 +1,4 @@
-import type { TransformedEntityName } from '../../utils/files.js';
+import type { TransformedEntityName } from '../../utils/components.js';
 import { getBaseComponentName } from './get-base-component-name.js';
 import { passComponentNameToBaseComponent } from './pass-component-name-to-base-component.js';
 import { updateReferences } from './update-references.js';

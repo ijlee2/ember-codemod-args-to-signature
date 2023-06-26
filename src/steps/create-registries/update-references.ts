@@ -1,6 +1,6 @@
 import { AST } from '@codemod-utils/ast-javascript';
 
-import type { TransformedEntityName } from '../../utils/files.js';
+import type { TransformedEntityName } from '../../utils/components.js';
 
 type Options = {
   baseComponentName: string;

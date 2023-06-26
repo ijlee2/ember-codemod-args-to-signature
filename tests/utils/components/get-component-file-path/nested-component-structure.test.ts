@@ -1,9 +1,9 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { getComponentFilePath } from '../../../../src/utils/files.js';
+import { getComponentFilePath } from '../../../../src/utils/components.js';
 import { options } from '../../../helpers/shared-test-setups/ember-container-query-nested.js';
 
-test('utils | files | get-component-file-path > nested component structure', function () {
+test('utils | components | get-component-file-path > nested component structure', function () {
   function getFilePath(entityName: string): string {
     return getComponentFilePath(options)(entityName);
   }

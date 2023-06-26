@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { transformEntityName } from '../../../../src/utils/files.js';
+import { transformEntityName } from '../../../../src/utils/components.js';
 
-test('utils | files | transform-entity-name > base case', function () {
+test('utils | components | transform-entity-name > base case', function () {
   assert.deepStrictEqual(transformEntityName('navigation-menu'), {
     classifiedName: 'NavigationMenu',
     doubleColonizedName: 'NavigationMenu',

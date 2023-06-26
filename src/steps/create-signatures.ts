@@ -8,7 +8,10 @@ import {
 } from '@codemod-utils/files';
 
 import type { Context, Options } from '../types/index.js';
-import { getComponentFilePath, transformEntityName } from '../utils/files.js';
+import {
+  getComponentFilePath,
+  transformEntityName,
+} from '../utils/components.js';
 import { createSignature } from './create-signatures/index.js';
 
 export function createSignatures(context: Context, options: Options): void {

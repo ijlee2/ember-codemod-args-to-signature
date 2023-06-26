@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { AST } from '@codemod-utils/ast-javascript';
 
 import type { Entities, Options } from '../../types/index.js';
-import { getComponentFilePath } from '../../utils/files.js';
+import { getComponentFilePath } from '../../utils/components.js';
 
 function isSupported(file: string): boolean {
   const traverse = AST.traverse(true);
