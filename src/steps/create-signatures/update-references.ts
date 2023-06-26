@@ -32,6 +32,7 @@ export function updateReferences(
       path.node.id.name = `${data.entity.classifiedName}Signature`;
 
       const typeParameter = path.node.body;
+
       if (isSignature(typeParameter.body)) {
         return false;
       }
@@ -48,19 +49,13 @@ export function updateReferences(
       }
 
       // @ts-ignore: Assume that types from external packages are correct
-      path.node.id.name = `${data.entity.classifiedName}Signature`;
+      const nodes = path.node.typeAnnotation.members;
+      const body = isSignature(nodes) ? nodes : convertArgsToSignature(nodes);
 
-      const typeParameter = path.node.typeAnnotation;
-
-      // @ts-ignore: Assume that types from external packages are correct
-      if (isSignature(typeParameter.members)) {
-        return false;
-      }
-
-      // @ts-ignore: Assume that types from external packages are correct
-      typeParameter.members = convertArgsToSignature(typeParameter.members);
-
-      return false;
+      return AST.builders.tsInterfaceDeclaration(
+        AST.builders.identifier(`${data.entity.classifiedName}Signature`),
+        AST.builders.tsInterfaceBody(body),
+      );
     },
 
     visitTSTypeReference(path) {

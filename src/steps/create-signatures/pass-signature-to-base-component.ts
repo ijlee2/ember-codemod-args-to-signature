@@ -186,6 +186,89 @@ export function passSignatureToBaseComponent(
 
       return false;
     },
+
+    visitClassExpression(path) {
+      if (!path.node.superClass || path.node.superClass.type !== 'Identifier') {
+        return false;
+      }
+
+      if (path.node.superClass.name !== baseComponentName) {
+        return false;
+      }
+
+      const typeParameters = path.node.superTypeParameters;
+
+      if (!typeParameters) {
+        if (path.parentPath.node.type !== 'VariableDeclarator') {
+          return false;
+        }
+
+        const index = path.parentPath.parentPath.parentPath.name;
+
+        path.parentPath.parentPath.parentPath.parentPath.value.splice(
+          index,
+          0,
+          AST.builders.tsInterfaceDeclaration(
+            AST.builders.identifier(`${data.entity.classifiedName}Signature`),
+            AST.builders.tsInterfaceBody(convertArgsToSignature([])),
+          ),
+        );
+
+        path.node.superTypeParameters =
+          AST.builders.tsTypeParameterInstantiation([
+            AST.builders.tsTypeReference(
+              AST.builders.identifier(`${data.entity.classifiedName}Signature`),
+            ),
+          ]);
+
+        return false;
+      }
+
+      const typeParameter = typeParameters.params[0]!;
+
+      switch (typeParameter.type) {
+        // When the interface is directly passed to the component
+        case 'TSTypeLiteral': {
+          if (isSignature(typeParameter.members)) {
+            break;
+          }
+
+          const index = path.parentPath.parentPath.parentPath.name;
+
+          path.parentPath.parentPath.parentPath.parentPath.value.splice(
+            index,
+            0,
+            AST.builders.tsInterfaceDeclaration(
+              AST.builders.identifier(`${data.entity.classifiedName}Signature`),
+              AST.builders.tsInterfaceBody(
+                convertArgsToSignature(typeParameter.members),
+              ),
+            ),
+          );
+
+          // @ts-ignore: Assume that types from external packages are correct
+          path.node.superTypeParameters.params = [
+            AST.builders.tsTypeReference(
+              AST.builders.identifier(`${data.entity.classifiedName}Signature`),
+            ),
+          ];
+
+          return false;
+        }
+
+        // When the interface is defined "outside"
+        case 'TSTypeReference': {
+          // @ts-ignore: Assume that types from external packages are correct
+          interfaceName = typeParameter.typeName.name;
+          // @ts-ignore: Assume that types from external packages are correct
+          typeParameter.typeName.name = `${data.entity.classifiedName}Signature`;
+
+          return false;
+        }
+      }
+
+      return false;
+    },
   });
 
   return {

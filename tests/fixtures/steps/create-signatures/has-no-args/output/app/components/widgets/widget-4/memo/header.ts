@@ -1,5 +1,9 @@
 import Component from '@glimmer/component';
 
-const Header = class FooComponent extends Component {}
+interface WidgetsWidget4MemoHeaderSignature {
+  Args: {};
+}
+
+const Header = class FooComponent extends Component<WidgetsWidget4MemoHeaderSignature> {}
 
 export default Header;

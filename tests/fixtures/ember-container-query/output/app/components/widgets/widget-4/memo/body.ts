@@ -1,9 +1,13 @@
 import Component from '@glimmer/component';
 import type { QueryResults } from 'ember-container-query';
 
-const WidgetsWidget4MemoBodyComponent = class extends Component<{
-  cqFeatures?: QueryResults<'small' | 'large' | 'short'>;
-}> {}
+interface WidgetsWidget4MemoBodySignature {
+  Args: {
+    cqFeatures?: QueryResults<'small' | 'large' | 'short'>;
+  };
+}
+
+const WidgetsWidget4MemoBodyComponent = class extends Component<WidgetsWidget4MemoBodySignature> {}
 
 export default WidgetsWidget4MemoBodyComponent;
 
