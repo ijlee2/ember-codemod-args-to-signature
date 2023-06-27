@@ -25,6 +25,11 @@ test('steps | create-registries > has-declaration-file', function () {
       ['tracks', new Set(['.d.ts', '.hbs'])],
       ['widgets/widget-3/tour-schedule', new Set(['.d.ts', '.hbs'])],
     ]),
+    signature: {
+      Args: undefined,
+      Blocks: undefined,
+      Element: undefined,
+    },
   };
 
   loadFixture(inputProject, codemodOptions);

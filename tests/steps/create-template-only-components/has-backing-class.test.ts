@@ -25,6 +25,11 @@ test('steps | create-template-only-components > has-backing-class', function () 
       ['navigation-menu', new Set(['.hbs', '.ts'])],
       ['tracks/list', new Set(['.hbs', '.ts'])],
     ]),
+    signature: {
+      Args: undefined,
+      Blocks: undefined,
+      Element: undefined,
+    },
   };
 
   loadFixture(inputProject, codemodOptions);

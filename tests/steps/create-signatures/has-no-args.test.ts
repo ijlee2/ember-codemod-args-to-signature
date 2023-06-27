@@ -48,6 +48,11 @@ test('steps | create-signatures > has-no-args', function () {
       ['widgets/widget-4/memo/body', new Set(['.hbs', '.ts'])],
       ['widgets/widget-4/memo/header', new Set(['.hbs', '.ts'])],
     ]),
+    signature: {
+      Args: undefined,
+      Blocks: undefined,
+      Element: undefined,
+    },
   };
 
   loadFixture(inputProject, codemodOptions);

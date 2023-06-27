@@ -43,6 +43,11 @@ const context: Context = {
     ['widgets/widget-4/memo/header', new Set(['.hbs', '.ts'])],
     ['widgets/widget-5', new Set(['.hbs', '.ts'])],
   ]),
+  signature: {
+    Args: undefined,
+    Blocks: undefined,
+    Element: undefined,
+  },
 };
 
 const options: Options = {

@@ -25,6 +25,11 @@ test('steps | create-signatures > has-hbs-file-only', function () {
       ['ui/form/information', new Set(['.hbs'])],
       ['widgets/widget-5', new Set(['.hbs'])],
     ]),
+    signature: {
+      Args: undefined,
+      Blocks: undefined,
+      Element: undefined,
+    },
   };
 
   loadFixture(inputProject, codemodOptions);
