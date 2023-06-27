@@ -16,7 +16,7 @@ function isSupported(file: string): boolean {
   return isComponent && !isClassicComponent;
 }
 
-export function filterComponentEntities(
+export function filterComponents(
   extensionMap: ExtensionMap,
   options: Options,
 ): ExtensionMap {

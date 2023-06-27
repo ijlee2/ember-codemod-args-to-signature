@@ -5,7 +5,7 @@ import { findFiles, renamePathByDirectory } from '@codemod-utils/files';
 import type { ExtensionMap, Options } from '../../types/index.js';
 import { analyzeFilePaths } from './analyze-file-paths.js';
 
-export function findComponentEntities(options: Options): ExtensionMap {
+export function findComponents(options: Options): ExtensionMap {
   const { componentStructure, projectRoot, src } = options;
 
   const classFilePaths = findFiles(join(src, '**/*.{js,ts}'), {

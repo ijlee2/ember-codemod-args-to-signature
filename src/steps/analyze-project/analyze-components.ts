@@ -1,6 +1,6 @@
 import type { ExtensionMap, Options, SignatureMap } from '../../types/index.js';
 
-export function createSignatureMap(
+export function analyzeComponents(
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   // @ts-expect-error
   extensionMap: ExtensionMap,
