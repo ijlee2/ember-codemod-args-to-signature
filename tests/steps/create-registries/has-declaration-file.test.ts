@@ -8,8 +8,9 @@ import {
 import { createRegistries } from '../../../src/steps/index.js';
 import {
   codemodOptions,
+  context,
   options,
-} from '../../helpers/shared-test-setups/ember-container-query.js';
+} from '../../helpers/shared-test-setups/has-declaration-file.js';
 
 test('steps | create-registries > has-declaration-file', function () {
   const inputProject = convertFixtureToJson(
@@ -19,13 +20,6 @@ test('steps | create-registries > has-declaration-file', function () {
   const outputProject = convertFixtureToJson(
     'steps/create-registries/has-declaration-file/output',
   );
-
-  const context = {
-    entities: new Map([
-      ['tracks', new Set(['.d.ts', '.hbs'])],
-      ['widgets/widget-3/tour-schedule', new Set(['.d.ts', '.hbs'])],
-    ]),
-  };
 
   loadFixture(inputProject, codemodOptions);
 

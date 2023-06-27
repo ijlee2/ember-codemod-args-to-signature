@@ -8,8 +8,9 @@ import {
 import { createTemplateOnlyComponents } from '../../../src/steps/index.js';
 import {
   codemodOptions,
+  context,
   options,
-} from '../../helpers/shared-test-setups/ember-container-query-no-args.js';
+} from '../../helpers/shared-test-setups/has-no-args.js';
 
 test('steps | create-template-only-components > has-no-args', function () {
   const inputProject = convertFixtureToJson(
@@ -19,13 +20,6 @@ test('steps | create-template-only-components > has-no-args', function () {
   const outputProject = convertFixtureToJson(
     'steps/create-template-only-components/has-no-args/output',
   );
-
-  const context = {
-    entities: new Map([
-      ['navigation-menu', new Set(['.hbs', '.ts'])],
-      ['tracks/list', new Set(['.hbs', '.ts'])],
-    ]),
-  };
 
   loadFixture(inputProject, codemodOptions);
 

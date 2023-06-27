@@ -12,6 +12,11 @@ const codemodOptions: CodemodOptions = {
 
 const context: Context = {
   entities: new Map(),
+  signature: {
+    Args: undefined,
+    Blocks: undefined,
+    Element: undefined,
+  },
 };
 
 const options: Options = {

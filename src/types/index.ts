@@ -6,6 +6,11 @@ type CodemodOptions = {
 
 type Context = {
   entities: Entities;
+  signature: {
+    Args: Set<string> | undefined;
+    Blocks: Set<string> | undefined;
+    Element: string | undefined;
+  };
 };
 
 type Entities = Map<string, Set<string>>;

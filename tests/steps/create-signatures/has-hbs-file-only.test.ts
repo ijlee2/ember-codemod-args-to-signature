@@ -8,8 +8,9 @@ import {
 import { createSignatures } from '../../../src/steps/index.js';
 import {
   codemodOptions,
+  context,
   options,
-} from '../../helpers/shared-test-setups/ember-container-query.js';
+} from '../../helpers/shared-test-setups/has-hbs-file-only.js';
 
 test('steps | create-signatures > has-hbs-file-only', function () {
   const inputProject = convertFixtureToJson(
@@ -19,13 +20,6 @@ test('steps | create-signatures > has-hbs-file-only', function () {
   const outputProject = convertFixtureToJson(
     'steps/create-signatures/has-hbs-file-only/output',
   );
-
-  const context = {
-    entities: new Map([
-      ['ui/form/information', new Set(['.hbs'])],
-      ['widgets/widget-5', new Set(['.hbs'])],
-    ]),
-  };
 
   loadFixture(inputProject, codemodOptions);
 
