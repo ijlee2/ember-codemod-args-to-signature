@@ -7,6 +7,7 @@ interface ProductsProductCardSignature {
     product: Product;
     redirectTo?: string;
   };
+  Element: HTMLElement;
 }
 
 const ProductsProductCardComponent =

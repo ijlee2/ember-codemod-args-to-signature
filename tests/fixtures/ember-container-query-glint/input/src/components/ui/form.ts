@@ -32,6 +32,7 @@ interface UiFormSignature {
       },
     ];
   };
+  Element: HTMLFormElement;
 }
 
 export default class UiFormComponent extends Component<UiFormSignature> {

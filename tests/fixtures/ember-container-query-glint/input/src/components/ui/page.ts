@@ -7,6 +7,7 @@ interface UiPageSignature {
   Blocks: {
     default: [];
   };
+  Element: HTMLDivElement;
 }
 
 const UiPageComponent = templateOnlyComponent<UiPageSignature>();

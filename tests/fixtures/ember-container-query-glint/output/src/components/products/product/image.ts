@@ -5,6 +5,7 @@ interface ProductsProductImageSignature {
   Args: {
     src: string;
   };
+  Element: HTMLDivElement | HTMLImageElement;
 }
 
 export default class ProductsProductImageComponent extends Component<ProductsProductImageSignature> {
