@@ -11,15 +11,28 @@ const codemodOptions: CodemodOptions = {
 };
 
 const context: Context = {
-  entities: new Map([
+  extensionMap: new Map([
     ['ui/form/information', new Set(['.hbs'])],
     ['widgets/widget-5', new Set(['.hbs'])],
   ]),
-  signature: {
-    Args: undefined,
-    Blocks: undefined,
-    Element: undefined,
-  },
+  signatureMap: new Map([
+    [
+      'ui/form/information',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'widgets/widget-5',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+  ]),
 };
 
 const options: Options = {

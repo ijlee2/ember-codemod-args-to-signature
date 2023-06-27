@@ -2,10 +2,10 @@ import { join } from 'node:path';
 
 import { findFiles, renamePathByDirectory } from '@codemod-utils/files';
 
-import type { Entities, Options } from '../../types/index.js';
+import type { ExtensionMap, Options } from '../../types/index.js';
 import { analyzeFilePaths } from './analyze-file-paths.js';
 
-export function findComponentEntities(options: Options): Entities {
+export function findComponents(options: Options): ExtensionMap {
   const { componentStructure, projectRoot, src } = options;
 
   const classFilePaths = findFiles(join(src, '**/*.{js,ts}'), {
@@ -42,11 +42,11 @@ export function findComponentEntities(options: Options): Entities {
     ...templateFilePaths,
   ].sort();
 
-  const entities = analyzeFilePaths(filePaths);
+  const extensionMap = analyzeFilePaths(filePaths);
 
   if (componentStructure === 'nested') {
     return new Map(
-      Array.from(entities.entries()).map(([entityName, extensions]) => {
+      Array.from(extensionMap.entries()).map(([entityName, extensions]) => {
         const newEntityName = entityName.replace(/\/index$/, '');
 
         return [newEntityName, extensions];
@@ -54,5 +54,5 @@ export function findComponentEntities(options: Options): Entities {
     );
   }
 
-  return entities;
+  return extensionMap;
 }

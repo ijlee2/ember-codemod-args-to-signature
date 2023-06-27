@@ -11,15 +11,28 @@ const codemodOptions: CodemodOptions = {
 };
 
 const context: Context = {
-  entities: new Map([
+  extensionMap: new Map([
     ['tracks', new Set(['.d.ts', '.hbs'])],
     ['widgets/widget-3/tour-schedule', new Set(['.d.ts', '.hbs'])],
   ]),
-  signature: {
-    Args: undefined,
-    Blocks: undefined,
-    Element: undefined,
-  },
+  signatureMap: new Map([
+    [
+      'tracks',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'widgets/widget-3/tour-schedule',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+  ]),
 };
 
 const options: Options = {

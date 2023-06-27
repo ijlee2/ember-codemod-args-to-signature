@@ -11,7 +11,7 @@ const codemodOptions: CodemodOptions = {
 };
 
 const context: Context = {
-  entities: new Map([
+  extensionMap: new Map([
     ['navigation-menu', new Set(['.hbs', '.ts'])],
     ['products/product/card', new Set(['.hbs', '.ts'])],
     ['products/product/image', new Set(['.hbs', '.ts'])],
@@ -37,11 +37,176 @@ const context: Context = {
     ['widgets/widget-4/memo/body', new Set(['.hbs', '.ts'])],
     ['widgets/widget-4/memo/header', new Set(['.hbs', '.ts'])],
   ]),
-  signature: {
-    Args: undefined,
-    Blocks: undefined,
-    Element: undefined,
-  },
+  signatureMap: new Map([
+    [
+      'navigation-menu',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'products/product/card',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'products/product/image',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'tracks/list',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'ui/form',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'ui/form/checkbox',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'ui/form/field',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'ui/form/input',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'ui/form/textarea',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'ui/page',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'widgets/widget-1',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'widgets/widget-2',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'widgets/widget-2/captions',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'widgets/widget-2/stacked-chart',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'widgets/widget-3',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'widgets/widget-3/tour-schedule/responsive-image',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'widgets/widget-4',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'widgets/widget-4/memo',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'widgets/widget-4/memo/actions',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'widgets/widget-4/memo/body',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'widgets/widget-4/memo/header',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+  ]),
 };
 
 const options: Options = {

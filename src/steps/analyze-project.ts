@@ -1,24 +1,18 @@
 import type { Context, Options } from '../types/index.js';
 import {
-  filterComponentEntities,
-  findArguments,
-  findBlocks,
-  findComponentEntities,
-  findElement,
+  analyzeComponents,
+  filterComponents,
+  findComponents,
 } from './analyze-project/index.js';
 
 export function analyzeProject(options: Options): Context {
-  let entities = findComponentEntities(options);
-  entities = filterComponentEntities(entities, options);
+  let extensionMap = findComponents(options);
+  extensionMap = filterComponents(extensionMap, options);
 
-  const signature = {
-    Args: findArguments(options),
-    Blocks: findBlocks(options),
-    Element: findElement(options),
-  };
+  const signatureMap = analyzeComponents(extensionMap, options);
 
   return {
-    entities,
-    signature,
+    extensionMap,
+    signatureMap,
   };
 }
