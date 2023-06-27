@@ -1,8 +1,33 @@
-import type { Options } from '../../types/index.js';
+import { AST } from '@codemod-utils/ast-template';
 
-// @ts-expect-error: Method to be implemented
-export function findElement(options: Options): string | undefined {
-  // ...
+import { getHtmlInterface } from '../../utils/components.js';
 
-  return undefined;
+export function findElement(file: string | undefined): string[] | undefined {
+  if (file === undefined) {
+    return;
+  }
+
+  const traverse = AST.traverse();
+
+  const elementTags: string[] = [];
+
+  traverse(file, {
+    ElementNode(node) {
+      const hasSplattributes = node.attributes.find(({ name }) => {
+        return name === '...attributes';
+      });
+
+      if (!hasSplattributes) {
+        return;
+      }
+
+      elementTags.push(node.tag);
+    },
+  });
+
+  if (elementTags.length === 0) {
+    return;
+  }
+
+  return elementTags.map(getHtmlInterface).sort();
 }

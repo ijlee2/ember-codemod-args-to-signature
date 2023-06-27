@@ -44,7 +44,7 @@ const context: Context = {
       {
         Args: undefined,
         Blocks: undefined,
-        Element: undefined,
+        Element: ['HTMLElement'],
       },
     ],
     [
@@ -52,7 +52,7 @@ const context: Context = {
       {
         Args: undefined,
         Blocks: undefined,
-        Element: undefined,
+        Element: ['HTMLElement'],
       },
     ],
     [
@@ -60,7 +60,7 @@ const context: Context = {
       {
         Args: undefined,
         Blocks: undefined,
-        Element: undefined,
+        Element: ['HTMLDivElement', 'HTMLImageElement'],
       },
     ],
     [
@@ -76,7 +76,7 @@ const context: Context = {
       {
         Args: undefined,
         Blocks: undefined,
-        Element: undefined,
+        Element: ['HTMLUListElement'],
       },
     ],
     [
@@ -84,7 +84,7 @@ const context: Context = {
       {
         Args: undefined,
         Blocks: undefined,
-        Element: undefined,
+        Element: ['HTMLFormElement'],
       },
     ],
     [
@@ -124,7 +124,7 @@ const context: Context = {
       {
         Args: undefined,
         Blocks: undefined,
-        Element: undefined,
+        Element: ['HTMLDivElement'],
       },
     ],
     [
@@ -132,7 +132,7 @@ const context: Context = {
       {
         Args: undefined,
         Blocks: undefined,
-        Element: undefined,
+        Element: ['HTMLElement'],
       },
     ],
     [

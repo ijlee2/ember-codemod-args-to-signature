@@ -10,6 +10,7 @@ interface NavigationMenuSignature {
     menuItems: MenuItem[];
     name?: string;
   };
+  Element: HTMLElement;
 }
 
 const NavigationMenuComponent = templateOnlyComponent<NavigationMenuSignature>();

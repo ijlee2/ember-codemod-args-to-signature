@@ -14,7 +14,7 @@ type ExtensionMap = Map<string, Set<string>>;
 type Signature = {
   Args: Set<string> | undefined;
   Blocks: Set<string> | undefined;
-  Element: string | undefined;
+  Element: string[] | undefined;
 };
 
 type SignatureMap = Map<string, Signature>;

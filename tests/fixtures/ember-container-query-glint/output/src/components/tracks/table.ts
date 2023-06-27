@@ -6,6 +6,7 @@ interface TracksTableSignature {
   Args: {
     tracks?: Track[];
   };
+  Element: HTMLTableElement;
 }
 
 const TracksTableComponent = templateOnlyComponent<TracksTableSignature>();
