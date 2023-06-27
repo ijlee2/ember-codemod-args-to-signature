@@ -15,17 +15,16 @@ export function updateConstructor(file: string, options: Options): string {
 
   const ast = traverse(file, {
     visitClassMethod(path) {
-      if (path.node.kind !== 'constructor') {
-        return false;
-      }
-
-      if (path.node.params.length !== 2) {
+      if (path.node.kind !== 'constructor' || path.node.params.length !== 2) {
         return false;
       }
 
       const args = path.node.params[1]!;
 
-      // @ts-ignore: Assume that types from external packages are correct
+      if (args.type !== 'Identifier') {
+        return false;
+      }
+
       args.typeAnnotation = AST.builders.tsTypeAnnotation(
         AST.builders.tsIndexedAccessType(
           AST.builders.tsTypeReference(

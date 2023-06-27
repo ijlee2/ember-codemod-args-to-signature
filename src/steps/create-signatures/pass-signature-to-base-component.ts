@@ -215,11 +215,13 @@ export function passSignatureToBaseComponent(
 
         // When the interface is defined "outside"
         case 'TSTypeReference': {
+          if (typeParameter.typeName.type !== 'Identifier') {
+            break;
+          }
+
           const identifier = `${data.entity.classifiedName}Signature`;
 
-          // @ts-ignore: Assume that types from external packages are correct
           interfaceName = typeParameter.typeName.name;
-          // @ts-ignore: Assume that types from external packages are correct
           typeParameter.typeName.name = identifier;
 
           return false;
@@ -288,11 +290,13 @@ export function passSignatureToBaseComponent(
 
         // When the interface is defined "outside"
         case 'TSTypeReference': {
+          if (typeParameter.typeName.type !== 'Identifier') {
+            break;
+          }
+
           const identifier = `${data.entity.classifiedName}Signature`;
 
-          // @ts-ignore: Assume that types from external packages are correct
           interfaceName = typeParameter.typeName.name;
-          // @ts-ignore: Assume that types from external packages are correct
           typeParameter.typeName.name = identifier;
 
           return false;

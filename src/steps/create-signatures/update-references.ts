@@ -21,8 +21,10 @@ export function updateReferences(file: string, options: Options): string {
 
   const ast = traverse(file, {
     visitTSInterfaceDeclaration(path) {
-      // @ts-ignore: Assume that types from external packages are correct
-      if (path.node.id.name !== interfaceName) {
+      if (
+        path.node.id.type !== 'Identifier' ||
+        path.node.id.name !== interfaceName
+      ) {
         return false;
       }
 
@@ -36,17 +38,17 @@ export function updateReferences(file: string, options: Options): string {
     },
 
     visitTSTypeAliasDeclaration(path) {
-      // @ts-ignore: Assume that types from external packages are correct
-      if (path.node.id.name !== interfaceName) {
+      if (
+        path.node.id.type !== 'Identifier' ||
+        path.node.id.name !== interfaceName ||
+        path.node.typeAnnotation.type !== 'TSTypeLiteral'
+      ) {
         return false;
       }
 
-      // @ts-ignore: Assume that types from external packages are correct
       const members = isSignature(path.node.typeAnnotation.members)
-        ? // @ts-ignore: Assume that types from external packages are correct
-          path.node.typeAnnotation.members
-        : // @ts-ignore: Assume that types from external packages are correct
-          builderConvertArgsToSignature(path.node.typeAnnotation.members);
+        ? path.node.typeAnnotation.members
+        : builderConvertArgsToSignature(path.node.typeAnnotation.members);
 
       const identifier = `${data.entity.classifiedName}Signature`;
 

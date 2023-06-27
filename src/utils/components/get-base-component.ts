@@ -17,8 +17,7 @@ export function getBaseComponent(file: string): BaseComponent {
         case '@ember/component':
         case '@ember/component/template-only':
         case '@glimmer/component': {
-          // @ts-ignore: Assume that types from external packages are correct
-          const defaultImport = path.node.specifiers.find(({ type }) => {
+          const defaultImport = path.node.specifiers!.find(({ type }) => {
             return type === 'ImportDefaultSpecifier';
           });
 
@@ -26,8 +25,7 @@ export function getBaseComponent(file: string): BaseComponent {
             return false;
           }
 
-          // @ts-ignore: Assume that types from external packages are correct
-          baseComponentName = defaultImport.local.name;
+          baseComponentName = defaultImport.local!.name as string;
           importPath = path.node.source.value as string;
 
           return false;
