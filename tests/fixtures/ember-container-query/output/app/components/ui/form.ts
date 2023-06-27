@@ -9,6 +9,9 @@ interface UiFormSignature {
     instructions?: string;
     title?: string;
   };
+  Blocks: {
+    default: [unknown];
+  };
   Element: HTMLFormElement;
 }
 

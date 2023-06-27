@@ -4,6 +4,9 @@ interface UiPageSignature {
   Args: {
     title: string;
   };
+  Blocks: {
+    default: [];
+  };
   Element: HTMLDivElement;
 }
 

@@ -5,6 +5,9 @@ import { tracked } from '@glimmer/tracking';
 
 interface UiFormSignature {
   Args: {};
+  Blocks: {
+    default: [unknown];
+  };
   Element: HTMLFormElement;
 }
 
