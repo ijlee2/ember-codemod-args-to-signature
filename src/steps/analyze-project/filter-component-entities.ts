@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-import type { Entities, Options } from '../../types/index.js';
+import type { ExtensionMap, Options } from '../../types/index.js';
 import {
   getBaseComponent,
   getComponentFilePath,
@@ -17,14 +17,14 @@ function isSupported(file: string): boolean {
 }
 
 export function filterComponentEntities(
-  entities: Entities,
+  extensionMap: ExtensionMap,
   options: Options,
-): Entities {
+): ExtensionMap {
   const { projectRoot } = options;
 
-  const filteredEntities: Entities = new Map();
+  const filteredExtensionMap: ExtensionMap = new Map();
 
-  for (const [entityName, extensions] of entities) {
+  for (const [entityName, extensions] of extensionMap) {
     const isJavaScript = extensions.has('.js');
 
     if (isJavaScript) {
@@ -42,8 +42,8 @@ export function filterComponentEntities(
       }
     }
 
-    filteredEntities.set(entityName, extensions);
+    filteredExtensionMap.set(entityName, extensions);
   }
 
-  return filteredEntities;
+  return filteredExtensionMap;
 }
