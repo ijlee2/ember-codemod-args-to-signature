@@ -2,6 +2,7 @@ import templateOnlyComponent from '@ember/component/template-only';
 
 interface TracksTableSignature {
   Args: {};
+  Element: HTMLTableElement;
 }
 
 const TracksTableComponent =

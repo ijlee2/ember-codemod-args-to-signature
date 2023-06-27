@@ -25,4 +25,11 @@ type Options = {
   src: string;
 };
 
-export type { CodemodOptions, Context, ExtensionMap, Options, SignatureMap };
+export type {
+  CodemodOptions,
+  Context,
+  ExtensionMap,
+  Options,
+  Signature,
+  SignatureMap,
+};

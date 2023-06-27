@@ -7,6 +7,7 @@ interface TracksListSignature {
     numColumns?: number;
     tracks?: Track[];
   };
+  Element: HTMLUListElement;
 }
 
 export default class TracksListComponent extends Component<TracksListSignature> {

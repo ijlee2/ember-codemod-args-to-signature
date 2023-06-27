@@ -2,6 +2,7 @@ import templateOnlyComponent from '@ember/component/template-only';
 
 interface TracksSignature {
   Args: {};
+  Element: HTMLElement;
 }
 
 const TracksComponent =
