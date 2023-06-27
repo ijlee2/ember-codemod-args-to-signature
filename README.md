@@ -16,13 +16,14 @@ _Codemod to convert component `Args` to `Signature`_<sup>1</sup>
 
 <div align="center">
   <figure>
-    <img alt="A code diff to show what template-only components can look like before and after running ember-codemod-args-to-signature" src="https://github.com/ijlee2/ember-codemod-args-to-signature/assets/16869656/8f497f5b-e639-4ddb-87b3-be8110eb3c3b" width="640">
+    <img alt="A code diff to show what template-only components can look like before and after running ember-codemod-args-to-signature" src="https://github.com/ijlee2/ember-codemod-args-to-signature/assets/16869656/55115b27-682e-4f5a-9a03-36d7aa1cc0c2" width="640">
     <br>
     <figcaption>Template-only components</figcaption>
   </figure>
   <br><br>
   <figure>
-    <img alt="A code diff to show what Glimmer components can look like before and after running ember-codemod-args-to-signature" src="https://github.com/ijlee2/ember-codemod-args-to-signature/assets/16869656/0aef880d-8dca-41c5-9447-81427a95bdcc" width="640">
+    <img alt="A code diff to show what Glimmer components can look like before and after running ember-codemod-args-to-signature" src="https://github.com/ijlee2/ember-codemod-args-to-signature/assets/16869656/4feb1fcd-5a31-419e-9feb-2af99073ae75" width="640">
+    <img alt="Another code diff for a Glimmer component" src="https://github.com/ijlee2/ember-codemod-args-to-signature/assets/16869656/c8c1c9b0-28a1-4957-9c49-5cc853499a4f" width="640">
     <br>
     <figcaption>Glimmer components</figcaption>
   </figure>

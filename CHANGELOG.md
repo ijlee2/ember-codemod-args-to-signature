@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.0 (2023-06-27)
+
+### Enhancement
+* [#23](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/23) Filled out Signature['Blocks'] ([@ijlee2](https://github.com/ijlee2))
+* [#22](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/22) Defined findBlocks ([@ijlee2](https://github.com/ijlee2))
+
+### Committers: 1
+- Isaac Lee ([@ijlee2](https://github.com/ijlee2))
+
+
 ## 0.2.0 (2023-06-27)
 
 ### Bug Fix
