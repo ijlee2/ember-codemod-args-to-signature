@@ -7,7 +7,10 @@ export function hasRegistry(file: string): boolean {
 
   traverse(file, {
     visitTSModuleDeclaration(path) {
-      // @ts-ignore: Assume that types from external packages are correct
+      if (path.node.id.type !== 'StringLiteral') {
+        return false;
+      }
+
       const moduleName = path.node.id.value;
 
       if (moduleName === '@glint/environment-ember-loose/registry') {

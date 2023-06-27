@@ -1,7 +1,10 @@
 import { AST } from '@codemod-utils/ast-javascript';
 
 import type { TransformedEntityName } from '../../utils/components.js';
-import { builderAddSignature } from './builders.js';
+import {
+  builderConvertArgsToSignature,
+  builderCreateSignature,
+} from './builders.js';
 import { isSignature } from './is-signature.js';
 
 type Options = {
@@ -11,54 +14,45 @@ type Options = {
   interfaceName: string;
 };
 
-export function updateReferences(
-  file: string,
-  options: Options,
-): {
-  newFile: string;
-} {
+export function updateReferences(file: string, options: Options): string {
   const traverse = AST.traverse(true);
 
   const { interfaceName, data } = options;
 
   const ast = traverse(file, {
     visitTSInterfaceDeclaration(path) {
-      // @ts-ignore: Assume that types from external packages are correct
-      if (path.node.id.name !== interfaceName) {
+      if (
+        path.node.id.type !== 'Identifier' ||
+        path.node.id.name !== interfaceName
+      ) {
         return false;
       }
 
+      const members = isSignature(path.node.body.body)
+        ? path.node.body.body
+        : builderConvertArgsToSignature(path.node.body.body);
+
       const identifier = `${data.entity.classifiedName}Signature`;
-      const nodes = path.node.body.body;
 
-      if (isSignature(nodes)) {
-        return AST.builders.tsInterfaceDeclaration(
-          AST.builders.identifier(identifier),
-          AST.builders.tsInterfaceBody(nodes),
-        );
-      }
-
-      return builderAddSignature(identifier, nodes);
+      return builderCreateSignature(identifier, members);
     },
 
     visitTSTypeAliasDeclaration(path) {
-      // @ts-ignore: Assume that types from external packages are correct
-      if (path.node.id.name !== interfaceName) {
+      if (
+        path.node.id.type !== 'Identifier' ||
+        path.node.id.name !== interfaceName ||
+        path.node.typeAnnotation.type !== 'TSTypeLiteral'
+      ) {
         return false;
       }
 
+      const members = isSignature(path.node.typeAnnotation.members)
+        ? path.node.typeAnnotation.members
+        : builderConvertArgsToSignature(path.node.typeAnnotation.members);
+
       const identifier = `${data.entity.classifiedName}Signature`;
-      // @ts-ignore: Assume that types from external packages are correct
-      const nodes = path.node.typeAnnotation.members;
 
-      if (isSignature(nodes)) {
-        return AST.builders.tsInterfaceDeclaration(
-          AST.builders.identifier(identifier),
-          AST.builders.tsInterfaceBody(nodes),
-        );
-      }
-
-      return builderAddSignature(identifier, nodes);
+      return builderCreateSignature(identifier, members);
     },
 
     visitTSTypeReference(path) {
@@ -76,7 +70,5 @@ export function updateReferences(
     },
   });
 
-  return {
-    newFile: AST.print(ast),
-  };
+  return AST.print(ast);
 }

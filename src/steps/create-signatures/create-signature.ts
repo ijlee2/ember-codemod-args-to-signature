@@ -23,18 +23,16 @@ export function createSignature(file: string, data: Data): string {
     data,
   });
 
-  ({ newFile } = updateConstructor(newFile, {
+  newFile = updateConstructor(newFile, {
     data,
-  }));
+  });
 
   if (interfaceName === undefined) {
     return newFile;
   }
 
-  ({ newFile } = updateReferences(newFile, {
+  return updateReferences(newFile, {
     data,
     interfaceName,
-  }));
-
-  return newFile;
+  });
 }

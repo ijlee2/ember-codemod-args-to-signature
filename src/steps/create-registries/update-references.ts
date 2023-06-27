@@ -10,12 +10,7 @@ type Options = {
   };
 };
 
-export function updateReferences(
-  file: string,
-  options: Options,
-): {
-  newFile: string;
-} {
+export function updateReferences(file: string, options: Options): string {
   const traverse = AST.traverse(true);
 
   const { baseComponentName, componentName, data } = options;
@@ -63,7 +58,5 @@ export function updateReferences(
     },
   });
 
-  return {
-    newFile: AST.print(ast),
-  };
+  return AST.print(ast);
 }

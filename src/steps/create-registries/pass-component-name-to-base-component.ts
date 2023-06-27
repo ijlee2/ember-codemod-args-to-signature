@@ -52,19 +52,17 @@ export function passComponentNameToBaseComponent(
         return false;
       }
 
-      // @ts-ignore: Assume that types from external packages are correct
-      switch (declaration.init.type) {
+      switch (declaration.init!.type) {
         case 'CallExpression': {
           if (
             declaration.init.callee.type !== 'Identifier' ||
-            declaration.init.callee.name !== baseComponentName
+            declaration.init.callee.name !== baseComponentName ||
+            declaration.id.type !== 'Identifier'
           ) {
             return false;
           }
 
-          // @ts-ignore: Assume that types from external packages are correct
           componentName = declaration.id.name;
-          // @ts-ignore: Assume that types from external packages are correct
           declaration.id.name = `${data.entity.classifiedName}Component`;
 
           return false;
@@ -74,14 +72,13 @@ export function passComponentNameToBaseComponent(
           if (
             !declaration.init.superClass ||
             declaration.init.superClass.type !== 'Identifier' ||
-            declaration.init.superClass.name !== baseComponentName
+            declaration.init.superClass.name !== baseComponentName ||
+            declaration.id.type !== 'Identifier'
           ) {
             return false;
           }
 
-          // @ts-ignore: Assume that types from external packages are correct
           componentName = declaration.id.name;
-          // @ts-ignore: Assume that types from external packages are correct
           declaration.id.name = `${data.entity.classifiedName}Component`;
 
           return false;
