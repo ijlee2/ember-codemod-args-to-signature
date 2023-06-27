@@ -8,12 +8,7 @@ type Options = {
   };
 };
 
-export function updateConstructor(
-  file: string,
-  options: Options,
-): {
-  newFile: string;
-} {
+export function updateConstructor(file: string, options: Options): string {
   const traverse = AST.traverse(true);
 
   const { data } = options;
@@ -44,7 +39,5 @@ export function updateConstructor(
     },
   });
 
-  return {
-    newFile: AST.print(ast),
-  };
+  return AST.print(ast);
 }

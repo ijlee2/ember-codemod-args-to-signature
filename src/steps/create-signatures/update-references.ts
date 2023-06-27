@@ -1,7 +1,10 @@
 import { AST } from '@codemod-utils/ast-javascript';
 
 import type { TransformedEntityName } from '../../utils/components.js';
-import { builderAddSignature } from './builders.js';
+import {
+  builderConvertArgsToSignature,
+  builderCreateSignature,
+} from './builders.js';
 import { isSignature } from './is-signature.js';
 
 type Options = {
@@ -11,12 +14,7 @@ type Options = {
   interfaceName: string;
 };
 
-export function updateReferences(
-  file: string,
-  options: Options,
-): {
-  newFile: string;
-} {
+export function updateReferences(file: string, options: Options): string {
   const traverse = AST.traverse(true);
 
   const { interfaceName, data } = options;
@@ -28,17 +26,13 @@ export function updateReferences(
         return false;
       }
 
+      const members = isSignature(path.node.body.body)
+        ? path.node.body.body
+        : builderConvertArgsToSignature(path.node.body.body);
+
       const identifier = `${data.entity.classifiedName}Signature`;
-      const nodes = path.node.body.body;
 
-      if (isSignature(nodes)) {
-        return AST.builders.tsInterfaceDeclaration(
-          AST.builders.identifier(identifier),
-          AST.builders.tsInterfaceBody(nodes),
-        );
-      }
-
-      return builderAddSignature(identifier, nodes);
+      return builderCreateSignature(identifier, members);
     },
 
     visitTSTypeAliasDeclaration(path) {
@@ -47,18 +41,16 @@ export function updateReferences(
         return false;
       }
 
-      const identifier = `${data.entity.classifiedName}Signature`;
       // @ts-ignore: Assume that types from external packages are correct
-      const nodes = path.node.typeAnnotation.members;
+      const members = isSignature(path.node.typeAnnotation.members)
+        ? // @ts-ignore: Assume that types from external packages are correct
+          path.node.typeAnnotation.members
+        : // @ts-ignore: Assume that types from external packages are correct
+          builderConvertArgsToSignature(path.node.typeAnnotation.members);
 
-      if (isSignature(nodes)) {
-        return AST.builders.tsInterfaceDeclaration(
-          AST.builders.identifier(identifier),
-          AST.builders.tsInterfaceBody(nodes),
-        );
-      }
+      const identifier = `${data.entity.classifiedName}Signature`;
 
-      return builderAddSignature(identifier, nodes);
+      return builderCreateSignature(identifier, members);
     },
 
     visitTSTypeReference(path) {
@@ -76,7 +68,5 @@ export function updateReferences(
     },
   });
 
-  return {
-    newFile: AST.print(ast),
-  };
+  return AST.print(ast);
 }
