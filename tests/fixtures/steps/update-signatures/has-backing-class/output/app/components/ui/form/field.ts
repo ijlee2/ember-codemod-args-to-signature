@@ -7,6 +7,10 @@ interface UiFormFieldSignature {
     isInline?: boolean;
     isWide?: boolean;
   };
+  Blocks: {
+    field: [unknown];
+    label: [unknown];
+  };
 }
 
 export default class UiFormFieldComponent extends Component<UiFormFieldSignature> {
