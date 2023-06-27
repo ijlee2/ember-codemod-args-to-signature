@@ -15,7 +15,24 @@ const context: Context = {
     ['tracks', new Set(['.d.ts', '.hbs'])],
     ['widgets/widget-3/tour-schedule', new Set(['.d.ts', '.hbs'])],
   ]),
-  signatureMap: new Map(),
+  signatureMap: new Map([
+    [
+      'tracks',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'widgets/widget-3/tour-schedule',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+  ]),
 };
 
 const options: Options = {

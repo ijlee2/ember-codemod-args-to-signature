@@ -15,7 +15,24 @@ const context: Context = {
     ['ui/form/information', new Set(['.hbs'])],
     ['widgets/widget-5', new Set(['.hbs'])],
   ]),
-  signatureMap: new Map(),
+  signatureMap: new Map([
+    [
+      'ui/form/information',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+    [
+      'widgets/widget-5',
+      {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      },
+    ],
+  ]),
 };
 
 const options: Options = {
