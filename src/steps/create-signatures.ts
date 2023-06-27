@@ -19,13 +19,7 @@ export function createSignatures(context: Context, options: Options): void {
 
   const fileMap = new Map<FilePath, FileContent>();
 
-  for (const [entityName, extensions] of context.extensionMap) {
-    const hasBackingClass = extensions.has('.ts');
-
-    if (!hasBackingClass) {
-      continue;
-    }
-
+  for (const [entityName] of context.extensionMap) {
     const filePath = getComponentFilePath(options)(entityName);
 
     const data = {
