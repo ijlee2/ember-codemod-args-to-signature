@@ -8,25 +8,6 @@ export function builderConvertArgsToSignature(nodes: unknown[] = []) {
       AST.builders.tsTypeAnnotation(AST.builders.tsTypeLiteral(nodes)),
       false,
     ),
-
-    // AST.builders.tsPropertySignature(
-    //   AST.builders.identifier('Blocks'),
-    //   AST.builders.tsTypeAnnotation(
-    //     AST.builders.tsTypeLiteral([
-    //       AST.builders.tsPropertySignature(
-    //         AST.builders.identifier('default'),
-    //         AST.builders.tsTypeAnnotation(AST.builders.tsTupleType([])),
-    //       ),
-    //     ]),
-    //   ),
-    //   false,
-    // ),
-
-    // AST.builders.tsPropertySignature(
-    //   AST.builders.identifier('Element'),
-    //   AST.builders.tsTypeAnnotation(AST.builders.tsNullKeyword()),
-    //   false,
-    // ),
   ];
 }
 
