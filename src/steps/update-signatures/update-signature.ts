@@ -2,7 +2,10 @@ import { AST } from '@codemod-utils/ast-javascript';
 
 import type { Signature } from '../../types/index.js';
 import type { TransformedEntityName } from '../../utils/components.js';
-import { builderCreateElementNode } from './builders.js';
+import {
+  builderCreateBlocksNode,
+  builderCreateElementNode,
+} from './builders.js';
 
 type Data = {
   entity: TransformedEntityName;
@@ -36,7 +39,9 @@ export function updateSignature(file: string, data: Data): string {
 
       const ArgsNode = getBodyNode(path.node, 'Args');
 
-      const BlocksNode = getBodyNode(path.node, 'Blocks');
+      const BlocksNode =
+        getBodyNode(path.node, 'Blocks') ??
+        builderCreateBlocksNode(data.signature);
 
       const ElementNode =
         getBodyNode(path.node, 'Element') ??
