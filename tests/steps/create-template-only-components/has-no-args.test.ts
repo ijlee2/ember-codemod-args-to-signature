@@ -9,7 +9,7 @@ import { createTemplateOnlyComponents } from '../../../src/steps/index.js';
 import {
   codemodOptions,
   options,
-} from '../../helpers/shared-test-setups/ember-container-query-no-args.js';
+} from '../../helpers/shared-test-setups/has-no-args.js';
 
 test('steps | create-template-only-components > has-no-args', function () {
   const inputProject = convertFixtureToJson(

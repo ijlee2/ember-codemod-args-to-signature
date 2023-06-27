@@ -9,7 +9,7 @@ import { createTemplateOnlyComponents } from '../../../src/steps/index.js';
 import {
   codemodOptions,
   options,
-} from '../../helpers/shared-test-setups/ember-container-query.js';
+} from '../../helpers/shared-test-setups/has-backing-class.js';
 
 test('steps | create-template-only-components > has-backing-class', function () {
   const inputProject = convertFixtureToJson(
