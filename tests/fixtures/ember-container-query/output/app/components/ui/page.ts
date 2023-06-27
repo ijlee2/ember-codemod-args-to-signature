@@ -4,6 +4,7 @@ interface UiPageSignature {
   Args: {
     title: string;
   };
+  Element: HTMLDivElement;
 }
 
 export default class UiPageComponent extends Component<UiPageSignature> {}

@@ -2,6 +2,7 @@ import templateOnlyComponent from '@ember/component/template-only';
 
 interface ProductsProductCardSignature {
   Args: {};
+  Element: HTMLElement;
 }
 
 const ProductsProductCardComponent = templateOnlyComponent<ProductsProductCardSignature>();

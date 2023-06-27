@@ -5,6 +5,7 @@ import { tracked } from '@glimmer/tracking';
 
 interface UiFormSignature {
   Args: {};
+  Element: HTMLFormElement;
 }
 
 export default class UiFormComponent extends Component<UiFormSignature> {

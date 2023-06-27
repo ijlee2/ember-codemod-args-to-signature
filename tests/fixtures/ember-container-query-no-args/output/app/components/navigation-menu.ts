@@ -2,6 +2,7 @@ import templateOnlyComponent from '@ember/component/template-only';
 
 interface NavigationMenuSignature {
   Args: {};
+  Element: HTMLElement;
 }
 
 const NavigationMenuComponent = templateOnlyComponent<NavigationMenuSignature>();

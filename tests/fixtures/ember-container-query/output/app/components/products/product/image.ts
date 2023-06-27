@@ -5,6 +5,7 @@ interface ProductsProductImageSignature {
   Args: {
     src: string;
   };
+  Element: HTMLDivElement | HTMLImageElement;
 }
 
 class ProductsProductImageComponent extends Component<ProductsProductImageSignature> {
