@@ -1,15 +1,16 @@
 import { AST } from '@codemod-utils/ast-template';
 
+import type { Signature } from '../../types/index.js';
 import { getHtmlInterface } from '../../utils/components.js';
 
-export function findElement(file: string | undefined): string[] | undefined {
+export function findElement(file: string | undefined): Signature['Element'] {
   if (file === undefined) {
     return;
   }
 
   const traverse = AST.traverse();
 
-  const elementTags: string[] = [];
+  const htmlInterfaces = new Set<string>();
 
   traverse(file, {
     ElementNode(node) {
@@ -21,15 +22,13 @@ export function findElement(file: string | undefined): string[] | undefined {
         return;
       }
 
-      elementTags.push(node.tag);
+      htmlInterfaces.add(getHtmlInterface(node.tag));
     },
   });
 
-  if (elementTags.length === 0) {
+  if (htmlInterfaces.size === 0) {
     return;
   }
 
-  const htmlInterfaces = elementTags.map(getHtmlInterface);
-
-  return Array.from(new Set(htmlInterfaces)).sort();
+  return Array.from(htmlInterfaces).sort();
 }

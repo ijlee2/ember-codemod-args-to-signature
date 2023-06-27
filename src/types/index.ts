@@ -13,7 +13,7 @@ type ExtensionMap = Map<string, Set<string>>;
 
 type Signature = {
   Args: Set<string> | undefined;
-  Blocks: Set<string> | undefined;
+  Blocks: Map<string, string[]> | undefined;
   Element: string[] | undefined;
 };
 
