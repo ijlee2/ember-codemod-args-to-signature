@@ -11,7 +11,7 @@ const codemodOptions: CodemodOptions = {
 };
 
 const context: Context = {
-  entities: new Map([
+  extensionMap: new Map([
     ['navigation-menu', new Set(['.hbs', '.ts'])],
     ['products/product/card', new Set(['.hbs', '.ts'])],
     ['products/product/image', new Set(['.hbs', '.ts'])],
@@ -43,11 +43,7 @@ const context: Context = {
     ['widgets/widget-4/memo/header', new Set(['.hbs', '.ts'])],
     ['widgets/widget-5', new Set(['.hbs', '.ts'])],
   ]),
-  signature: {
-    Args: undefined,
-    Blocks: undefined,
-    Element: undefined,
-  },
+  signatureMap: new Map(),
 };
 
 const options: Options = {
