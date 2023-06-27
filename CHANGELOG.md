@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.2.0 (2023-06-27)
+
+### Bug Fix
+* [#19](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/19) Updated context ([@ijlee2](https://github.com/ijlee2))
+* [#18](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/18) Fixed a formatting bug ([@ijlee2](https://github.com/ijlee2))
+
+### Enhancement
+* [#21](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/21) Filled out Signature['Element'] ([@ijlee2](https://github.com/ijlee2))
+* [#20](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/20) Defined findElement ([@ijlee2](https://github.com/ijlee2))
+* [#18](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/18) Fixed a formatting bug ([@ijlee2](https://github.com/ijlee2))
+* [#17](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/17) Scaffolded context.signature ([@ijlee2](https://github.com/ijlee2))
+
+### Committers: 1
+- Isaac Lee ([@ijlee2](https://github.com/ijlee2))
+
+
 ## 0.1.5 (2023-06-26)
 
 ### Bug Fix
