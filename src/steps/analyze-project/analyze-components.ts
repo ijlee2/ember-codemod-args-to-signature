@@ -25,7 +25,7 @@ export function analyzeComponents(
       : undefined;
 
     const Args = findArguments(options);
-    const Blocks = findBlocks(options);
+    const Blocks = findBlocks(templateFile);
     const Element = findElement(templateFile);
 
     signatureMap.set(entityName, {
