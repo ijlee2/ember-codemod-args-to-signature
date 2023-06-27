@@ -74,7 +74,7 @@ const context: Context = {
       'ui/form',
       {
         Args: undefined,
-        Blocks: undefined,
+        Blocks: new Map([['default', ['unknown']]]),
         Element: ['HTMLFormElement'],
       },
     ],
@@ -90,7 +90,10 @@ const context: Context = {
       'ui/form/field',
       {
         Args: undefined,
-        Blocks: undefined,
+        Blocks: new Map([
+          ['field', ['unknown']],
+          ['label', ['unknown']],
+        ]),
         Element: undefined,
       },
     ],
@@ -114,7 +117,7 @@ const context: Context = {
       'ui/page',
       {
         Args: undefined,
-        Blocks: undefined,
+        Blocks: new Map([['default', []]]),
         Element: ['HTMLDivElement'],
       },
     ],
