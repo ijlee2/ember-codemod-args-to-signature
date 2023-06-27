@@ -16,17 +16,14 @@ export function renameComponent(file: string, data: Data): string {
     return file;
   }
 
-  // eslint-disable-next-line prefer-const
-  let { componentName, newFile } = passComponentNameToBaseComponent(file, {
+  const { componentName, newFile } = passComponentNameToBaseComponent(file, {
     baseComponentName,
     data,
   });
 
-  ({ newFile } = updateReferences(newFile, {
+  return updateReferences(newFile, {
     baseComponentName,
     componentName,
     data,
-  }));
-
-  return newFile;
+  });
 }
