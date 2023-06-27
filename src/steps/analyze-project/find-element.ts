@@ -29,5 +29,7 @@ export function findElement(file: string | undefined): string[] | undefined {
     return;
   }
 
-  return elementTags.map(getHtmlInterface).sort();
+  const htmlInterfaces = elementTags.map(getHtmlInterface);
+
+  return Array.from(new Set(htmlInterfaces)).sort();
 }
