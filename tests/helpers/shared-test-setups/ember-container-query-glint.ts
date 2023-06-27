@@ -73,7 +73,7 @@ const context: Context = {
       {
         Args: undefined,
         Blocks: undefined,
-        Element: undefined,
+        Element: ['HTMLElement'],
       },
     ],
     [

@@ -6,6 +6,7 @@ interface TracksSignature {
   Args: {
     tracks?: Track[];
   };
+  Element: HTMLElement;
 }
 
 const TracksComponent = templateOnlyComponent<TracksSignature>();

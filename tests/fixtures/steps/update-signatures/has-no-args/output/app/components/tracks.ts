@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 
 interface TracksSignature {
   Args: {};
+  Element: HTMLElement;
 }
 
 export default class TracksComponent extends Component<TracksSignature> {}
