@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3.1 (2023-06-28)
+
+### Enhancement
+* [#25](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/25) Refactored code ([@ijlee2](https://github.com/ijlee2))
+* [#24](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/24) Simplified blueprints ([@ijlee2](https://github.com/ijlee2))
+
+### Internal
+* [#26](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/26) Updated development dependencies ([@ijlee2](https://github.com/ijlee2))
+
+### Committers: 1
+- Isaac Lee ([@ijlee2](https://github.com/ijlee2))
+
+
 ## 0.3.0 (2023-06-27)
 
 ### Enhancement
