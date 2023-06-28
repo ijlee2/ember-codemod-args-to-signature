@@ -3,22 +3,13 @@ import { join } from 'node:path';
 import { findFiles, renamePathByDirectory } from '@codemod-utils/files';
 
 import type { ExtensionMap, Options } from '../../types/index.js';
-import { analyzeFilePaths } from './analyze-file-paths.js';
+import { analyzeFilePaths } from '../../utils/components.js';
 
 export function findComponents(options: Options): ExtensionMap {
   const { componentStructure, projectRoot, src } = options;
 
   const classFilePaths = findFiles(join(src, '**/*.{js,ts}'), {
-    ignoreList: [join(src, '**/*.d.ts')],
-    projectRoot,
-  }).map((filePath) => {
-    return renamePathByDirectory(filePath, {
-      from: src,
-      to: '',
-    });
-  });
-
-  const declarationFilePaths = findFiles(join(src, '**/*.d.ts'), {
+    ignoreList: ['**/*.d.ts'],
     projectRoot,
   }).map((filePath) => {
     return renamePathByDirectory(filePath, {
@@ -36,11 +27,7 @@ export function findComponents(options: Options): ExtensionMap {
     });
   });
 
-  const filePaths = [
-    ...classFilePaths,
-    ...declarationFilePaths,
-    ...templateFilePaths,
-  ].sort();
+  const filePaths = [...classFilePaths, ...templateFilePaths].sort();
 
   const extensionMap = analyzeFilePaths(filePaths);
 

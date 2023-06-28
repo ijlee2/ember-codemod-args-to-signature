@@ -1,13 +1,14 @@
+import { getBaseComponent } from '../../utils/components.js';
 import {
-  getBaseComponent,
-  type TransformedEntityName,
-} from '../../utils/components.js';
-import { passSignatureToBaseComponent } from './pass-signature-to-base-component.js';
-import { updateConstructor } from './update-constructor.js';
-import { updateReferences } from './update-references.js';
+  passSignatureToBaseComponent,
+  updateConstructor,
+  updateReferences,
+} from './create-signature/index.js';
 
 type Data = {
-  entity: TransformedEntityName;
+  entity: {
+    classifiedName: string;
+  };
 };
 
 export function createSignature(file: string, data: Data): string {

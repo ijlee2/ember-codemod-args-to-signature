@@ -12,8 +12,8 @@ const codemodOptions: CodemodOptions = {
 
 const context: Context = {
   extensionMap: new Map([
-    ['tracks', new Set(['.d.ts', '.hbs'])],
-    ['widgets/widget-3/tour-schedule', new Set(['.d.ts', '.hbs'])],
+    ['tracks', new Set(['.hbs'])],
+    ['widgets/widget-3/tour-schedule', new Set(['.hbs'])],
   ]),
   signatureMap: new Map([
     [

@@ -1,14 +1,15 @@
 import { AST } from '@codemod-utils/ast-javascript';
 
 import type { Signature } from '../../types/index.js';
-import type { TransformedEntityName } from '../../utils/components.js';
 import {
   builderCreateBlocksNode,
   builderCreateElementNode,
 } from './builders.js';
 
 type Data = {
-  entity: TransformedEntityName;
+  entity: {
+    classifiedName: string;
+  };
   signature: Signature;
 };
 

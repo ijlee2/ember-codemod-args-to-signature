@@ -3,9 +3,11 @@ import { join } from 'node:path';
 
 import type { ExtensionMap, Options, SignatureMap } from '../../types/index.js';
 import { getComponentFilePath } from '../../utils/components.js';
-import { findArguments } from './find-arguments.js';
-import { findBlocks } from './find-blocks.js';
-import { findElement } from './find-element.js';
+import {
+  findArguments,
+  findBlocks,
+  findElement,
+} from './analyze-components/index.js';
 
 export function analyzeComponents(
   extensionMap: ExtensionMap,
@@ -18,13 +20,18 @@ export function analyzeComponents(
   for (const [entityName, extensions] of extensionMap) {
     const filePath = getComponentFilePath(options)(entityName);
 
+    const hasBackingClass = extensions.has('.ts');
     const hasTemplate = extensions.has('.hbs');
+
+    const classFile = hasBackingClass
+      ? readFileSync(join(projectRoot, filePath), 'utf8')
+      : undefined;
 
     const templateFile = hasTemplate
       ? readFileSync(join(projectRoot, filePath.replace('.ts', '.hbs')), 'utf8')
       : undefined;
 
-    const Args = findArguments(options);
+    const Args = findArguments({ classFile, templateFile });
     const Blocks = findBlocks(templateFile);
     const Element = findElement(templateFile);
 

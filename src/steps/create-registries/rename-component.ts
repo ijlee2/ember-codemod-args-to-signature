@@ -1,12 +1,13 @@
+import { getBaseComponent } from '../../utils/components.js';
 import {
-  getBaseComponent,
-  type TransformedEntityName,
-} from '../../utils/components.js';
-import { passComponentNameToBaseComponent } from './pass-component-name-to-base-component.js';
-import { updateReferences } from './update-references.js';
+  passComponentNameToBaseComponent,
+  updateReferences,
+} from './rename-component/index.js';
 
 type Data = {
-  entity: TransformedEntityName;
+  entity: {
+    classifiedName: string;
+  };
 };
 
 export function renameComponent(file: string, data: Data): string {
