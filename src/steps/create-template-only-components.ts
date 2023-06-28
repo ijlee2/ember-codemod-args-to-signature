@@ -2,6 +2,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import { processTemplate } from '@codemod-utils/blueprints';
+import { classify } from '@codemod-utils/ember-cli-string';
 import {
   createFiles,
   type FileContent,
@@ -10,10 +11,7 @@ import {
 
 import type { Context, Options } from '../types/index.js';
 import { blueprintsRoot } from '../utils/blueprints.js';
-import {
-  getComponentFilePath,
-  transformEntityName,
-} from '../utils/components.js';
+import { getComponentFilePath } from '../utils/components.js';
 
 const blueprintFile = readFileSync(
   join(blueprintsRoot, 'ember-cli/template-only-component.ts'),
@@ -36,7 +34,9 @@ export function createTemplateOnlyComponents(
     const filePath = getComponentFilePath(options)(entityName);
 
     const data = {
-      entity: transformEntityName(entityName),
+      entity: {
+        classifiedName: classify(entityName),
+      },
     };
 
     const file = processTemplate(blueprintFile, data);

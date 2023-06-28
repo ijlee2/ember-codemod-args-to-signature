@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
+import { classify, doubleColonize } from '@codemod-utils/ember-cli-string';
 import {
   createFiles,
   type FileContent,
@@ -8,10 +9,7 @@ import {
 } from '@codemod-utils/files';
 
 import type { Context, Options } from '../types/index.js';
-import {
-  getComponentFilePath,
-  transformEntityName,
-} from '../utils/components.js';
+import { getComponentFilePath } from '../utils/components.js';
 import {
   createRegistry,
   hasRegistry,
@@ -27,7 +25,11 @@ export function createRegistries(context: Context, options: Options): void {
     const filePath = getComponentFilePath(options)(entityName);
 
     const data = {
-      entity: transformEntityName(entityName),
+      entity: {
+        classifiedName: classify(entityName),
+        doubleColonizedName: doubleColonize(entityName),
+        name: entityName,
+      },
     };
 
     try {

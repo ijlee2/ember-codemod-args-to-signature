@@ -1,6 +1,5 @@
 import { AST } from '@codemod-utils/ast-javascript';
 
-import type { TransformedEntityName } from '../../../utils/components.js';
 import {
   builderConvertArgsToSignature,
   builderCreateSignature,
@@ -9,7 +8,9 @@ import { isSignature } from './is-signature.js';
 
 type Options = {
   data: {
-    entity: TransformedEntityName;
+    entity: {
+      classifiedName: string;
+    };
   };
   interfaceName: string;
 };
