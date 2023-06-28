@@ -3,9 +3,11 @@ import { join } from 'node:path';
 
 import type { ExtensionMap, Options, SignatureMap } from '../../types/index.js';
 import { getComponentFilePath } from '../../utils/components.js';
-import { findArguments } from './find-arguments.js';
-import { findBlocks } from './find-blocks.js';
-import { findElement } from './find-element.js';
+import {
+  findArguments,
+  findBlocks,
+  findElement,
+} from './analyze-components/index.js';
 
 export function analyzeComponents(
   extensionMap: ExtensionMap,

@@ -1,10 +1,10 @@
 import { AST } from '@codemod-utils/ast-template';
 
-import type { Signature } from '../../types/index.js';
+import type { Signature } from '../../../types/index.js';
 import {
   getBlockParameterType,
   normalizeBlockName,
-} from '../../utils/components.js';
+} from '../../../utils/components.js';
 
 export function findBlocks(
   templateFile: string | undefined,

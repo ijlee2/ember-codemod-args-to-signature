@@ -1,7 +1,7 @@
 import { AST } from '@codemod-utils/ast-template';
 
-import type { Signature } from '../../types/index.js';
-import { getHtmlInterface } from '../../utils/components.js';
+import type { Signature } from '../../../types/index.js';
+import { getHtmlInterface } from '../../../utils/components.js';
 
 export function findElement(
   templateFile: string | undefined,
