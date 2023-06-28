@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { findFiles, renamePathByDirectory } from '@codemod-utils/files';
 
 import type { ExtensionMap, Options } from '../../types/index.js';
-import { analyzeFilePaths } from './analyze-file-paths.js';
+import { analyzeFilePaths } from '../../utils/components.js';
 
 export function findComponents(options: Options): ExtensionMap {
   const { componentStructure, projectRoot, src } = options;
