@@ -2,9 +2,11 @@ import {
   getBaseComponent,
   type TransformedEntityName,
 } from '../../utils/components.js';
-import { passSignatureToBaseComponent } from './pass-signature-to-base-component.js';
-import { updateConstructor } from './update-constructor.js';
-import { updateReferences } from './update-references.js';
+import {
+  passSignatureToBaseComponent,
+  updateConstructor,
+  updateReferences,
+} from './create-signature/index.js';
 
 type Data = {
   entity: TransformedEntityName;
