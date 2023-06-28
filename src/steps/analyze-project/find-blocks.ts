@@ -6,8 +6,10 @@ import {
   normalizeBlockName,
 } from '../../utils/components.js';
 
-export function findBlocks(file: string | undefined): Signature['Blocks'] {
-  if (file === undefined) {
+export function findBlocks(
+  templateFile: string | undefined,
+): Signature['Blocks'] {
+  if (templateFile === undefined) {
     return;
   }
 
@@ -15,7 +17,7 @@ export function findBlocks(file: string | undefined): Signature['Blocks'] {
 
   const blocksMap = new Map<string, string[]>();
 
-  traverse(file, {
+  traverse(templateFile, {
     MustacheStatement(node) {
       if (
         node.path.type !== 'PathExpression' ||

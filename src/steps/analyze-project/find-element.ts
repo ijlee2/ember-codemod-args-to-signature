@@ -3,8 +3,10 @@ import { AST } from '@codemod-utils/ast-template';
 import type { Signature } from '../../types/index.js';
 import { getHtmlInterface } from '../../utils/components.js';
 
-export function findElement(file: string | undefined): Signature['Element'] {
-  if (file === undefined) {
+export function findElement(
+  templateFile: string | undefined,
+): Signature['Element'] {
+  if (templateFile === undefined) {
     return;
   }
 
@@ -12,7 +14,7 @@ export function findElement(file: string | undefined): Signature['Element'] {
 
   const htmlInterfaces = new Set<string>();
 
-  traverse(file, {
+  traverse(templateFile, {
     ElementNode(node) {
       const hasSplattributes = node.attributes.find(({ name }) => {
         return name === '...attributes';
