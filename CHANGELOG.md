@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.2 (2023-07-04)
+
+### Internal
+* [#28](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/28) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
+### Committers: 1
+- Isaac Lee ([@ijlee2](https://github.com/ijlee2))
+
+
 ## 0.3.1 (2023-06-28)
 
 ### Enhancement
