@@ -15,6 +15,7 @@ type Data = {
 
 function getBodyNode(node: unknown, key: 'Args' | 'Blocks' | 'Element') {
   // @ts-ignore: Assume that types from external packages are correct
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
   return node.body.body.find((node) => {
     if (node.type !== 'TSPropertySignature' || node.key.type !== 'Identifier') {
       return false;
