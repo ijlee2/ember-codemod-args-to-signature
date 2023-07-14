@@ -78,7 +78,7 @@ ember-codemod-args-to-signature --src src/components
 By default, an Octane project has the flat component structure. Pass `--component-structure` to indicate otherwise.
 
 ```sh
-npx ember-codemod-args-to-signature --component-structure="nested"
+npx ember-codemod-args-to-signature --component-structure nested
 ```
 
 </details>
@@ -89,7 +89,7 @@ npx ember-codemod-args-to-signature --component-structure="nested"
 Pass `--root` to run the codemod on a project somewhere else (i.e. not in the current directory).
 
 ```sh
-npx ember-codemod-args-to-signature --root=<path/to/your/project>
+npx ember-codemod-args-to-signature --root <path/to/your/project>
 ```
 
 </details>
@@ -108,7 +108,7 @@ cd <path/to/cloned/repo>
 pnpm build
 
 # Run codemod
-./dist/bin/ember-codemod-args-to-signature.js --root=<path/to/your/project>
+./dist/bin/ember-codemod-args-to-signature.js --root <path/to/your/project>
 ```
 
 
