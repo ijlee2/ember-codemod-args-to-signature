@@ -36,7 +36,6 @@ module.exports = {
       rules: {
         '@typescript-eslint/array-type': 'error',
         '@typescript-eslint/ban-ts-comment': 'off',
-        '@typescript-eslint/no-non-null-assertion': 'off',
         '@typescript-eslint/no-unsafe-argument': 'off',
         '@typescript-eslint/no-unsafe-assignment': 'off',
         '@typescript-eslint/no-unsafe-member-access': 'off',

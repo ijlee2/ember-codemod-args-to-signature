@@ -16,25 +16,25 @@
 pnpm build
 
 ./codemod-test-fixture.sh \
-  -a "--src app/components" \
+  -N "--src app/components" \
   classic-components
 
 ./codemod-test-fixture.sh \
-  -a "--src app/components" \
+  -N "--src app/components" \
   ember-container-query
 
 ./codemod-test-fixture.sh \
-  -a "--src addon/components" \
+  -N "--src addon/components" \
   ember-container-query-addon
 
 ./codemod-test-fixture.sh \
-  -a "--src src/components" \
+  -N "--src src/components" \
   ember-container-query-glint
 
 ./codemod-test-fixture.sh \
-  -a "--component-structure nested --src app/components" \
+  -N "--component-structure nested --src app/components" \
   ember-container-query-nested
 
 ./codemod-test-fixture.sh \
-  -a "--src app/components" \
+  -N "--src app/components" \
   ember-container-query-no-args
