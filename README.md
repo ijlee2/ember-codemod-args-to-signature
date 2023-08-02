@@ -7,10 +7,17 @@ _Codemod to convert component `Args` to `Signature`_<sup>1</sup>
 <sup>1. Components without `Args` are also supported.</sup>
 
 
+## What is it?
+
+To introduce Glint, you will need to write the [signature](https://typed-ember.gitbook.io/glint/environments/ember/component-signatures) and [template registry](https://typed-ember.gitbook.io/glint/environments/ember/template-registry) for each component. This can be an error-prone, onerous task for large projects.
+
+You can run this codemod to automate the required change.
+
+
 ## Features
 
-- Scaffolds [`Signature`](https://typed-ember.gitbook.io/glint/environments/ember/component-signatures) for components
-- Scaffolds [`Registry`](https://typed-ember.gitbook.io/glint/environments/ember/template-registry) for components
+- Scaffolds signature for components
+- Adds template registry for components
 - Preserves your code whenever possible
 - Focuses on maintainability and extensibility
 
@@ -63,16 +70,17 @@ You must pass `--src` to indicate the location of your components.
 
 ```sh
 # Apps
-ember-codemod-args-to-signature --src app/components
+npx ember-codemod-args-to-signature --src app/components
 
 # V1 addons
-ember-codemod-args-to-signature --src addon/components
+npx ember-codemod-args-to-signature --src addon/components
 
 # V2 addons
-ember-codemod-args-to-signature --src src/components
+npx ember-codemod-args-to-signature --src src/components
 ```
 
 <details>
+
 <summary>Optional: Specify the component structure</summary>
 
 By default, an Octane project has the flat component structure. Pass `--component-structure` to indicate otherwise.
@@ -84,6 +92,7 @@ npx ember-codemod-args-to-signature --component-structure nested
 </details>
 
 <details>
+
 <summary>Optional: Specify the project root</summary>
 
 Pass `--root` to run the codemod on a project somewhere else (i.e. not in the current directory).
