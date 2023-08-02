@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.3.3 (2023-08-02)
+
+### Internal
+* [#31](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/31) Updated documentations and development dependencies ([@ijlee2](https://github.com/ijlee2))
+* [#29](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/29) Supported @typescript-eslint@v6 and prettier@v3  ([@ijlee2](https://github.com/ijlee2))
+
+### Documentation
+* [#31](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/31) Updated documentations and development dependencies ([@ijlee2](https://github.com/ijlee2))
+* [#30](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/30) Patched #29 ([@ijlee2](https://github.com/ijlee2))
+
+### Committers: 1
+- Isaac Lee ([@ijlee2](https://github.com/ijlee2))
+
+
 ## 0.3.2 (2023-07-04)
 
 ### Internal
