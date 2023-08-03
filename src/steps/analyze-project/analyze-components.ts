@@ -31,15 +31,25 @@ export function analyzeComponents(
       ? readFileSync(join(projectRoot, filePath.replace('.ts', '.hbs')), 'utf8')
       : undefined;
 
-    const Args = findArguments({ classFile, templateFile });
-    const Blocks = findBlocks(templateFile);
-    const Element = findElement(templateFile);
+    try {
+      const Args = findArguments({ classFile, templateFile });
+      const Blocks = findBlocks(templateFile);
+      const Element = findElement(templateFile);
 
-    signatureMap.set(entityName, {
-      Args,
-      Blocks,
-      Element,
-    });
+      signatureMap.set(entityName, {
+        Args,
+        Blocks,
+        Element,
+      });
+    } catch (error) {
+      let message = `WARNING: analyzeComponents could not parse \`${filePath}\`. Please update the file manually.`;
+
+      if (error instanceof Error) {
+        message += ` (${error.message})`;
+      }
+
+      console.warn(`${message}\n`);
+    }
   }
 
   return signatureMap;

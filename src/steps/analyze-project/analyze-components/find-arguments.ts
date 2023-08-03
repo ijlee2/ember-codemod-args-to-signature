@@ -45,7 +45,7 @@ function analyzeClass(file?: string): Set<string> {
       const { id: leftHandSide, init: rightHandSide } = node.value;
       let isValid = false;
 
-      switch (rightHandSide.type) {
+      switch (rightHandSide?.type) {
         // Matches the pattern `const { someArgument } = this.args;`
         case 'MemberExpression': {
           if (
