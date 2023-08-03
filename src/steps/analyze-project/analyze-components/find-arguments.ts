@@ -43,6 +43,7 @@ function analyzeClass(file?: string): Set<string> {
 
     visitVariableDeclarator(node) {
       const { id: leftHandSide, init: rightHandSide } = node.value;
+      let isValid = false;
 
       switch (rightHandSide.type) {
         // Matches the pattern `const { foo } = this.args;`
@@ -55,33 +56,15 @@ function analyzeClass(file?: string): Set<string> {
             break;
           }
 
-          // @ts-ignore: Assume that types from external packages are correct
-          leftHandSide.properties.forEach((property) => {
-            switch (property.key.type) {
-              case 'Identifier': {
-                args.add(property.key.name as string);
-
-                break;
-              }
-
-              case 'StringLiteral': {
-                args.add(property.key.value as string);
-
-                break;
-              }
-            }
-          });
+          isValid = true;
 
           break;
         }
 
         // Matches the pattern `const { foo } = this.args as Args;`
         case 'TSAsExpression': {
-          if (rightHandSide.expression.type !== 'MemberExpression') {
-            break;
-          }
-
           if (
+            rightHandSide.expression.type !== 'MemberExpression' ||
             rightHandSide.expression.object.type !== 'ThisExpression' ||
             rightHandSide.expression.property.type !== 'Identifier' ||
             rightHandSide.expression.property.name !== 'args'
@@ -89,26 +72,32 @@ function analyzeClass(file?: string): Set<string> {
             break;
           }
 
-          // @ts-ignore: Assume that types from external packages are correct
-          leftHandSide.properties.forEach((property) => {
-            switch (property.key.type) {
-              case 'Identifier': {
-                args.add(property.key.name as string);
-
-                break;
-              }
-
-              case 'StringLiteral': {
-                args.add(property.key.value as string);
-
-                break;
-              }
-            }
-          });
+          isValid = true;
 
           break;
         }
       }
+
+      if (!isValid) {
+        return false;
+      }
+
+      // @ts-ignore: Assume that types from external packages are correct
+      leftHandSide.properties.forEach((property) => {
+        switch (property.key.type) {
+          case 'Identifier': {
+            args.add(property.key.name as string);
+
+            break;
+          }
+
+          case 'StringLiteral': {
+            args.add(property.key.value as string);
+
+            break;
+          }
+        }
+      });
 
       return false;
     },
