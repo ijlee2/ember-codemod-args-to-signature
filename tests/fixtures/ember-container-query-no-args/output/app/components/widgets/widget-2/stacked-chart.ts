@@ -1,7 +1,9 @@
 import Component from '@glimmer/component';
 
 interface WidgetsWidget2StackedChartSignature {
-  Args: {};
+  Args: {
+    data: unknown;
+  };
 }
 
 export default class WidgetsWidget2StackedChartComponent extends Component<WidgetsWidget2StackedChartSignature> {}

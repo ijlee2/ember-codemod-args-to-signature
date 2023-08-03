@@ -1,7 +1,9 @@
 import Component from '@glimmer/component';
 
 interface UiPageSignature {
-  Args: {};
+  Args: {
+    title: unknown;
+  };
   Blocks: {
     default: [];
   };

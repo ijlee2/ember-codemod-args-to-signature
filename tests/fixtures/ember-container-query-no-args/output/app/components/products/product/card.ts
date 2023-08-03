@@ -1,7 +1,10 @@
 import templateOnlyComponent from '@ember/component/template-only';
 
 interface ProductsProductCardSignature {
-  Args: {};
+  Args: {
+    product: unknown;
+    redirectTo: unknown;
+  };
   Element: HTMLElement;
 }
 

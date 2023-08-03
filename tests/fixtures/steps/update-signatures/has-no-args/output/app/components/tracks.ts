@@ -1,7 +1,9 @@
 import Component from '@glimmer/component';
 
 interface TracksSignature {
-  Args: {};
+  Args: {
+    tracks: unknown;
+  };
   Element: HTMLElement;
 }
 

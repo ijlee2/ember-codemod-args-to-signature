@@ -2,7 +2,14 @@ import { action, get } from '@ember/object';
 import Component from '@glimmer/component';
 
 interface UiFormInputSignature {
-  Args: {};
+  Args: {
+    isDisabled: unknown;
+    isReadOnly: unknown;
+    isRequired: unknown;
+    isWide: unknown;
+    label: unknown;
+    placeholder: unknown;
+  };
 }
 
 export default class UiFormInputComponent extends Component<UiFormInputSignature> {

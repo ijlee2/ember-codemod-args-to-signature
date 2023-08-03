@@ -4,7 +4,10 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
 interface UiFormSignature {
-  Args: {};
+  Args: {
+    instructions: unknown;
+    title: unknown;
+  };
   Blocks: {
     default: [unknown];
   };

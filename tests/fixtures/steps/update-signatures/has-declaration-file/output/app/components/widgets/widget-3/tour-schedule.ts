@@ -1,7 +1,9 @@
 import templateOnlyComponent from '@ember/component/template-only';
 
 interface WidgetsWidget3TourScheduleSignature {
-  Args: {};
+  Args: {
+    concert: unknown;
+  };
 }
 
 const WidgetsWidget3TourScheduleComponent =

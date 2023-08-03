@@ -1,6 +1,7 @@
 import templateOnlyComponent from '@ember/component/template-only';
 
 interface WidgetsWidget1Signature {
+  Args: {};
   Element: HTMLElement;
 }
 
