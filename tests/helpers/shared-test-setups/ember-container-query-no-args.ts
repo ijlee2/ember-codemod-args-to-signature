@@ -79,7 +79,7 @@ const context: Context = {
     [
       'tracks/list',
       {
-        Args: ['numColumns', 'tracks'],
+        Args: ['num-columns', 'tracks'],
         Blocks: undefined,
         Element: ['HTMLUListElement'],
       },
@@ -96,7 +96,7 @@ const context: Context = {
       'ui/form',
       {
         Args: ['data', 'instructions', 'title'],
-        Blocks: new Map([['default', ['unknown']]]),
+        Blocks: new Map([['the-default-block', ['unknown']]]),
         Element: ['HTMLFormElement'],
       },
     ],

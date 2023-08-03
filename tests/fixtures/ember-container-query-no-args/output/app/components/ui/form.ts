@@ -10,7 +10,7 @@ interface UiFormSignature {
     title: unknown;
   };
   Blocks: {
-    default: [unknown];
+    'the-default-block': [unknown];
   };
   Element: HTMLFormElement;
 }
