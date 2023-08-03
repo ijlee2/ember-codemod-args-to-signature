@@ -32,10 +32,21 @@ function builderConvertTsTypeToKeyword(tsType: string) {
 }
 
 export function builderCreateArgsNode(signature: Signature) {
+  const members: unknown[] = [];
+
+  (signature.Args ?? []).forEach((argumentName) => {
+    members.push(
+      AST.builders.tsPropertySignature(
+        AST.builders.identifier(argumentName),
+        AST.builders.tsTypeAnnotation(AST.builders.tsUnknownKeyword()),
+      ),
+    );
+  });
+
   return AST.builders.tsPropertySignature(
     AST.builders.identifier('Args'),
     // @ts-ignore: Assume that types from external packages are correct
-    AST.builders.tsTypeAnnotation(AST.builders.tsTypeLiteral([])),
+    AST.builders.tsTypeAnnotation(AST.builders.tsTypeLiteral(members)),
     false,
   );
 }
