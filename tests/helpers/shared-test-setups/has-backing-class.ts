@@ -41,7 +41,7 @@ const context: Context = {
     [
       'navigation-menu',
       {
-        Args: undefined,
+        Args: ['menuItems', 'name'],
         Blocks: undefined,
         Element: ['HTMLElement'],
       },
@@ -49,7 +49,7 @@ const context: Context = {
     [
       'products/product/card',
       {
-        Args: undefined,
+        Args: ['product', 'redirectTo'],
         Blocks: undefined,
         Element: ['HTMLElement'],
       },
@@ -57,7 +57,7 @@ const context: Context = {
     [
       'products/product/image',
       {
-        Args: undefined,
+        Args: ['src'],
         Blocks: undefined,
         Element: ['HTMLDivElement', 'HTMLImageElement'],
       },
@@ -65,7 +65,7 @@ const context: Context = {
     [
       'tracks/list',
       {
-        Args: undefined,
+        Args: ['tracks'],
         Blocks: undefined,
         Element: ['HTMLUListElement'],
       },
@@ -73,7 +73,7 @@ const context: Context = {
     [
       'ui/form',
       {
-        Args: undefined,
+        Args: ['instructions', 'title'],
         Blocks: new Map([['default', ['unknown']]]),
         Element: ['HTMLFormElement'],
       },
@@ -81,7 +81,14 @@ const context: Context = {
     [
       'ui/form/checkbox',
       {
-        Args: undefined,
+        Args: [
+          'isDisabled',
+          'isInline',
+          'isReadOnly',
+          'isRequired',
+          'isWide',
+          'label',
+        ],
         Blocks: undefined,
         Element: undefined,
       },
@@ -89,7 +96,7 @@ const context: Context = {
     [
       'ui/form/field',
       {
-        Args: undefined,
+        Args: ['errorMessage', 'isInline', 'isWide'],
         Blocks: new Map([
           ['field', ['unknown']],
           ['label', ['unknown']],
@@ -100,7 +107,14 @@ const context: Context = {
     [
       'ui/form/input',
       {
-        Args: undefined,
+        Args: [
+          'isDisabled',
+          'isReadOnly',
+          'isRequired',
+          'isWide',
+          'label',
+          'placeholder',
+        ],
         Blocks: undefined,
         Element: undefined,
       },
@@ -108,7 +122,14 @@ const context: Context = {
     [
       'ui/form/textarea',
       {
-        Args: undefined,
+        Args: [
+          'isDisabled',
+          'isReadOnly',
+          'isRequired',
+          'isWide',
+          'label',
+          'placeholder',
+        ],
         Blocks: undefined,
         Element: undefined,
       },
@@ -116,7 +137,7 @@ const context: Context = {
     [
       'ui/page',
       {
-        Args: undefined,
+        Args: ['title'],
         Blocks: new Map([['default', []]]),
         Element: ['HTMLDivElement'],
       },
@@ -124,7 +145,7 @@ const context: Context = {
     [
       'widgets/widget-1',
       {
-        Args: undefined,
+        Args: [],
         Blocks: undefined,
         Element: ['HTMLElement'],
       },
@@ -132,7 +153,7 @@ const context: Context = {
     [
       'widgets/widget-2',
       {
-        Args: undefined,
+        Args: [],
         Blocks: undefined,
         Element: undefined,
       },
@@ -140,7 +161,7 @@ const context: Context = {
     [
       'widgets/widget-2/captions',
       {
-        Args: undefined,
+        Args: [],
         Blocks: undefined,
         Element: undefined,
       },
@@ -148,7 +169,7 @@ const context: Context = {
     [
       'widgets/widget-2/stacked-chart',
       {
-        Args: undefined,
+        Args: ['data'],
         Blocks: undefined,
         Element: undefined,
       },
@@ -156,7 +177,7 @@ const context: Context = {
     [
       'widgets/widget-3',
       {
-        Args: undefined,
+        Args: [],
         Blocks: undefined,
         Element: undefined,
       },
@@ -164,7 +185,7 @@ const context: Context = {
     [
       'widgets/widget-3/tour-schedule/responsive-image',
       {
-        Args: undefined,
+        Args: [],
         Blocks: undefined,
         Element: undefined,
       },
@@ -172,7 +193,7 @@ const context: Context = {
     [
       'widgets/widget-4',
       {
-        Args: undefined,
+        Args: [],
         Blocks: undefined,
         Element: undefined,
       },
@@ -180,7 +201,7 @@ const context: Context = {
     [
       'widgets/widget-4/memo',
       {
-        Args: undefined,
+        Args: [],
         Blocks: undefined,
         Element: undefined,
       },
@@ -188,7 +209,7 @@ const context: Context = {
     [
       'widgets/widget-4/memo/actions',
       {
-        Args: undefined,
+        Args: ['cqFeatures'],
         Blocks: undefined,
         Element: undefined,
       },
@@ -196,7 +217,7 @@ const context: Context = {
     [
       'widgets/widget-4/memo/body',
       {
-        Args: undefined,
+        Args: ['cqFeatures'],
         Blocks: undefined,
         Element: undefined,
       },
@@ -204,7 +225,7 @@ const context: Context = {
     [
       'widgets/widget-4/memo/header',
       {
-        Args: undefined,
+        Args: ['cqFeatures'],
         Blocks: undefined,
         Element: undefined,
       },

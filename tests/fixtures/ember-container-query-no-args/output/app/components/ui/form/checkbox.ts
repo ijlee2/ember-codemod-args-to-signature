@@ -2,7 +2,14 @@ import { action, get } from '@ember/object';
 import Component from '@glimmer/component';
 
 interface UiFormCheckboxSignature {
-  Args: {};
+  Args: {
+    isDisabled: unknown;
+    isInline: unknown;
+    isReadOnly: unknown;
+    isRequired: unknown;
+    isWide: unknown;
+    label: unknown;
+  };
 }
 
 export default class UiFormCheckboxComponent extends Component<UiFormCheckboxSignature> {

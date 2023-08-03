@@ -1,7 +1,9 @@
 import Component from '@glimmer/component';
 
 interface WidgetsWidget4MemoHeaderSignature {
-  Args: {};
+  Args: {
+    cqFeatures: unknown;
+  };
 }
 
 const WidgetsWidget4MemoHeaderComponent = class FooComponent extends Component<WidgetsWidget4MemoHeaderSignature> {}

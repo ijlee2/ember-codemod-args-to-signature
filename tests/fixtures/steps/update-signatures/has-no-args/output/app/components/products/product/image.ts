@@ -2,7 +2,9 @@ import Component from '@glimmer/component';
 import config from 'docs-app/config/environment';
 
 interface ProductsProductImageSignature {
-  Args: {};
+  Args: {
+    src: unknown;
+  };
   Element: HTMLDivElement | HTMLImageElement;
 }
 

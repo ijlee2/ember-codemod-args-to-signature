@@ -1,7 +1,9 @@
 import templateOnlyComponent from '@ember/component/template-only';
 
 interface WidgetsWidget1ItemSignature {
-  Args: {};
+  Args: {
+    title: unknown;
+  };
 }
 
 const WidgetsWidget1ItemComponent =

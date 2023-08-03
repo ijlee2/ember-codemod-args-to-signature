@@ -1,7 +1,10 @@
 import templateOnlyComponent from '@ember/component/template-only';
 
 interface NavigationMenuSignature {
-  Args: {};
+  Args: {
+    menuItems: unknown;
+    name: unknown;
+  };
   Element: HTMLElement;
 }
 
