@@ -3,8 +3,9 @@ import { AST as ASTTemplate } from '@codemod-utils/ast-template';
 
 import type { Signature } from '../../../types/index.js';
 
-function analyzeTemplate(file: string, args: Set<string>): void {
+function analyzeTemplate(file: string): Set<string> {
   const traverse = ASTTemplate.traverse();
+  const args = new Set<string>();
 
   traverse(file, {
     PathExpression(node) {
@@ -18,6 +19,8 @@ function analyzeTemplate(file: string, args: Set<string>): void {
       args.add(key);
     },
   });
+
+  return args;
 }
 
 export function findArguments({
@@ -31,13 +34,13 @@ export function findArguments({
     return;
   }
 
-  const args = new Set<string>();
-
-  analyzeTemplate(templateFile, args);
+  const argsFromTemplate = analyzeTemplate(templateFile);
 
   if (classFile !== undefined) {
-    // analyzeClass(classFile, args);
+    // const argsFromClass = analyzeClass(classFile);
   }
+
+  const args = new Set([...argsFromTemplate]);
 
   return Array.from(args).sort();
 }
