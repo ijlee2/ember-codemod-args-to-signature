@@ -52,7 +52,7 @@ export function passComponentNameToBaseComponent(
         return false;
       }
 
-      switch (declaration.init!.type) {
+      switch (declaration.init?.type) {
         case 'CallExpression': {
           if (
             declaration.init.callee.type !== 'Identifier' ||

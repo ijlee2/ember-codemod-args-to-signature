@@ -43,7 +43,9 @@ export function updateSignature(file: string, data: Data): string {
       const argsNode = getBodyNode(path.node, 'Args');
 
       const isArgsKnown =
-        argsNode?.typeAnnotation.typeAnnotation.members.length > 0;
+        argsNode &&
+        argsNode.typeAnnotation.typeAnnotation.type === 'TSTypeLiteral' &&
+        argsNode.typeAnnotation.typeAnnotation.members.length > 0;
 
       const ArgsNode = isArgsKnown
         ? argsNode
