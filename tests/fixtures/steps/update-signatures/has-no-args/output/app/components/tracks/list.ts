@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 
 interface TracksListSignature {
   Args: {
+    numColumns: unknown;
     tracks: unknown;
   };
   Element: HTMLUListElement;

@@ -3,12 +3,16 @@ import Component from '@glimmer/component';
 
 interface UiFormInputSignature {
   Args: {
+    changeset: unknown;
     isDisabled: unknown;
     isReadOnly: unknown;
     isRequired: unknown;
     isWide: unknown;
+    key: unknown;
     label: unknown;
+    onUpdate: unknown;
     placeholder: unknown;
+    type: unknown;
   };
 }
 

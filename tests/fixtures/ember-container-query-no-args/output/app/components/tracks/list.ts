@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 
 interface TracksListSignature {
   Args: {
+    'num-columns': unknown;
     tracks: unknown;
   };
   Element: HTMLUListElement;
@@ -9,7 +10,7 @@ interface TracksListSignature {
 
 export default class TracksListComponent extends Component<TracksListSignature> {
   get numColumns(): number {
-    const { numColumns } = this.args;
+    const { 'num-columns': numColumns } = this.args;
 
     return numColumns ?? 1;
   }

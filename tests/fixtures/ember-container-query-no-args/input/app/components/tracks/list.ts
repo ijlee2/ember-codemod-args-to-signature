@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 
 export default class TracksListComponent extends Component {
   get numColumns(): number {
-    const { numColumns } = this.args;
+    const { 'num-columns': numColumns } = this.args;
 
     return numColumns ?? 1;
   }

@@ -31,13 +31,19 @@ function builderConvertTsTypeToKeyword(tsType: string) {
   }
 }
 
+function needsQuotations(key: string): boolean {
+  return key.includes('-');
+}
+
 export function builderCreateArgsNode(signature: Signature) {
   const members: unknown[] = [];
 
   (signature.Args ?? []).forEach((argumentName) => {
     members.push(
       AST.builders.tsPropertySignature(
-        AST.builders.identifier(argumentName),
+        needsQuotations(argumentName)
+          ? AST.builders.stringLiteral(argumentName)
+          : AST.builders.identifier(argumentName),
         AST.builders.tsTypeAnnotation(AST.builders.tsUnknownKeyword()),
       ),
     );
@@ -61,7 +67,9 @@ export function builderCreateBlocksNode(signature: Signature) {
   signature.Blocks.forEach((positionalArgumentTypes, blockName) => {
     members.push(
       AST.builders.tsPropertySignature(
-        AST.builders.identifier(blockName),
+        needsQuotations(blockName)
+          ? AST.builders.stringLiteral(blockName)
+          : AST.builders.identifier(blockName),
         AST.builders.tsTypeAnnotation(
           AST.builders.tsTupleType(
             positionalArgumentTypes.map(builderConvertTsTypeToKeyword),
