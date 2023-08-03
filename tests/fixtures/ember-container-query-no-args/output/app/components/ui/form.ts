@@ -5,6 +5,7 @@ import { tracked } from '@glimmer/tracking';
 
 interface UiFormSignature {
   Args: {
+    data: unknown;
     instructions: unknown;
     title: unknown;
   };

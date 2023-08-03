@@ -3,12 +3,15 @@ import Component from '@glimmer/component';
 
 interface UiFormCheckboxSignature {
   Args: {
+    changeset: unknown;
     isDisabled: unknown;
     isInline: unknown;
     isReadOnly: unknown;
     isRequired: unknown;
     isWide: unknown;
+    key: unknown;
     label: unknown;
+    onUpdate: unknown;
   };
 }
 

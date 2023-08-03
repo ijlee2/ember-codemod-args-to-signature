@@ -9,6 +9,7 @@ interface UiFormInputSignature {
     isWide: unknown;
     label: unknown;
     placeholder: unknown;
+    type: unknown;
   };
 }
 

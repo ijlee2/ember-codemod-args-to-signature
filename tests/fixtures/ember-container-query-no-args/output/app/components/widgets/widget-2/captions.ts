@@ -16,7 +16,9 @@ const colorSvg = modifier((container: Element, [color]: [string]) => {
 });
 
 interface WidgetsWidget2CaptionsSignature {
-  Args: {};
+  Args: {
+    summaries: unknown;
+  };
 }
 
 export default class WidgetsWidget2CaptionsComponent extends Component<WidgetsWidget2CaptionsSignature> {

@@ -95,7 +95,7 @@ const context: Context = {
     [
       'ui/form',
       {
-        Args: ['instructions', 'title'],
+        Args: ['data', 'instructions', 'title'],
         Blocks: new Map([['default', ['unknown']]]),
         Element: ['HTMLFormElement'],
       },
@@ -144,6 +144,7 @@ const context: Context = {
           'isWide',
           'label',
           'placeholder',
+          'type',
         ],
         Blocks: undefined,
         Element: undefined,
@@ -199,7 +200,7 @@ const context: Context = {
     [
       'widgets/widget-2/captions',
       {
-        Args: [],
+        Args: ['summaries'],
         Blocks: undefined,
         Element: undefined,
       },
