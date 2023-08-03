@@ -40,6 +40,78 @@ function analyzeClass(file?: string): Set<string> {
 
       return false;
     },
+
+    visitVariableDeclarator(node) {
+      const { id: leftHandSide, init: rightHandSide } = node.value;
+
+      switch (rightHandSide.type) {
+        // Matches the pattern `const { foo } = this.args;`
+        case 'MemberExpression': {
+          if (
+            rightHandSide.object.type !== 'ThisExpression' ||
+            rightHandSide.property.type !== 'Identifier' ||
+            rightHandSide.property.name !== 'args'
+          ) {
+            break;
+          }
+
+          // @ts-ignore: Assume that types from external packages are correct
+          leftHandSide.properties.forEach((property) => {
+            switch (property.key.type) {
+              case 'Identifier': {
+                args.add(property.key.name as string);
+
+                break;
+              }
+
+              case 'StringLiteral': {
+                args.add(property.key.value as string);
+
+                break;
+              }
+            }
+          });
+
+          break;
+        }
+
+        // Matches the pattern `const { foo } = this.args as Args;`
+        case 'TSAsExpression': {
+          if (rightHandSide.expression.type !== 'MemberExpression') {
+            break;
+          }
+
+          if (
+            rightHandSide.expression.object.type !== 'ThisExpression' ||
+            rightHandSide.expression.property.type !== 'Identifier' ||
+            rightHandSide.expression.property.name !== 'args'
+          ) {
+            break;
+          }
+
+          // @ts-ignore: Assume that types from external packages are correct
+          leftHandSide.properties.forEach((property) => {
+            switch (property.key.type) {
+              case 'Identifier': {
+                args.add(property.key.name as string);
+
+                break;
+              }
+
+              case 'StringLiteral': {
+                args.add(property.key.value as string);
+
+                break;
+              }
+            }
+          });
+
+          break;
+        }
+      }
+
+      return false;
+    },
   });
 
   return args;
