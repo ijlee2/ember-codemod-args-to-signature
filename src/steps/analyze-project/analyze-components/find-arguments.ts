@@ -23,14 +23,14 @@ function analyzeClass(file?: string): Set<string> {
       }
 
       switch (node.value.property.type) {
-        // Matches the pattern `this.args.foo`
+        // Matches the pattern `this.args.someArgument`
         case 'Identifier': {
           args.add(node.value.property.name as string);
 
           break;
         }
 
-        // Matches the pattern `this.args['foo']`
+        // Matches the pattern `this.args['someArgument']`
         case 'StringLiteral': {
           args.add(node.value.property.value as string);
 
@@ -46,7 +46,7 @@ function analyzeClass(file?: string): Set<string> {
       let isValid = false;
 
       switch (rightHandSide.type) {
-        // Matches the pattern `const { foo } = this.args;`
+        // Matches the pattern `const { someArgument } = this.args;`
         case 'MemberExpression': {
           if (
             rightHandSide.object.type !== 'ThisExpression' ||
@@ -61,7 +61,7 @@ function analyzeClass(file?: string): Set<string> {
           break;
         }
 
-        // Matches the pattern `const { foo } = this.args as Args;`
+        // Matches the pattern `const { someArgument } = this.args as SomeType;`
         case 'TSAsExpression': {
           if (
             rightHandSide.expression.type !== 'MemberExpression' ||
