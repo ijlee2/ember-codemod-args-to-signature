@@ -31,6 +31,15 @@ function builderConvertTsTypeToKeyword(tsType: string) {
   }
 }
 
+export function builderCreateArgsNode(signature: Signature) {
+  return AST.builders.tsPropertySignature(
+    AST.builders.identifier('Args'),
+    // @ts-ignore: Assume that types from external packages are correct
+    AST.builders.tsTypeAnnotation(AST.builders.tsTypeLiteral([])),
+    false,
+  );
+}
+
 export function builderCreateBlocksNode(signature: Signature) {
   if (signature.Blocks === undefined) {
     return;

@@ -2,6 +2,7 @@ import { AST } from '@codemod-utils/ast-javascript';
 
 import type { Signature } from '../../types/index.js';
 import {
+  builderCreateArgsNode,
   builderCreateBlocksNode,
   builderCreateElementNode,
 } from './builders.js';
@@ -39,7 +40,14 @@ export function updateSignature(file: string, data: Data): string {
         return false;
       }
 
-      const ArgsNode = getBodyNode(path.node, 'Args');
+      const argsNode = getBodyNode(path.node, 'Args');
+
+      const isArgsKnown =
+        argsNode?.typeAnnotation.typeAnnotation.members.length > 0;
+
+      const ArgsNode = isArgsKnown
+        ? argsNode
+        : builderCreateArgsNode(data.signature);
 
       const BlocksNode =
         getBodyNode(path.node, 'Blocks') ??
