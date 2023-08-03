@@ -6,7 +6,9 @@ import { containerQuery, type Dimensions } from 'ember-container-query';
 import { findBestFittingImage } from '../../../../utils/components/widgets/widget-3';
 
 interface WidgetsWidget3TourScheduleResponsiveImageSignature {
-  Args: {};
+  Args: {
+    images: unknown;
+  };
 }
 
 export default class WidgetsWidget3TourScheduleResponsiveImageComponent extends Component<WidgetsWidget3TourScheduleResponsiveImageSignature> {

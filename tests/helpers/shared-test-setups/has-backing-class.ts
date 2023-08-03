@@ -65,7 +65,7 @@ const context: Context = {
     [
       'tracks/list',
       {
-        Args: ['tracks'],
+        Args: ['numColumns', 'tracks'],
         Blocks: undefined,
         Element: ['HTMLUListElement'],
       },
@@ -111,11 +111,14 @@ const context: Context = {
       'ui/form/input',
       {
         Args: [
+          'changeset',
           'isDisabled',
           'isReadOnly',
           'isRequired',
           'isWide',
+          'key',
           'label',
+          'onUpdate',
           'placeholder',
           'type',
         ],
@@ -127,11 +130,14 @@ const context: Context = {
       'ui/form/textarea',
       {
         Args: [
+          'changeset',
           'isDisabled',
           'isReadOnly',
           'isRequired',
           'isWide',
+          'key',
           'label',
+          'onUpdate',
           'placeholder',
         ],
         Blocks: undefined,
@@ -189,7 +195,7 @@ const context: Context = {
     [
       'widgets/widget-3/tour-schedule/responsive-image',
       {
-        Args: [],
+        Args: ['images'],
         Blocks: undefined,
         Element: undefined,
       },
