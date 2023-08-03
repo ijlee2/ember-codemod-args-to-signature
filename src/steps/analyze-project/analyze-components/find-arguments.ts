@@ -1,7 +1,15 @@
 // import { AST as ASTJavaScript } from '@codemod-utils/ast-javascript';
-// import { AST as ASTTemplate } from '@codemod-utils/ast-template';
+import { AST as ASTTemplate } from '@codemod-utils/ast-template';
 
 import type { Signature } from '../../../types/index.js';
+
+function analyzeTemplate(file: string) {
+  const traverse = ASTTemplate.traverse();
+
+  traverse(file, {
+    // ...
+  });
+}
 
 export function findArguments({
   classFile,
@@ -14,13 +22,11 @@ export function findArguments({
     return;
   }
 
-  // ...
+  analyzeTemplate(templateFile);
 
-  if (classFile === undefined) {
-    return;
+  if (classFile !== undefined) {
+    // analyzeClass(classFile);
   }
-
-  // ...
 
   return undefined;
 }
