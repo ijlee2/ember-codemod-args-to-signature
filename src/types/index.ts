@@ -12,7 +12,7 @@ type Context = {
 type ExtensionMap = Map<string, Set<string>>;
 
 type Signature = {
-  Args: Map<string, string[]> | undefined;
+  Args: string[] | undefined;
   Blocks: Map<string, string[]> | undefined;
   Element: string[] | undefined;
 };
