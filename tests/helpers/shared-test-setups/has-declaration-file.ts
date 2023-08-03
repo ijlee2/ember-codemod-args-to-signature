@@ -19,7 +19,7 @@ const context: Context = {
     [
       'tracks',
       {
-        Args: undefined,
+        Args: ['tracks'],
         Blocks: undefined,
         Element: ['HTMLElement'],
       },
@@ -27,7 +27,7 @@ const context: Context = {
     [
       'widgets/widget-3/tour-schedule',
       {
-        Args: undefined,
+        Args: ['concert'],
         Blocks: undefined,
         Element: undefined,
       },

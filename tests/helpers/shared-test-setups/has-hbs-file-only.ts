@@ -19,7 +19,7 @@ const context: Context = {
     [
       'ui/form/information',
       {
-        Args: undefined,
+        Args: ['formId', 'instructions', 'title'],
         Blocks: undefined,
         Element: undefined,
       },
@@ -27,7 +27,7 @@ const context: Context = {
     [
       'widgets/widget-5',
       {
-        Args: undefined,
+        Args: [],
         Blocks: undefined,
         Element: undefined,
       },
