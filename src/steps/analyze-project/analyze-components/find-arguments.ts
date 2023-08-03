@@ -14,7 +14,32 @@ function analyzeClass(file?: string): Set<string> {
   const traverse = ASTJavaScript.traverse(true);
 
   traverse(file, {
-    // ...
+    visitMemberExpression(node) {
+      if (
+        node.value.object.type !== 'MemberExpression' ||
+        node.value.object.property.name !== 'args'
+      ) {
+        return false;
+      }
+
+      switch (node.value.property.type) {
+        // Matches the pattern `this.args.foo`
+        case 'Identifier': {
+          args.add(node.value.property.name as string);
+
+          break;
+        }
+
+        // Matches the pattern `this.args['foo']`
+        case 'StringLiteral': {
+          args.add(node.value.property.value as string);
+
+          break;
+        }
+      }
+
+      return false;
+    },
   });
 
   return args;
