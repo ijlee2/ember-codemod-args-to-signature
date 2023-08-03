@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.1 (2023-08-03)
+
+### Bug Fix
+* [#36](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/36) Fixed incorrect type assumptions ([@ijlee2](https://github.com/ijlee2))
+
+### Committers: 1
+- Isaac Lee ([@ijlee2](https://github.com/ijlee2))
+
+
 ## 0.4.0 (2023-08-03)
 
 ### Bug Fix
