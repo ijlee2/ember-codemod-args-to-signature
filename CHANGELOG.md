@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.4.0 (2023-08-03)
+
+### Bug Fix
+* [#34](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/34) Fill out Signature['Args'] (Part 3) ([@ijlee2](https://github.com/ijlee2))
+
+### Enhancement
+* [#34](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/34) Fill out Signature['Args'] (Part 3) ([@ijlee2](https://github.com/ijlee2))
+* [#33](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/33) Fill out Signature['Args'] (Part 2) ([@ijlee2](https://github.com/ijlee2))
+* [#32](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/32) Fill out Signature['Args'] (Part 1) ([@ijlee2](https://github.com/ijlee2))
+
+### Internal
+* [#35](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/35) Updated development dependencies ([@ijlee2](https://github.com/ijlee2))
+
+### Committers: 1
+- Isaac Lee ([@ijlee2](https://github.com/ijlee2))
+
+
 ## 0.3.3 (2023-08-02)
 
 ### Internal
