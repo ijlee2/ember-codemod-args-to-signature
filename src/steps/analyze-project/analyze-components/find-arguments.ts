@@ -7,7 +7,13 @@ function analyzeTemplate(file: string) {
   const traverse = ASTTemplate.traverse();
 
   traverse(file, {
-    // ...
+    PathExpression(node) {
+      if (node.head.type !== 'AtHead') {
+        return;
+      }
+
+      console.log(`Argument name: ${node.original}`);
+    },
   });
 }
 
