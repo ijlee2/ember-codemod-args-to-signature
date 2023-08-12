@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.4.2 (2023-08-12)
+
+### Internal
+* [#41](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/41) Updated @codemod-utils packages ([@ijlee2](https://github.com/ijlee2))
+* [#39](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/39) Updated development dependencies ([@ijlee2](https://github.com/ijlee2))
+
+### Documentation
+* [#40](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/40) Documented issues that one can encounter in large projects ([@ijlee2](https://github.com/ijlee2))
+
+### Committers: 1
+- Isaac Lee ([@ijlee2](https://github.com/ijlee2))
+
+
 ## 0.4.1 (2023-08-03)
 
 ### Bug Fix
