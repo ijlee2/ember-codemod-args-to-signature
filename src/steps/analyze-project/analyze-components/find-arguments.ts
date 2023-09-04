@@ -116,10 +116,10 @@ function analyzeTemplate(file: string): Set<string> {
         return;
       }
 
-      const argumentName = node.original.replace(/^@/, '');
-      const key = argumentName.split('.')[0]!;
+      const value = node.original.replace(/^@/, '');
+      const arg = value.split('.')[0]!;
 
-      args.add(key);
+      args.add(arg);
     },
   });
 
@@ -130,9 +130,10 @@ export function findArguments(
   templateFile: string,
   classFile: string | undefined,
 ): Signature['Args'] {
-  const argsFromTemplate = analyzeTemplate(templateFile);
-  const argsFromClass = analyzeClass(classFile);
-  const args = new Set([...argsFromTemplate, ...argsFromClass]);
+  const args = new Set([
+    ...analyzeTemplate(templateFile),
+    ...analyzeClass(classFile),
+  ]);
 
   return Array.from(args).sort();
 }
