@@ -3,7 +3,7 @@ import { AST as ASTTemplate } from '@codemod-utils/ast-template';
 
 import type { Signature } from '../../../types/index.js';
 
-function analyzeClass(file?: string): Set<string> {
+function analyzeClass(file: string | undefined): Set<string> {
   const args = new Set<string>();
 
   if (file === undefined) {
@@ -126,17 +126,10 @@ function analyzeTemplate(file: string): Set<string> {
   return args;
 }
 
-export function findArguments({
-  classFile,
-  templateFile,
-}: {
-  classFile: string | undefined;
-  templateFile: string | undefined;
-}): Signature['Args'] {
-  if (templateFile === undefined) {
-    return;
-  }
-
+export function findArguments(
+  templateFile: string,
+  classFile: string | undefined,
+): Signature['Args'] {
   const argsFromTemplate = analyzeTemplate(templateFile);
   const argsFromClass = analyzeClass(classFile);
   const args = new Set([...argsFromTemplate, ...argsFromClass]);

@@ -18,21 +18,32 @@ export function analyzeComponents(
   const signatureMap: SignatureMap = new Map();
 
   for (const [entityName, extensions] of extensionMap) {
-    const filePath = getComponentFilePath(options)(entityName);
-
-    const hasBackingClass = extensions.has('.ts');
     const hasTemplate = extensions.has('.hbs');
+    const hasBackingClass = extensions.has('.ts');
+
+    if (!hasTemplate) {
+      signatureMap.set(entityName, {
+        Args: undefined,
+        Blocks: undefined,
+        Element: undefined,
+      });
+
+      continue;
+    }
+
+    const filePath = getComponentFilePath(options)(entityName);
 
     const classFile = hasBackingClass
       ? readFileSync(join(projectRoot, filePath), 'utf8')
       : undefined;
 
-    const templateFile = hasTemplate
-      ? readFileSync(join(projectRoot, filePath.replace('.ts', '.hbs')), 'utf8')
-      : undefined;
+    const templateFile = readFileSync(
+      join(projectRoot, filePath.replace(/\.ts$/, '.hbs')),
+      'utf8',
+    );
 
     try {
-      const Args = findArguments({ classFile, templateFile });
+      const Args = findArguments(templateFile, classFile);
       const Blocks = findBlocks(templateFile);
       const Element = findElement(templateFile);
 
