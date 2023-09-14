@@ -6,13 +6,7 @@ import {
   normalizeBlockName,
 } from '../../../utils/components.js';
 
-export function findBlocks(
-  templateFile: string | undefined,
-): Signature['Blocks'] {
-  if (templateFile === undefined) {
-    return;
-  }
-
+export function findBlocks(templateFile: string): Signature['Blocks'] {
   const traverse = AST.traverse();
 
   const blocksMap = new Map<string, string[]>();
