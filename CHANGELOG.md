@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.0.0 (2023-09-14)
+
+### Breaking Change
+* [#44](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/44) Dropped Node 16 support and marked stable ([@ijlee2](https://github.com/ijlee2))
+
+### Enhancement
+* [#43](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/43) Refactored code ([@ijlee2](https://github.com/ijlee2))
+
+### Internal
+* [#44](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/44) Dropped Node 16 support and marked stable ([@ijlee2](https://github.com/ijlee2))
+* [#42](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/42) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
+### Committers: 1
+- Isaac Lee ([@ijlee2](https://github.com/ijlee2))
+
+
 ## 0.4.2 (2023-08-12)
 
 ### Internal
