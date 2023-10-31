@@ -35,7 +35,7 @@
     "lint:types": "tsc --noEmit",
     "prepare": "pnpm build",
     "release:changelog": "lerna-changelog",
-    "release:publish": "pnpm build && pnpm publish",
+    "release:publish": "pnpm publish",
     "test": "./build.sh --test && mt dist-for-testing --quiet"
   },
   "dependencies": {
