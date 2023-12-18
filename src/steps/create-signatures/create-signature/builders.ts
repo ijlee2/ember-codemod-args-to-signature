@@ -4,7 +4,7 @@ export function builderConvertArgsToSignature(nodes: unknown[] = []) {
   return [
     AST.builders.tsPropertySignature(
       AST.builders.identifier('Args'),
-      // @ts-ignore: Assume that types from external packages are correct
+      // @ts-expect-error: Assume that types from external packages are correct
       AST.builders.tsTypeAnnotation(AST.builders.tsTypeLiteral(nodes)),
       false,
     ),
@@ -14,7 +14,7 @@ export function builderConvertArgsToSignature(nodes: unknown[] = []) {
 export function builderCreateSignature(identifier: string, members: unknown[]) {
   return AST.builders.tsInterfaceDeclaration(
     AST.builders.identifier(identifier),
-    // @ts-ignore: Assume that types from external packages are correct
+    // @ts-expect-error: Assume that types from external packages are correct
     AST.builders.tsInterfaceBody(members),
   );
 }

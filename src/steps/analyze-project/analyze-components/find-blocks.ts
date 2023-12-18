@@ -24,7 +24,7 @@ export function findBlocks(templateFile: string): Signature['Blocks'] {
         return key === 'to';
       });
 
-      // @ts-ignore: Assume that types from external packages are correct
+      // @ts-expect-error: Assume that types from external packages are correct
       const blockName = normalizeBlockName(toArgument?.value.original);
 
       const positionalArgumentTypes = node.params.map(
