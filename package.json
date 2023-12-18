@@ -1,6 +1,6 @@
 {
   "name": "ember-codemod-args-to-signature",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Codemod to component convert Args to Signature",
   "keywords": [
     "codemod",
@@ -35,7 +35,7 @@
     "lint:types": "tsc --noEmit",
     "prepare": "pnpm build",
     "release:changelog": "lerna-changelog",
-    "release:publish": "pnpm publish",
+    "release:package": "pnpm publish",
     "test": "./build.sh --test && mt dist-for-testing --quiet"
   },
   "dependencies": {
