@@ -15,7 +15,7 @@ type Data = {
 };
 
 function getBodyNode(node: unknown, key: 'Args' | 'Blocks' | 'Element') {
-  // @ts-ignore: Assume that types from external packages are correct
+  // @ts-expect-error: Assume that types from external packages are correct
   return node.body.body.find((node) => {
     if (node.type !== 'TSPropertySignature' || node.key.type !== 'Identifier') {
       return false;

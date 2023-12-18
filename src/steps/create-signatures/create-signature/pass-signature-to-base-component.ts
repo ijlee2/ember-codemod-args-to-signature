@@ -37,7 +37,7 @@ export function passSignatureToBaseComponent(
         return false;
       }
 
-      // @ts-ignore: Assume that types from external packages are correct
+      // @ts-expect-error: Assume that types from external packages are correct
       const typeParameters = path.node.typeParameters;
 
       // When the interface is missing
@@ -55,7 +55,7 @@ export function passSignatureToBaseComponent(
               builderCreateSignature(identifier, members),
             );
 
-            // @ts-ignore: Assume that types from external packages are correct
+            // @ts-expect-error: Assume that types from external packages are correct
             path.node.typeParameters = builderPassSignature(identifier);
 
             break;
@@ -71,7 +71,7 @@ export function passSignatureToBaseComponent(
               builderCreateSignature(identifier, members),
             );
 
-            // @ts-ignore: Assume that types from external packages are correct
+            // @ts-expect-error: Assume that types from external packages are correct
             path.node.typeParameters = builderPassSignature(identifier);
 
             break;
@@ -101,7 +101,7 @@ export function passSignatureToBaseComponent(
                 builderCreateSignature(identifier, members),
               );
 
-              // @ts-ignore: Assume that types from external packages are correct
+              // @ts-expect-error: Assume that types from external packages are correct
               path.node.typeParameters = builderPassSignature(identifier);
 
               break;
@@ -117,7 +117,7 @@ export function passSignatureToBaseComponent(
                 builderCreateSignature(identifier, members),
               );
 
-              // @ts-ignore: Assume that types from external packages are correct
+              // @ts-expect-error: Assume that types from external packages are correct
               path.node.typeParameters = builderPassSignature(identifier);
 
               break;

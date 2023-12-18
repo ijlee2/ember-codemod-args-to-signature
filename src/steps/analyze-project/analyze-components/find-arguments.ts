@@ -82,7 +82,7 @@ function analyzeClass(file: string | undefined): Set<string> {
         return false;
       }
 
-      // @ts-ignore: Assume that types from external packages are correct
+      // @ts-expect-error: Assume that types from external packages are correct
       leftHandSide.properties.forEach((property) => {
         switch (property.key.type) {
           case 'Identifier': {
