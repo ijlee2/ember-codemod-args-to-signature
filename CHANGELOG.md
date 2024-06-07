@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.6 (2024-06-07)
+
+### Internal
+* [#50](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/50) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
+### Committers: 1
+- Isaac Lee ([@ijlee2](https://github.com/ijlee2))
+
+
 ## 1.0.5 (2024-04-26)
 
 ### Internal
