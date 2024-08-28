@@ -11,7 +11,7 @@ type Options = {
   baseComponentName: string;
   data: {
     entity: {
-      classifiedName: string;
+      pascalizedName: string;
     };
   };
 };
@@ -46,7 +46,7 @@ export function passSignatureToBaseComponent(
 
         switch (path.parentPath.node.type) {
           case 'ExportDefaultDeclaration': {
-            const identifier = `${data.entity.classifiedName}Signature`;
+            const identifier = `${data.entity.pascalizedName}Signature`;
             const index = path.parentPath.name;
 
             path.parentPath.parentPath.value.splice(
@@ -62,7 +62,7 @@ export function passSignatureToBaseComponent(
           }
 
           case 'VariableDeclarator': {
-            const identifier = `${data.entity.classifiedName}Signature`;
+            const identifier = `${data.entity.pascalizedName}Signature`;
             const index = path.parentPath.parentPath.parentPath.name;
 
             path.parentPath.parentPath.parentPath.parentPath.value.splice(
@@ -92,7 +92,7 @@ export function passSignatureToBaseComponent(
 
           switch (path.parentPath.node.type) {
             case 'ExportDefaultDeclaration': {
-              const identifier = `${data.entity.classifiedName}Signature`;
+              const identifier = `${data.entity.pascalizedName}Signature`;
               const index = path.parentPath.name;
 
               path.parentPath.parentPath.value.splice(
@@ -108,7 +108,7 @@ export function passSignatureToBaseComponent(
             }
 
             case 'VariableDeclarator': {
-              const identifier = `${data.entity.classifiedName}Signature`;
+              const identifier = `${data.entity.pascalizedName}Signature`;
               const index = path.parentPath.parentPath.parentPath.name;
 
               path.parentPath.parentPath.parentPath.parentPath.value.splice(
@@ -129,7 +129,7 @@ export function passSignatureToBaseComponent(
 
         // When the interface is defined "outside"
         case 'TSTypeReference': {
-          const identifier = `${data.entity.classifiedName}Signature`;
+          const identifier = `${data.entity.pascalizedName}Signature`;
 
           interfaceName = typeParameter.typeName.name;
           typeParameter.typeName.name = identifier;
@@ -158,7 +158,7 @@ export function passSignatureToBaseComponent(
 
         switch (path.parentPath.node.type) {
           case 'ExportDefaultDeclaration': {
-            const identifier = `${data.entity.classifiedName}Signature`;
+            const identifier = `${data.entity.pascalizedName}Signature`;
             const index = path.parentPath.name;
 
             path.parentPath.parentPath.value.splice(
@@ -173,7 +173,7 @@ export function passSignatureToBaseComponent(
           }
 
           case 'Program': {
-            const identifier = `${data.entity.classifiedName}Signature`;
+            const identifier = `${data.entity.pascalizedName}Signature`;
             const index = path.name;
 
             path.parentPath.value.splice(
@@ -200,7 +200,7 @@ export function passSignatureToBaseComponent(
             ? typeParameter.members
             : builderConvertArgsToSignature(typeParameter.members);
 
-          const identifier = `${data.entity.classifiedName}Signature`;
+          const identifier = `${data.entity.pascalizedName}Signature`;
           const index = path.parentPath.name;
 
           path.parentPath.parentPath.value.splice(
@@ -220,7 +220,7 @@ export function passSignatureToBaseComponent(
             break;
           }
 
-          const identifier = `${data.entity.classifiedName}Signature`;
+          const identifier = `${data.entity.pascalizedName}Signature`;
 
           interfaceName = typeParameter.typeName.name;
           typeParameter.typeName.name = identifier;
@@ -248,7 +248,7 @@ export function passSignatureToBaseComponent(
 
         switch (path.parentPath.node.type) {
           case 'VariableDeclarator': {
-            const identifier = `${data.entity.classifiedName}Signature`;
+            const identifier = `${data.entity.pascalizedName}Signature`;
             const index = path.parentPath.parentPath.parentPath.name;
 
             path.parentPath.parentPath.parentPath.parentPath.value.splice(
@@ -275,7 +275,7 @@ export function passSignatureToBaseComponent(
             ? typeParameter.members
             : builderConvertArgsToSignature(typeParameter.members);
 
-          const identifier = `${data.entity.classifiedName}Signature`;
+          const identifier = `${data.entity.pascalizedName}Signature`;
           const index = path.parentPath.parentPath.parentPath.name;
 
           path.parentPath.parentPath.parentPath.parentPath.value.splice(
@@ -295,7 +295,7 @@ export function passSignatureToBaseComponent(
             break;
           }
 
-          const identifier = `${data.entity.classifiedName}Signature`;
+          const identifier = `${data.entity.pascalizedName}Signature`;
 
           interfaceName = typeParameter.typeName.name;
           typeParameter.typeName.name = identifier;

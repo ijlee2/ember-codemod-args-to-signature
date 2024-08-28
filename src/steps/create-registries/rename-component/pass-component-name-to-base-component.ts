@@ -4,7 +4,7 @@ type Options = {
   baseComponentName: string;
   data: {
     entity: {
-      classifiedName: string;
+      pascalizedName: string;
     };
   };
 };
@@ -33,14 +33,14 @@ export function passComponentNameToBaseComponent(
 
       if (!path.node.id) {
         path.node.id = AST.builders.identifier(
-          `${data.entity.classifiedName}Component`,
+          `${data.entity.pascalizedName}Component`,
         );
 
         return false;
       }
 
       componentName = path.node.id.name as string;
-      path.node.id.name = `${data.entity.classifiedName}Component`;
+      path.node.id.name = `${data.entity.pascalizedName}Component`;
 
       return false;
     },
@@ -63,7 +63,7 @@ export function passComponentNameToBaseComponent(
           }
 
           componentName = declaration.id.name;
-          declaration.id.name = `${data.entity.classifiedName}Component`;
+          declaration.id.name = `${data.entity.pascalizedName}Component`;
 
           return false;
         }
@@ -79,7 +79,7 @@ export function passComponentNameToBaseComponent(
           }
 
           componentName = declaration.id.name;
-          declaration.id.name = `${data.entity.classifiedName}Component`;
+          declaration.id.name = `${data.entity.pascalizedName}Component`;
 
           return false;
         }

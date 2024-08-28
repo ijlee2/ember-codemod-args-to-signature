@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-import { classify } from '@codemod-utils/ember-cli-string';
+import { pascalize } from '@codemod-utils/ember';
 import {
   createFiles,
   type FileContent,
@@ -22,7 +22,7 @@ export function createSignatures(context: Context, options: Options): void {
 
     const data = {
       entity: {
-        classifiedName: classify(entityName),
+        pascalizedName: pascalize(entityName),
       },
     };
 

@@ -1,8 +1,8 @@
 import templateOnlyComponent from '@ember/component/template-only';
 
-interface <%= entity.classifiedName %>Signature {}
+interface <%= entity.pascalizedName %>Signature {}
 
-const <%= entity.classifiedName %>Component =
-  templateOnlyComponent<<%= entity.classifiedName %>Signature>();
+const <%= entity.pascalizedName %>Component =
+  templateOnlyComponent<<%= entity.pascalizedName %>Signature>();
 
-export default <%= entity.classifiedName %>Component;
+export default <%= entity.pascalizedName %>Component;

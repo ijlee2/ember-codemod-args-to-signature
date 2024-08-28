@@ -2,9 +2,9 @@ import { AST } from '@codemod-utils/ast-javascript';
 
 type Data = {
   entity: {
-    classifiedName: string;
     doubleColonizedName: string;
     name: string;
+    pascalizedName: string;
   };
 };
 
@@ -21,7 +21,7 @@ export function createRegistry(file: string, data: Data): string {
       AST.builders.stringLiteral(data.entity.doubleColonizedName),
       AST.builders.tsTypeAnnotation(
         AST.builders.tsTypeQuery(
-          AST.builders.identifier(`${data.entity.classifiedName}Component`),
+          AST.builders.identifier(`${data.entity.pascalizedName}Component`),
         ),
       ),
     ),
@@ -29,7 +29,7 @@ export function createRegistry(file: string, data: Data): string {
       AST.builders.stringLiteral(data.entity.name),
       AST.builders.tsTypeAnnotation(
         AST.builders.tsTypeQuery(
-          AST.builders.identifier(`${data.entity.classifiedName}Component`),
+          AST.builders.identifier(`${data.entity.pascalizedName}Component`),
         ),
       ),
     ),

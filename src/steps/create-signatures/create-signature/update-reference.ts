@@ -9,7 +9,7 @@ import { isSignature } from './is-signature.js';
 type Options = {
   data: {
     entity: {
-      classifiedName: string;
+      pascalizedName: string;
     };
   };
   interfaceName: string;
@@ -33,7 +33,7 @@ export function updateReferences(file: string, options: Options): string {
         ? path.node.body.body
         : builderConvertArgsToSignature(path.node.body.body);
 
-      const identifier = `${data.entity.classifiedName}Signature`;
+      const identifier = `${data.entity.pascalizedName}Signature`;
 
       return builderCreateSignature(identifier, members);
     },
@@ -51,7 +51,7 @@ export function updateReferences(file: string, options: Options): string {
         ? path.node.typeAnnotation.members
         : builderConvertArgsToSignature(path.node.typeAnnotation.members);
 
-      const identifier = `${data.entity.classifiedName}Signature`;
+      const identifier = `${data.entity.pascalizedName}Signature`;
 
       return builderCreateSignature(identifier, members);
     },
@@ -65,7 +65,7 @@ export function updateReferences(file: string, options: Options): string {
         return false;
       }
 
-      path.node.typeName.name = `${data.entity.classifiedName}Signature['Args']`;
+      path.node.typeName.name = `${data.entity.pascalizedName}Signature['Args']`;
 
       return false;
     },
