@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-import { classify, doubleColonize } from '@codemod-utils/ember-cli-string';
+import { doubleColonize, pascalize } from '@codemod-utils/ember';
 import {
   createFiles,
   type FileContent,
@@ -26,7 +26,7 @@ export function createRegistries(context: Context, options: Options): void {
 
     const data = {
       entity: {
-        classifiedName: classify(entityName),
+        classifiedName: pascalize(entityName),
         doubleColonizedName: doubleColonize(entityName),
         name: entityName,
       },
