@@ -8,7 +8,7 @@
 #
 #  B. Usage
 #
-#    ./codemod-test-fixtures.sh
+#    ./update-test-fixtures.sh
 #
 #---------
 
