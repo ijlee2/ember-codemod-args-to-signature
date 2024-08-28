@@ -26,9 +26,9 @@ export function createRegistries(context: Context, options: Options): void {
 
     const data = {
       entity: {
-        classifiedName: pascalize(entityName),
         doubleColonizedName: doubleColonize(entityName),
         name: entityName,
+        pascalizedName: pascalize(entityName),
       },
     };
 

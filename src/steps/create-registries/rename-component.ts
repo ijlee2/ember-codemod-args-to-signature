@@ -6,7 +6,7 @@ import {
 
 type Data = {
   entity: {
-    classifiedName: string;
+    pascalizedName: string;
   };
 };
 

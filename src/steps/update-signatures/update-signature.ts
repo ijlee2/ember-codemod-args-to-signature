@@ -9,7 +9,7 @@ import {
 
 type Data = {
   entity: {
-    classifiedName: string;
+    pascalizedName: string;
   };
   signature: Signature;
 };
@@ -28,7 +28,7 @@ function getBodyNode(node: unknown, key: 'Args' | 'Blocks' | 'Element') {
 export function updateSignature(file: string, data: Data): string {
   const traverse = AST.traverse(true);
 
-  const identifier = `${data.entity.classifiedName}Signature`;
+  const identifier = `${data.entity.pascalizedName}Signature`;
 
   const ast = traverse(file, {
     visitTSInterfaceDeclaration(path) {

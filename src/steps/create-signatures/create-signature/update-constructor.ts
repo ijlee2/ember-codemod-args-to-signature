@@ -3,7 +3,7 @@ import { AST } from '@codemod-utils/ast-javascript';
 type Options = {
   data: {
     entity: {
-      classifiedName: string;
+      pascalizedName: string;
     };
   };
 };
@@ -28,7 +28,7 @@ export function updateConstructor(file: string, options: Options): string {
       args.typeAnnotation = AST.builders.tsTypeAnnotation(
         AST.builders.tsIndexedAccessType(
           AST.builders.tsTypeReference(
-            AST.builders.identifier(`${data.entity.classifiedName}Signature`),
+            AST.builders.identifier(`${data.entity.pascalizedName}Signature`),
           ),
           AST.builders.tsLiteralType(AST.builders.stringLiteral('Args')),
         ),

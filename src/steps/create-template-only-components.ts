@@ -35,7 +35,7 @@ export function createTemplateOnlyComponents(
 
     const data = {
       entity: {
-        classifiedName: pascalize(entityName),
+        pascalizedName: pascalize(entityName),
       },
     };
 

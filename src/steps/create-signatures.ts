@@ -22,7 +22,7 @@ export function createSignatures(context: Context, options: Options): void {
 
     const data = {
       entity: {
-        classifiedName: pascalize(entityName),
+        pascalizedName: pascalize(entityName),
       },
     };
 
