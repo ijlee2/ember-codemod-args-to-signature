@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.10 (2025-02-04)
+
+### Internal
+* [#55](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/55) Updated eslint to v9 ([@ijlee2](https://github.com/ijlee2))
+
+### Committers: 1
+- Isaac Lee ([@ijlee2](https://github.com/ijlee2))
+
+
 ## 1.0.9 (2024-12-27)
 
 ### Internal
@@ -7,6 +16,7 @@
 
 ### Committers: 1
 - Isaac Lee ([@ijlee2](https://github.com/ijlee2))
+
 
 ## 1.0.8 (2024-08-28)
 
