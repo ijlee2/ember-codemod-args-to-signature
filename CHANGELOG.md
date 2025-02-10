@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.11 (2025-02-10)
+
+### Internal
+* [#56](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/56) Simplified lint configurations ([@ijlee2](https://github.com/ijlee2))
+
+### Committers: 1
+- Isaac Lee ([@ijlee2](https://github.com/ijlee2))
+
+
 ## 1.0.10 (2025-02-04)
 
 ### Internal
