@@ -239,7 +239,7 @@ Until you can update `ember-source`, I can provide three (3) fixes to temporaril
 
 ## Compatibility
 
-- Node.js v18 or above
+- Node.js v20 or above
 
 
 ## Contributing
