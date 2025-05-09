@@ -1,5 +1,15 @@
 # Changelog
 
+## 2.0.0
+
+### Major Changes
+
+- [#58](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/58) Dropped Node 18 support ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#58](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/58) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 1.0.12
 
 ### Patch Changes
