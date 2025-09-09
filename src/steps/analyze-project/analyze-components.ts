@@ -19,7 +19,6 @@ export function analyzeComponents(
 
   for (const [componentName, extensions] of extensionMap) {
     const hasTemplate = extensions.has('.hbs');
-    const hasClassTypeScript = extensions.has('.ts');
 
     if (!hasTemplate) {
       signatureMap.set(componentName, {
@@ -31,18 +30,19 @@ export function analyzeComponents(
       continue;
     }
 
-    const classFilePath = getClassPath(componentName, extensions, options);
+    const hasClassTypeScript = extensions.has('.ts');
+    let classFile: string | undefined;
 
-    const classFile = hasClassTypeScript
-      ? readFileSync(join(projectRoot, classFilePath), 'utf8')
-      : undefined;
+    if (hasClassTypeScript) {
+      const classFilePath = getClassPath(componentName, extensions, options);
+      classFile = readFileSync(join(projectRoot, classFilePath), 'utf8');
+    }
 
     const templateFilePath = getTemplatePath(
       componentName,
       extensions,
       options,
     );
-
     const templateFile = readFileSync(
       join(projectRoot, templateFilePath),
       'utf8',
