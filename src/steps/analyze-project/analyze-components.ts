@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
 import type { ExtensionMap, Options, SignatureMap } from '../../types/index.js';
-import { getComponentFilePath } from '../../utils/components.js';
+import { getClassPath, getTemplatePath } from '../../utils/components.js';
 import {
   findArguments,
   findBlocks,
@@ -31,14 +31,16 @@ export function analyzeComponents(
       continue;
     }
 
-    const filePath = getComponentFilePath(options)(entityName);
+    const classFilePath = getClassPath(entityName, extensions, options);
 
     const classFile = hasBackingClass
-      ? readFileSync(join(projectRoot, filePath), 'utf8')
+      ? readFileSync(join(projectRoot, classFilePath), 'utf8')
       : undefined;
 
+    const templateFilePath = getTemplatePath(entityName, extensions, options);
+
     const templateFile = readFileSync(
-      join(projectRoot, filePath.replace(/\.ts$/, '.hbs')),
+      join(projectRoot, templateFilePath),
       'utf8',
     );
 
@@ -53,7 +55,7 @@ export function analyzeComponents(
         Element,
       });
     } catch (error) {
-      let message = `WARNING: analyzeComponents could not parse \`${filePath}\`. Please update the file manually.`;
+      let message = `WARNING: analyzeComponents could not parse \`${entityName}\`. Please update the file manually.`;
 
       if (error instanceof Error) {
         message += ` (${error.message})`;

@@ -9,16 +9,18 @@ import {
 } from '@codemod-utils/files';
 
 import type { Context, Options } from '../types/index.js';
-import { getComponentFilePath } from '../utils/components.js';
+import { getClassPath } from '../utils/components.js';
 import { updateSignature } from './update-signatures/index.js';
 
 export function updateSignatures(context: Context, options: Options): void {
+  const { extensionMap, signatureMap } = context;
   const { projectRoot } = options;
 
   const fileMap = new Map<FilePath, FileContent>();
 
-  for (const [entityName, signature] of context.signatureMap) {
-    const filePath = getComponentFilePath(options)(entityName);
+  for (const [entityName, signature] of signatureMap) {
+    const extensions = extensionMap.get(entityName)!;
+    const filePath = getClassPath(entityName, extensions, options);
 
     const data = {
       entity: {

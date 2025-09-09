@@ -7,10 +7,7 @@ import type {
   Options,
   UnfilteredExtensionMap,
 } from '../../types/index.js';
-import {
-  getBaseComponent,
-  getComponentFilePath,
-} from '../../utils/components.js';
+import { getBaseComponent, getClassPath } from '../../utils/components.js';
 
 function isSupported(file: string): boolean {
   const { importPath } = getBaseComponent(file);
@@ -39,7 +36,12 @@ export function filterComponents(
     const isTypeScript = (extensions as Set<ComponentExtension>).has('.ts');
 
     if (isTypeScript) {
-      const filePath = getComponentFilePath(options)(entityName);
+      const filePath = getClassPath(
+        entityName,
+        extensions as Set<ComponentExtension>,
+        options,
+      );
+
       const file = readFileSync(join(projectRoot, filePath), 'utf8');
 
       if (!isSupported(file)) {
