@@ -24,20 +24,21 @@ export function filterComponents(
 ): ExtensionMap {
   const { projectRoot } = options;
 
-  const newExtensionMap: ExtensionMap = new Map();
+  const filteredEntries = Array.from(extensionMap.entries()).filter(
+    ([componentName, extensions]) => {
+      const hasClassJavaScript = extensions.has('.js');
 
-  for (const [componentName, extensions] of extensionMap) {
-    const hasClassJavaScript = extensions.has('.js');
+      if (hasClassJavaScript) {
+        return false;
+      }
 
-    if (hasClassJavaScript) {
-      continue;
-    }
+      const hasClassTypeScript = extensions.has('.ts');
 
-    const hasClassTypeScript = (extensions as Set<ComponentExtension>).has(
-      '.ts',
-    );
+      // hbs file only
+      if (!hasClassTypeScript) {
+        return true;
+      }
 
-    if (hasClassTypeScript) {
       const filePath = getClassPath(
         componentName,
         extensions as Set<ComponentExtension>,
@@ -46,13 +47,9 @@ export function filterComponents(
 
       const file = readFileSync(join(projectRoot, filePath), 'utf8');
 
-      if (!isSupported(file)) {
-        continue;
-      }
-    }
+      return isSupported(file);
+    },
+  );
 
-    newExtensionMap.set(componentName, extensions as Set<ComponentExtension>);
-  }
-
-  return newExtensionMap;
+  return new Map(filteredEntries) as unknown as ExtensionMap;
 }
