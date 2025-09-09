@@ -8,15 +8,15 @@ interface ProductsProductImageSignature {
   Element: HTMLDivElement | HTMLImageElement;
 }
 
-class ProductsProductImageComponent extends Component<ProductsProductImageSignature> {
+class ProductsProductImage extends Component<ProductsProductImageSignature> {
   isTestEnvironment = config.environment === 'test';
 }
 
-export default ProductsProductImageComponent;
+export default ProductsProductImage;
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    'Products::Product::Image': typeof ProductsProductImageComponent;
-    'products/product/image': typeof ProductsProductImageComponent;
+    'Products::Product::Image': typeof ProductsProductImage;
+    'products/product/image': typeof ProductsProductImage;
   }
 }

@@ -6,14 +6,14 @@ interface WidgetsWidget1ItemSignature {
   };
 }
 
-const WidgetsWidget1ItemComponent =
+const WidgetsWidget1Item =
   templateOnlyComponent<WidgetsWidget1ItemSignature>();
 
-export default WidgetsWidget1ItemComponent;
+export default WidgetsWidget1Item;
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    'Widgets::Widget1::Item': typeof WidgetsWidget1ItemComponent;
-    'widgets/widget-1/item': typeof WidgetsWidget1ItemComponent;
+    'Widgets::Widget1::Item': typeof WidgetsWidget1Item;
+    'widgets/widget-1/item': typeof WidgetsWidget1Item;
   }
 }

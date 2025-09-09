@@ -4,14 +4,14 @@ interface UiFormInformationSignature {
   Args: {};
 }
 
-const UiFormInformationComponent =
+const UiFormInformation =
   templateOnlyComponent<UiFormInformationSignature>();
 
-export default UiFormInformationComponent;
+export default UiFormInformation;
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    'Ui::Form::Information': typeof UiFormInformationComponent;
-    'ui/form/information': typeof UiFormInformationComponent;
+    'Ui::Form::Information': typeof UiFormInformation;
+    'ui/form/information': typeof UiFormInformation;
   }
 }

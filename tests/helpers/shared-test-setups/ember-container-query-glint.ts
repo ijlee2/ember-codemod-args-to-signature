@@ -7,7 +7,7 @@ import type {
 const codemodOptions: CodemodOptions = {
   componentStructure: 'flat',
   projectRoot: 'tmp/ember-container-query-glint',
-  src: 'src/components',
+  projectType: 'v2-addon',
 };
 
 const context: Context = {

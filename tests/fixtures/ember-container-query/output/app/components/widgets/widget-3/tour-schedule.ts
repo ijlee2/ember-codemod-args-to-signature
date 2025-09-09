@@ -6,14 +6,14 @@ interface WidgetsWidget3TourScheduleSignature {
   };
 }
 
-const WidgetsWidget3TourScheduleComponent =
+const WidgetsWidget3TourSchedule =
   templateOnlyComponent<WidgetsWidget3TourScheduleSignature>();
 
-export default WidgetsWidget3TourScheduleComponent;
+export default WidgetsWidget3TourSchedule;
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    'Widgets::Widget3::TourSchedule': typeof WidgetsWidget3TourScheduleComponent;
-    'widgets/widget-3/tour-schedule': typeof WidgetsWidget3TourScheduleComponent;
+    'Widgets::Widget3::TourSchedule': typeof WidgetsWidget3TourSchedule;
+    'widgets/widget-3/tour-schedule': typeof WidgetsWidget3TourSchedule;
   }
 }

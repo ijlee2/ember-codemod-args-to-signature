@@ -29,7 +29,7 @@ export function updateReferences(file: string, options: Options): string {
           const nodesToAdd = [
             AST.builders.noop(),
             AST.builders.exportDefaultDeclaration(
-              AST.builders.identifier(`${data.entity.pascalizedName}Component`),
+              AST.builders.identifier(data.entity.pascalizedName),
             ),
           ];
 
@@ -37,7 +37,7 @@ export function updateReferences(file: string, options: Options): string {
 
           return AST.builders.variableDeclaration('const', [
             AST.builders.variableDeclarator(
-              AST.builders.identifier(`${data.entity.pascalizedName}Component`),
+              AST.builders.identifier(data.entity.pascalizedName),
               path.node.declaration,
             ),
           ]);
@@ -48,7 +48,7 @@ export function updateReferences(file: string, options: Options): string {
             return false;
           }
 
-          path.node.declaration.name = `${data.entity.pascalizedName}Component`;
+          path.node.declaration.name = data.entity.pascalizedName;
 
           return false;
         }

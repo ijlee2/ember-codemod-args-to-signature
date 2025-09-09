@@ -1,7 +1,7 @@
 type CodemodOptions = {
   componentStructure: 'flat' | 'nested';
   projectRoot: string;
-  src: string;
+  projectType: 'app' | 'v1-addon' | 'v2-addon';
 };
 
 type Context = {

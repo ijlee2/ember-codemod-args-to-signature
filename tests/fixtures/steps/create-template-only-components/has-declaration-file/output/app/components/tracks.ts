@@ -2,7 +2,7 @@ import templateOnlyComponent from '@ember/component/template-only';
 
 interface TracksSignature {}
 
-const TracksComponent =
+const Tracks =
   templateOnlyComponent<TracksSignature>();
 
-export default TracksComponent;
+export default Tracks;
