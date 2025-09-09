@@ -7,7 +7,7 @@ import type {
 const codemodOptions: CodemodOptions = {
   componentStructure: 'flat',
   projectRoot: 'tmp/has-hbs-file-only',
-  src: 'app/components',
+  projectType: 'app',
 };
 
 const context: Context = {

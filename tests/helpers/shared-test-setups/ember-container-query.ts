@@ -7,7 +7,7 @@ import type {
 const codemodOptions: CodemodOptions = {
   componentStructure: 'flat',
   projectRoot: 'tmp/ember-container-query',
-  src: 'app/components',
+  projectType: 'app',
 };
 
 const context: Context = {

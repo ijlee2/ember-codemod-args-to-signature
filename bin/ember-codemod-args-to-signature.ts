@@ -18,13 +18,14 @@ const argv = yargs(hideBin(process.argv))
     describe: 'Component structure (how your components are colocated)',
     type: 'string',
   })
-  .option('src', {
-    demandOption: true,
-    describe: 'Location of the components (e.g. app/components)',
-    type: 'string',
-  })
   .option('root', {
     describe: 'Location of your Ember project',
+    type: 'string',
+  })
+  .option('type', {
+    choices: ['app', 'v1-addon', 'v2-addon'] as const,
+    demandOption: true,
+    describe: 'Type of your Ember project',
     type: 'string',
   })
   .parseSync();
@@ -34,7 +35,7 @@ const codemodOptions: CodemodOptions = {
     'component-structure'
   ] as CodemodOptions['componentStructure'],
   projectRoot: argv['root'] ?? process.cwd(),
-  src: argv['src'],
+  projectType: argv['type'],
 };
 
 runCodemod(codemodOptions);

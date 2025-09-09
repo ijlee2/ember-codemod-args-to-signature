@@ -21,7 +21,7 @@ cp -r "tests/fixtures/classic-components/input" "tests/fixtures/classic-componen
 
 ./dist/bin/ember-codemod-args-to-signature.js \
   --root "tests/fixtures/classic-components/output" \
-  --src "app/components"
+  --type "app"
 
 # Update fixtures
 rm -r "tests/fixtures/ember-container-query/output"
@@ -29,7 +29,7 @@ cp -r "tests/fixtures/ember-container-query/input" "tests/fixtures/ember-contain
 
 ./dist/bin/ember-codemod-args-to-signature.js \
   --root "tests/fixtures/ember-container-query/output" \
-  --src "app/components"
+  --type "app"
 
 # Update fixtures
 rm -r "tests/fixtures/ember-container-query-addon/output"
@@ -37,7 +37,7 @@ cp -r "tests/fixtures/ember-container-query-addon/input" "tests/fixtures/ember-c
 
 ./dist/bin/ember-codemod-args-to-signature.js \
   --root "tests/fixtures/ember-container-query-addon/output" \
-  --src "addon/components"
+  --type "v1-addon"
 
 # Update fixtures
 rm -r "tests/fixtures/ember-container-query-glint/output"
@@ -45,7 +45,7 @@ cp -r "tests/fixtures/ember-container-query-glint/input" "tests/fixtures/ember-c
 
 ./dist/bin/ember-codemod-args-to-signature.js \
   --root "tests/fixtures/ember-container-query-glint/output" \
-  --src "src/components"
+  --type "v2-addon"
 
 # Update fixtures
 rm -r "tests/fixtures/ember-container-query-nested/output"
@@ -54,7 +54,7 @@ cp -r "tests/fixtures/ember-container-query-nested/input" "tests/fixtures/ember-
 ./dist/bin/ember-codemod-args-to-signature.js \
   --component-structure nested \
   --root "tests/fixtures/ember-container-query-nested/output" \
-  --src "app/components"
+  --type "app"
 
 # Update fixtures
 rm -r "tests/fixtures/ember-container-query-no-args/output"
@@ -62,4 +62,4 @@ cp -r "tests/fixtures/ember-container-query-no-args/input" "tests/fixtures/ember
 
 ./dist/bin/ember-codemod-args-to-signature.js \
   --root "tests/fixtures/ember-container-query-no-args/output" \
-  --src "app/components"
+  --type "app"

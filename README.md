@@ -68,17 +68,12 @@ Nice to do:
 
 ### Arguments
 
-You must pass `--src` to indicate the location of your components.
+You must pass `--type` to indicate what type of project you have.
 
 ```sh
-# Apps
-npx ember-codemod-args-to-signature --src app/components
-
-# V1 addons
-npx ember-codemod-args-to-signature --src addon/components
-
-# V2 addons
-npx ember-codemod-args-to-signature --src src/components
+npx ember-codemod-args-to-signature --type app
+npx ember-codemod-args-to-signature --type v1-addon
+npx ember-codemod-args-to-signature --type v2-addon
 ```
 
 <details>
