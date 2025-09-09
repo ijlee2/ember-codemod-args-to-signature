@@ -1,4 +1,4 @@
-[![This project uses GitHub Actions for continuous integration.](https://github.com/ijlee2/ember-codemod-args-to-signature/actions/workflows/CI.yml/badge.svg)](https://github.com/ijlee2/ember-codemod-args-to-signature/actions/workflows/CI.yml)
+[![This project uses GitHub Actions for continuous integration.](https://github.com/ijlee2/ember-codemod-args-to-signature/actions/workflows/ci.yml/badge.svg)](https://github.com/ijlee2/ember-codemod-args-to-signature/actions/workflows/ci.yml)
 
 # ember-codemod-args-to-signature
 
