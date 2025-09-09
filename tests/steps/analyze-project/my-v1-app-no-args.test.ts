@@ -1,14 +1,14 @@
 import { assert, loadFixture, test } from '@codemod-utils/tests';
 
 import { analyzeProject } from '../../../src/steps/index.js';
-import { inputProject } from '../../fixtures/ember-container-query-no-args/index.js';
+import { inputProject } from '../../fixtures/my-v1-app-no-args/index.js';
 import {
   codemodOptions,
   context,
   options,
-} from '../../helpers/shared-test-setups/ember-container-query-no-args.js';
+} from '../../helpers/shared-test-setups/my-v1-app-no-args.js';
 
-test('steps | analyze-project > ember-container-query-no-args', function () {
+test('steps | analyze-project > my-v1-app-no-args', function () {
   loadFixture(inputProject, codemodOptions);
 
   assert.deepStrictEqual(analyzeProject(options), context);

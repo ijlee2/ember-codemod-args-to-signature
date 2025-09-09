@@ -4,8 +4,8 @@ import { createOptions } from '../../../src/steps/index.js';
 import {
   codemodOptions,
   options,
-} from '../../helpers/shared-test-setups/ember-container-query-no-args.js';
+} from '../../helpers/shared-test-setups/my-v1-app-no-args.js';
 
-test('steps | create-options > ember-container-query-no-args', function () {
+test('steps | create-options > my-v1-app-no-args', function () {
   assert.deepStrictEqual(createOptions(codemodOptions), options);
 });

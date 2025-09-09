@@ -4,10 +4,10 @@ import { runCodemod } from '../../src/index.js';
 import {
   inputProject,
   outputProject,
-} from '../fixtures/ember-container-query-no-args/index.js';
-import { codemodOptions } from '../helpers/shared-test-setups/ember-container-query-no-args.js';
+} from '../fixtures/my-v1-app-no-args/index.js';
+import { codemodOptions } from '../helpers/shared-test-setups/my-v1-app-no-args.js';
 
-test('index > ember-container-query-no-args', function () {
+test('index > my-v1-app-no-args', function () {
   loadFixture(inputProject, codemodOptions);
 
   runCodemod(codemodOptions);

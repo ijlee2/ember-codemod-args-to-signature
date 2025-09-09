@@ -57,9 +57,9 @@ cp -r "tests/fixtures/my-v1-app-nested/input" "tests/fixtures/my-v1-app-nested/o
   --type "app"
 
 # Update fixtures
-rm -r "tests/fixtures/ember-container-query-no-args/output"
-cp -r "tests/fixtures/ember-container-query-no-args/input" "tests/fixtures/ember-container-query-no-args/output"
+rm -r "tests/fixtures/my-v1-app-no-args/output"
+cp -r "tests/fixtures/my-v1-app-no-args/input" "tests/fixtures/my-v1-app-no-args/output"
 
 ./dist/bin/ember-codemod-args-to-signature.js \
-  --root "tests/fixtures/ember-container-query-no-args/output" \
+  --root "tests/fixtures/my-v1-app-no-args/output" \
   --type "app"
