@@ -11,7 +11,7 @@ import {
 
 import type { Context, Options } from '../types/index.js';
 import { blueprintsRoot } from '../utils/blueprints.js';
-import { getComponentFilePath } from '../utils/components.js';
+import { getClassPath } from '../utils/components.js';
 
 const blueprintFile = readFileSync(
   join(blueprintsRoot, 'ember-cli/template-only-component.ts'),
@@ -22,20 +22,22 @@ export function createTemplateOnlyComponents(
   context: Context,
   options: Options,
 ): void {
+  const { extensionMap } = context;
+
   const fileMap = new Map<FilePath, FileContent>();
 
-  for (const [entityName, extensions] of context.extensionMap) {
-    const hasBackingClass = extensions.has('.ts');
+  for (const [componentName, extensions] of extensionMap) {
+    const hasClassTypeScript = extensions.has('.ts');
 
-    if (hasBackingClass) {
+    if (hasClassTypeScript) {
       continue;
     }
 
-    const filePath = getComponentFilePath(options)(entityName);
+    const filePath = getClassPath(componentName, extensions, options);
 
     const data = {
       entity: {
-        pascalizedName: pascalize(entityName),
+        pascalizedName: pascalize(componentName),
       },
     };
 

@@ -1,11 +1,13 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-import type { ExtensionMap, Options } from '../../types/index.js';
-import {
-  getBaseComponent,
-  getComponentFilePath,
-} from '../../utils/components.js';
+import type {
+  ComponentExtension,
+  ExtensionMap,
+  Options,
+  UnfilteredExtensionMap,
+} from '../../types/index.js';
+import { getBaseComponent, getClassPath } from '../../utils/components.js';
 
 function isSupported(file: string): boolean {
   const { importPath } = getBaseComponent(file);
@@ -17,33 +19,37 @@ function isSupported(file: string): boolean {
 }
 
 export function filterComponents(
-  extensionMap: ExtensionMap,
+  extensionMap: UnfilteredExtensionMap,
   options: Options,
 ): ExtensionMap {
   const { projectRoot } = options;
 
-  const filteredExtensionMap: ExtensionMap = new Map();
+  const filteredEntries = Array.from(extensionMap.entries()).filter(
+    ([componentName, extensions]) => {
+      const hasClassJavaScript = extensions.has('.js');
 
-  for (const [entityName, extensions] of extensionMap) {
-    const isJavaScript = extensions.has('.js');
+      if (hasClassJavaScript) {
+        return false;
+      }
 
-    if (isJavaScript) {
-      continue;
-    }
+      const hasClassTypeScript = extensions.has('.ts');
 
-    const isTypeScript = extensions.has('.ts');
+      // hbs file only
+      if (!hasClassTypeScript) {
+        return true;
+      }
 
-    if (isTypeScript) {
-      const filePath = getComponentFilePath(options)(entityName);
+      const filePath = getClassPath(
+        componentName,
+        extensions as Set<ComponentExtension>,
+        options,
+      );
+
       const file = readFileSync(join(projectRoot, filePath), 'utf8');
 
-      if (!isSupported(file)) {
-        continue;
-      }
-    }
+      return isSupported(file);
+    },
+  );
 
-    filteredExtensionMap.set(entityName, extensions);
-  }
-
-  return filteredExtensionMap;
+  return new Map(filteredEntries) as unknown as ExtensionMap;
 }
