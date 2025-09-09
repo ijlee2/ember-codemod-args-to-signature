@@ -1,7 +1,12 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-import type { ExtensionMap, Options } from '../../types/index.js';
+import type {
+  ComponentExtension,
+  ExtensionMap,
+  Options,
+  UnfilteredExtensionMap,
+} from '../../types/index.js';
 import {
   getBaseComponent,
   getComponentFilePath,
@@ -17,7 +22,7 @@ function isSupported(file: string): boolean {
 }
 
 export function filterComponents(
-  extensionMap: ExtensionMap,
+  extensionMap: UnfilteredExtensionMap,
   options: Options,
 ): ExtensionMap {
   const { projectRoot } = options;
@@ -31,7 +36,7 @@ export function filterComponents(
       continue;
     }
 
-    const isTypeScript = extensions.has('.ts');
+    const isTypeScript = (extensions as Set<ComponentExtension>).has('.ts');
 
     if (isTypeScript) {
       const filePath = getComponentFilePath(options)(entityName);
@@ -42,7 +47,7 @@ export function filterComponents(
       }
     }
 
-    filteredExtensionMap.set(entityName, extensions);
+    filteredExtensionMap.set(entityName, extensions as Set<ComponentExtension>);
   }
 
   return filteredExtensionMap;

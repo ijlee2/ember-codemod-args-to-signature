@@ -2,13 +2,21 @@ import { join } from 'node:path';
 
 import { parseFilePath } from '@codemod-utils/files';
 
-import type { ExtensionMap } from '../../types/index.js';
+import type {
+  UnfilteredComponentExtension,
+  UnfilteredExtensionMap,
+} from '../../types/index.js';
 
-export function analyzeFilePaths(filePaths: string[]): ExtensionMap {
-  const extensionMap: ExtensionMap = new Map();
+export function analyzeFilePaths(filePaths: string[]): UnfilteredExtensionMap {
+  const extensionMap: UnfilteredExtensionMap = new Map();
 
   filePaths.forEach((filePath) => {
-    const { dir, ext, name } = parseFilePath(filePath);
+    const { dir, ext, name } = parseFilePath(filePath) as {
+      dir: string;
+      ext: UnfilteredComponentExtension;
+      name: string;
+    };
+
     const entityName = join(dir, name);
 
     if (extensionMap.has(entityName)) {

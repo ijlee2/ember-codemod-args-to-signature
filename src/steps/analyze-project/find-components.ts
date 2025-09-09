@@ -2,10 +2,12 @@ import { join } from 'node:path';
 
 import { findFiles, renamePathByDirectory } from '@codemod-utils/files';
 
-import type { ExtensionMap, Options } from '../../types/index.js';
+import type { Options, UnfilteredExtensionMap } from '../../types/index.js';
 import { analyzeFilePaths } from '../../utils/components.js';
 
-function normalizeEntityNames(extensionMap: ExtensionMap): ExtensionMap {
+function normalizeEntityNames(
+  extensionMap: UnfilteredExtensionMap,
+): UnfilteredExtensionMap {
   return new Map(
     Array.from(extensionMap.entries()).map(([entityName, extensions]) => {
       const newEntityName = entityName.replace(/\/index$/, '');
@@ -15,7 +17,7 @@ function normalizeEntityNames(extensionMap: ExtensionMap): ExtensionMap {
   );
 }
 
-export function findComponents(options: Options): ExtensionMap {
+export function findComponents(options: Options): UnfilteredExtensionMap {
   const { componentStructure, projectRoot, src } = options;
 
   const classFilePaths = findFiles(join(src, '**/*.{js,ts}'), {
