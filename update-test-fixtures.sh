@@ -16,50 +16,50 @@
 pnpm build
 
 # Update fixtures
-rm -r "tests/fixtures/classic-components/output"
-cp -r "tests/fixtures/classic-components/input" "tests/fixtures/classic-components/output"
+rm -r "tests/fixtures/my-v1-app-classic/output"
+cp -r "tests/fixtures/my-v1-app-classic/input" "tests/fixtures/my-v1-app-classic/output"
 
 ./dist/bin/ember-codemod-args-to-signature.js \
-  --root "tests/fixtures/classic-components/output" \
+  --root "tests/fixtures/my-v1-app-classic/output" \
   --type "app"
 
 # Update fixtures
-rm -r "tests/fixtures/ember-container-query/output"
-cp -r "tests/fixtures/ember-container-query/input" "tests/fixtures/ember-container-query/output"
+rm -r "tests/fixtures/my-v1-app/output"
+cp -r "tests/fixtures/my-v1-app/input" "tests/fixtures/my-v1-app/output"
 
 ./dist/bin/ember-codemod-args-to-signature.js \
-  --root "tests/fixtures/ember-container-query/output" \
+  --root "tests/fixtures/my-v1-app/output" \
   --type "app"
 
 # Update fixtures
-rm -r "tests/fixtures/ember-container-query-addon/output"
-cp -r "tests/fixtures/ember-container-query-addon/input" "tests/fixtures/ember-container-query-addon/output"
+rm -r "tests/fixtures/my-v1-addon/output"
+cp -r "tests/fixtures/my-v1-addon/input" "tests/fixtures/my-v1-addon/output"
 
 ./dist/bin/ember-codemod-args-to-signature.js \
-  --root "tests/fixtures/ember-container-query-addon/output" \
+  --root "tests/fixtures/my-v1-addon/output" \
   --type "v1-addon"
 
 # Update fixtures
-rm -r "tests/fixtures/ember-container-query-glint/output"
-cp -r "tests/fixtures/ember-container-query-glint/input" "tests/fixtures/ember-container-query-glint/output"
+rm -r "tests/fixtures/my-v2-addon/output"
+cp -r "tests/fixtures/my-v2-addon/input" "tests/fixtures/my-v2-addon/output"
 
 ./dist/bin/ember-codemod-args-to-signature.js \
-  --root "tests/fixtures/ember-container-query-glint/output" \
+  --root "tests/fixtures/my-v2-addon/output" \
   --type "v2-addon"
 
 # Update fixtures
-rm -r "tests/fixtures/ember-container-query-nested/output"
-cp -r "tests/fixtures/ember-container-query-nested/input" "tests/fixtures/ember-container-query-nested/output"
+rm -r "tests/fixtures/my-v1-app-nested/output"
+cp -r "tests/fixtures/my-v1-app-nested/input" "tests/fixtures/my-v1-app-nested/output"
 
 ./dist/bin/ember-codemod-args-to-signature.js \
   --component-structure nested \
-  --root "tests/fixtures/ember-container-query-nested/output" \
+  --root "tests/fixtures/my-v1-app-nested/output" \
   --type "app"
 
 # Update fixtures
-rm -r "tests/fixtures/ember-container-query-no-args/output"
-cp -r "tests/fixtures/ember-container-query-no-args/input" "tests/fixtures/ember-container-query-no-args/output"
+rm -r "tests/fixtures/my-v1-app-no-args/output"
+cp -r "tests/fixtures/my-v1-app-no-args/input" "tests/fixtures/my-v1-app-no-args/output"
 
 ./dist/bin/ember-codemod-args-to-signature.js \
-  --root "tests/fixtures/ember-container-query-no-args/output" \
+  --root "tests/fixtures/my-v1-app-no-args/output" \
   --type "app"
