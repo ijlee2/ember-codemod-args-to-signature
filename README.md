@@ -200,10 +200,10 @@ Until you can update `ember-source`, I can provide three (3) fixes to temporaril
       // ...
     }
 
-    - const NavigationMenuComponent = templateOnlyComponent<NavigationMenuSignature>();
-    + const NavigationMenuComponent = templateOnlyComponent();
+    - const NavigationMenu = templateOnlyComponent<NavigationMenuSignature>();
+    + const NavigationMenu = templateOnlyComponent();
 
-    export default NavigationMenuComponent;
+    export default NavigationMenu;
     ```
 
     This will help you focus on updating import paths and fixing formatting issues, e.g. by running the scripts `lint:types`, `lint:js:fix`, and `lint:js`.
@@ -220,10 +220,10 @@ Until you can update `ember-source`, I can provide three (3) fixes to temporaril
       // ...
     }
 
-    - const NavigationMenuComponent = templateOnlyComponent<NavigationMenuSignature>();
+    - const NavigationMenu = templateOnlyComponent<NavigationMenuSignature>();
 
-    - export default NavigationMenuComponent;
-    + export default class NavigationMenuComponent extends Component<NavigationMenuSignature> {}
+    - export default NavigationMenu;
+    + export default class NavigationMenu extends Component<NavigationMenuSignature> {}
     ```
 
     The `glint` command can now pass potentially. However, the components are no longer template-only. This might be a concern if maintaining a high performance is a factor.

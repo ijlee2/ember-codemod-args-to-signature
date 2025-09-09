@@ -32,15 +32,13 @@ export function passComponentNameToBaseComponent(
       }
 
       if (!path.node.id) {
-        path.node.id = AST.builders.identifier(
-          `${data.entity.pascalizedName}Component`,
-        );
+        path.node.id = AST.builders.identifier(data.entity.pascalizedName);
 
         return false;
       }
 
       componentName = path.node.id.name as string;
-      path.node.id.name = `${data.entity.pascalizedName}Component`;
+      path.node.id.name = data.entity.pascalizedName;
 
       return false;
     },
@@ -63,7 +61,7 @@ export function passComponentNameToBaseComponent(
           }
 
           componentName = declaration.id.name;
-          declaration.id.name = `${data.entity.pascalizedName}Component`;
+          declaration.id.name = data.entity.pascalizedName;
 
           return false;
         }
@@ -79,7 +77,7 @@ export function passComponentNameToBaseComponent(
           }
 
           componentName = declaration.id.name;
-          declaration.id.name = `${data.entity.pascalizedName}Component`;
+          declaration.id.name = data.entity.pascalizedName;
 
           return false;
         }

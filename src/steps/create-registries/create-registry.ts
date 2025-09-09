@@ -21,7 +21,7 @@ export function createRegistry(file: string, data: Data): string {
       AST.builders.stringLiteral(data.entity.doubleColonizedName),
       AST.builders.tsTypeAnnotation(
         AST.builders.tsTypeQuery(
-          AST.builders.identifier(`${data.entity.pascalizedName}Component`),
+          AST.builders.identifier(data.entity.pascalizedName),
         ),
       ),
     ),
@@ -29,7 +29,7 @@ export function createRegistry(file: string, data: Data): string {
       AST.builders.stringLiteral(data.entity.name),
       AST.builders.tsTypeAnnotation(
         AST.builders.tsTypeQuery(
-          AST.builders.identifier(`${data.entity.pascalizedName}Component`),
+          AST.builders.identifier(data.entity.pascalizedName),
         ),
       ),
     ),
