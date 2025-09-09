@@ -6,7 +6,7 @@ import type {
 
 const codemodOptions: CodemodOptions = {
   componentStructure: 'flat',
-  projectRoot: 'tmp/ember-container-query-addon',
+  projectRoot: 'tmp/my-v1-addon',
   projectType: 'v1-addon',
 };
 
@@ -299,7 +299,7 @@ const context: Context = {
 
 const options: Options = {
   componentStructure: 'flat',
-  projectRoot: 'tmp/ember-container-query-addon',
+  projectRoot: 'tmp/my-v1-addon',
   src: 'addon/components',
 };
 

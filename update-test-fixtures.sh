@@ -32,11 +32,11 @@ cp -r "tests/fixtures/my-v1-app/input" "tests/fixtures/my-v1-app/output"
   --type "app"
 
 # Update fixtures
-rm -r "tests/fixtures/ember-container-query-addon/output"
-cp -r "tests/fixtures/ember-container-query-addon/input" "tests/fixtures/ember-container-query-addon/output"
+rm -r "tests/fixtures/my-v1-addon/output"
+cp -r "tests/fixtures/my-v1-addon/input" "tests/fixtures/my-v1-addon/output"
 
 ./dist/bin/ember-codemod-args-to-signature.js \
-  --root "tests/fixtures/ember-container-query-addon/output" \
+  --root "tests/fixtures/my-v1-addon/output" \
   --type "v1-addon"
 
 # Update fixtures
