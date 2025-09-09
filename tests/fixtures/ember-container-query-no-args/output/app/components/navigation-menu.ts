@@ -8,13 +8,13 @@ interface NavigationMenuSignature {
   Element: HTMLElement;
 }
 
-const NavigationMenuComponent = templateOnlyComponent<NavigationMenuSignature>();
+const NavigationMenu = templateOnlyComponent<NavigationMenuSignature>();
 
-export default NavigationMenuComponent;
+export default NavigationMenu;
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    'NavigationMenu': typeof NavigationMenuComponent;
-    'navigation-menu': typeof NavigationMenuComponent;
+    'NavigationMenu': typeof NavigationMenu;
+    'navigation-menu': typeof NavigationMenu;
   }
 }

@@ -4,13 +4,13 @@ interface WidgetsWidget4MemoSignature {
   Args: {};
 }
 
-const WidgetsWidget4MemoComponent = templateOnlyComponent<WidgetsWidget4MemoSignature>();
+const WidgetsWidget4Memo = templateOnlyComponent<WidgetsWidget4MemoSignature>();
 
-export default WidgetsWidget4MemoComponent;
+export default WidgetsWidget4Memo;
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    'Widgets::Widget4::Memo': typeof WidgetsWidget4MemoComponent;
-    'widgets/widget-4/memo': typeof WidgetsWidget4MemoComponent;
+    'Widgets::Widget4::Memo': typeof WidgetsWidget4Memo;
+    'widgets/widget-4/memo': typeof WidgetsWidget4Memo;
   }
 }

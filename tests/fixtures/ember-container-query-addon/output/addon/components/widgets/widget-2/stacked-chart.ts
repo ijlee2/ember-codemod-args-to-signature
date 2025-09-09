@@ -8,11 +8,11 @@ interface WidgetsWidget2StackedChartSignature {
   };
 }
 
-export default class WidgetsWidget2StackedChartComponent extends Component<WidgetsWidget2StackedChartSignature> {}
+export default class WidgetsWidget2StackedChart extends Component<WidgetsWidget2StackedChartSignature> {}
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    'Widgets::Widget2::StackedChart': typeof WidgetsWidget2StackedChartComponent;
-    'widgets/widget-2/stacked-chart': typeof WidgetsWidget2StackedChartComponent;
+    'Widgets::Widget2::StackedChart': typeof WidgetsWidget2StackedChart;
+    'widgets/widget-2/stacked-chart': typeof WidgetsWidget2StackedChart;
   }
 }

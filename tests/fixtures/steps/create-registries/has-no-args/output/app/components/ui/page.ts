@@ -4,11 +4,11 @@ interface UiPageSignature {
   Args: {};
 }
 
-export default class UiPageComponent extends Component<UiPageSignature> {}
+export default class UiPage extends Component<UiPageSignature> {}
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    'Ui::Page': typeof UiPageComponent;
-    'ui/page': typeof UiPageComponent;
+    'Ui::Page': typeof UiPage;
+    'ui/page': typeof UiPage;
   }
 }

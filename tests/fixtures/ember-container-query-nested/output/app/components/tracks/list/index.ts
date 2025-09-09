@@ -10,7 +10,7 @@ interface TracksListSignature {
   Element: HTMLUListElement;
 }
 
-export default class TracksListComponent extends Component<TracksListSignature> {
+export default class TracksList extends Component<TracksListSignature> {
   get numColumns(): number {
     const { numColumns } = this.args;
 
@@ -30,7 +30,7 @@ export default class TracksListComponent extends Component<TracksListSignature> 
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    'Tracks::List': typeof TracksListComponent;
-    'tracks/list': typeof TracksListComponent;
+    'Tracks::List': typeof TracksList;
+    'tracks/list': typeof TracksList;
   }
 }

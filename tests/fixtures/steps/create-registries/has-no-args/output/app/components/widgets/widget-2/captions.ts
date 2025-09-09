@@ -19,7 +19,7 @@ interface WidgetsWidget2CaptionsSignature {
   Args: {};
 }
 
-export default class WidgetsWidget2CaptionsComponent extends Component<WidgetsWidget2CaptionsSignature> {
+export default class WidgetsWidget2Captions extends Component<WidgetsWidget2CaptionsSignature> {
   colorSvg = colorSvg;
 
   @tracked currentIndex = 0;
@@ -52,7 +52,7 @@ export default class WidgetsWidget2CaptionsComponent extends Component<WidgetsWi
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    'Widgets::Widget2::Captions': typeof WidgetsWidget2CaptionsComponent;
-    'widgets/widget-2/captions': typeof WidgetsWidget2CaptionsComponent;
+    'Widgets::Widget2::Captions': typeof WidgetsWidget2Captions;
+    'widgets/widget-2/captions': typeof WidgetsWidget2Captions;
   }
 }

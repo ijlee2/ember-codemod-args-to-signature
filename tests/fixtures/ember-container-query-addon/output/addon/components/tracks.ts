@@ -6,14 +6,14 @@ interface TracksSignature {
   };
 }
 
-const TracksComponent =
+const Tracks =
   templateOnlyComponent<TracksSignature>();
 
-export default TracksComponent;
+export default Tracks;
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    'Tracks': typeof TracksComponent;
-    'tracks': typeof TracksComponent;
+    'Tracks': typeof Tracks;
+    'tracks': typeof Tracks;
   }
 }

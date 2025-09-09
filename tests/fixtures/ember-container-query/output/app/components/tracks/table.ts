@@ -7,14 +7,14 @@ interface TracksTableSignature {
   Element: HTMLTableElement;
 }
 
-const TracksTableComponent =
+const TracksTable =
   templateOnlyComponent<TracksTableSignature>();
 
-export default TracksTableComponent;
+export default TracksTable;
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    'Tracks::Table': typeof TracksTableComponent;
-    'tracks/table': typeof TracksTableComponent;
+    'Tracks::Table': typeof TracksTable;
+    'tracks/table': typeof TracksTable;
   }
 }

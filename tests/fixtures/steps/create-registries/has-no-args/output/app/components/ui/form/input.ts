@@ -5,7 +5,7 @@ interface UiFormInputSignature {
   Args: {};
 }
 
-export default class UiFormInputComponent extends Component<UiFormInputSignature> {
+export default class UiFormInput extends Component<UiFormInputSignature> {
   get errorMessage(): string | undefined {
     const { isRequired } = this.args;
 
@@ -40,7 +40,7 @@ export default class UiFormInputComponent extends Component<UiFormInputSignature
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    'Ui::Form::Input': typeof UiFormInputComponent;
-    'ui/form/input': typeof UiFormInputComponent;
+    'Ui::Form::Input': typeof UiFormInput;
+    'ui/form/input': typeof UiFormInput;
   }
 }

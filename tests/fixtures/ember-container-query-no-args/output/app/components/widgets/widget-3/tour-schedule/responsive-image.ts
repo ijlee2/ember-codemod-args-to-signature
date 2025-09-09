@@ -11,7 +11,7 @@ interface WidgetsWidget3TourScheduleResponsiveImageSignature {
   };
 }
 
-export default class WidgetsWidget3TourScheduleResponsiveImageComponent extends Component<WidgetsWidget3TourScheduleResponsiveImageSignature> {
+export default class WidgetsWidget3TourScheduleResponsiveImage extends Component<WidgetsWidget3TourScheduleResponsiveImageSignature> {
   @tracked imageSource?: string;
 
   @action setImageSource({ dimensions }: { dimensions: Dimensions }): void {
@@ -23,7 +23,7 @@ export default class WidgetsWidget3TourScheduleResponsiveImageComponent extends 
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    'Widgets::Widget3::TourSchedule::ResponsiveImage': typeof WidgetsWidget3TourScheduleResponsiveImageComponent;
-    'widgets/widget-3/tour-schedule/responsive-image': typeof WidgetsWidget3TourScheduleResponsiveImageComponent;
+    'Widgets::Widget3::TourSchedule::ResponsiveImage': typeof WidgetsWidget3TourScheduleResponsiveImage;
+    'widgets/widget-3/tour-schedule/responsive-image': typeof WidgetsWidget3TourScheduleResponsiveImage;
   }
 }

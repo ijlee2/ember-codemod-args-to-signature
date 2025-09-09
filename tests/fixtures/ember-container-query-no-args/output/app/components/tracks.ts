@@ -7,11 +7,11 @@ interface TracksSignature {
   Element: HTMLElement;
 }
 
-export default class TracksComponent extends Component<TracksSignature> {}
+export default class Tracks extends Component<TracksSignature> {}
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    'Tracks': typeof TracksComponent;
-    'tracks': typeof TracksComponent;
+    'Tracks': typeof Tracks;
+    'tracks': typeof Tracks;
   }
 }

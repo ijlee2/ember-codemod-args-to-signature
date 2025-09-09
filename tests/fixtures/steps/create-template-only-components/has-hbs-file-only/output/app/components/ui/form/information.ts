@@ -2,7 +2,7 @@ import templateOnlyComponent from '@ember/component/template-only';
 
 interface UiFormInformationSignature {}
 
-const UiFormInformationComponent =
+const UiFormInformation =
   templateOnlyComponent<UiFormInformationSignature>();
 
-export default UiFormInformationComponent;
+export default UiFormInformation;

@@ -5,7 +5,7 @@ interface UiFormCheckboxSignature {
   Args: {};
 }
 
-export default class UiFormCheckboxComponent extends Component<UiFormCheckboxSignature> {
+export default class UiFormCheckbox extends Component<UiFormCheckboxSignature> {
   get errorMessage(): string | undefined {
     if (!this.args.isRequired) {
       return undefined;
@@ -44,7 +44,7 @@ export default class UiFormCheckboxComponent extends Component<UiFormCheckboxSig
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    'Ui::Form::Checkbox': typeof UiFormCheckboxComponent;
-    'ui/form/checkbox': typeof UiFormCheckboxComponent;
+    'Ui::Form::Checkbox': typeof UiFormCheckbox;
+    'ui/form/checkbox': typeof UiFormCheckbox;
   }
 }

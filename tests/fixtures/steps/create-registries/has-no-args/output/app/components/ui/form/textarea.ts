@@ -5,7 +5,7 @@ interface UiFormTextareaSignature {
   Args: {};
 }
 
-export default class UiFormTextareaComponent extends Component<UiFormTextareaSignature> {
+export default class UiFormTextarea extends Component<UiFormTextareaSignature> {
   get errorMessage(): string | undefined {
     const { isRequired } = this.args;
 
@@ -36,7 +36,7 @@ export default class UiFormTextareaComponent extends Component<UiFormTextareaSig
 
 declare module '@glint/environment-ember-loose/registry' {
   export default interface Registry {
-    'Ui::Form::Textarea': typeof UiFormTextareaComponent;
-    'ui/form/textarea': typeof UiFormTextareaComponent;
+    'Ui::Form::Textarea': typeof UiFormTextarea;
+    'ui/form/textarea': typeof UiFormTextarea;
   }
 }
