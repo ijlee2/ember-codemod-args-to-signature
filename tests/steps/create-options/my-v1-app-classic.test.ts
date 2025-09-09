@@ -4,8 +4,8 @@ import { createOptions } from '../../../src/steps/index.js';
 import {
   codemodOptions,
   options,
-} from '../../helpers/shared-test-setups/classic-components.js';
+} from '../../helpers/shared-test-setups/my-v1-app-classic.js';
 
-test('steps | create-options > classic-components', function () {
+test('steps | create-options > my-v1-app-classic', function () {
   assert.deepStrictEqual(createOptions(codemodOptions), options);
 });

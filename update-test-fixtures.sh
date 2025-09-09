@@ -16,11 +16,11 @@
 pnpm build
 
 # Update fixtures
-rm -r "tests/fixtures/classic-components/output"
-cp -r "tests/fixtures/classic-components/input" "tests/fixtures/classic-components/output"
+rm -r "tests/fixtures/my-v1-app-classic/output"
+cp -r "tests/fixtures/my-v1-app-classic/input" "tests/fixtures/my-v1-app-classic/output"
 
 ./dist/bin/ember-codemod-args-to-signature.js \
-  --root "tests/fixtures/classic-components/output" \
+  --root "tests/fixtures/my-v1-app-classic/output" \
   --type "app"
 
 # Update fixtures

@@ -6,7 +6,7 @@ import type {
 
 const codemodOptions: CodemodOptions = {
   componentStructure: 'flat',
-  projectRoot: 'tmp/classic-components',
+  projectRoot: 'tmp/my-v1-app-classic',
   projectType: 'app',
 };
 
@@ -17,7 +17,7 @@ const context: Context = {
 
 const options: Options = {
   componentStructure: 'flat',
-  projectRoot: 'tmp/classic-components',
+  projectRoot: 'tmp/my-v1-app-classic',
   src: 'app/components',
 };
 

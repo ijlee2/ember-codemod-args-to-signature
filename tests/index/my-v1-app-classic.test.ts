@@ -4,10 +4,10 @@ import { runCodemod } from '../../src/index.js';
 import {
   inputProject,
   outputProject,
-} from '../fixtures/classic-components/index.js';
-import { codemodOptions } from '../helpers/shared-test-setups/classic-components.js';
+} from '../fixtures/my-v1-app-classic/index.js';
+import { codemodOptions } from '../helpers/shared-test-setups/my-v1-app-classic.js';
 
-test('index > classic-components', function () {
+test('index > my-v1-app-classic', function () {
   loadFixture(inputProject, codemodOptions);
 
   runCodemod(codemodOptions);
