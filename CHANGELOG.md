@@ -1,5 +1,16 @@
 # Changelog
 
+## 3.0.0
+
+### Major Changes
+
+- [#66](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/66) Removed Component from class name to match ember-cli@5.11 blueprints ([@ijlee2](https://github.com/ijlee2))
+- [#66](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/66) Replaced --src with --type ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#64](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/64) Updated dependencies ([@ijlee2](https://github.com/ijlee2))
+
 ## 2.0.3
 
 ### Patch Changes

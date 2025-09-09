@@ -1,6 +1,6 @@
 {
   "name": "ember-codemod-args-to-signature",
-  "version": "2.0.3",
+  "version": "3.0.0",
   "description": "Codemod to component convert Args to Signature",
   "keywords": [
     "codemod",
