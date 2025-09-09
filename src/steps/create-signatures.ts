@@ -18,12 +18,12 @@ export function createSignatures(context: Context, options: Options): void {
 
   const fileMap = new Map<FilePath, FileContent>();
 
-  for (const [entityName, extensions] of extensionMap) {
-    const filePath = getClassPath(entityName, extensions, options);
+  for (const [componentName, extensions] of extensionMap) {
+    const filePath = getClassPath(componentName, extensions, options);
 
     const data = {
       entity: {
-        pascalizedName: pascalize(entityName),
+        pascalizedName: pascalize(componentName),
       },
     };
 

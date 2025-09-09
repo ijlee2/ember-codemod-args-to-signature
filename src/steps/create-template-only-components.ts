@@ -26,18 +26,18 @@ export function createTemplateOnlyComponents(
 
   const fileMap = new Map<FilePath, FileContent>();
 
-  for (const [entityName, extensions] of extensionMap) {
-    const hasBackingClass = extensions.has('.ts');
+  for (const [componentName, extensions] of extensionMap) {
+    const hasClassTypeScript = extensions.has('.ts');
 
-    if (hasBackingClass) {
+    if (hasClassTypeScript) {
       continue;
     }
 
-    const filePath = getClassPath(entityName, extensions, options);
+    const filePath = getClassPath(componentName, extensions, options);
 
     const data = {
       entity: {
-        pascalizedName: pascalize(entityName),
+        pascalizedName: pascalize(componentName),
       },
     };
 

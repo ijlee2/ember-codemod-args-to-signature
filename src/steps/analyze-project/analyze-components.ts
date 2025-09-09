@@ -17,12 +17,12 @@ export function analyzeComponents(
 
   const signatureMap: SignatureMap = new Map();
 
-  for (const [entityName, extensions] of extensionMap) {
+  for (const [componentName, extensions] of extensionMap) {
     const hasTemplate = extensions.has('.hbs');
-    const hasBackingClass = extensions.has('.ts');
+    const hasClassTypeScript = extensions.has('.ts');
 
     if (!hasTemplate) {
-      signatureMap.set(entityName, {
+      signatureMap.set(componentName, {
         Args: undefined,
         Blocks: undefined,
         Element: undefined,
@@ -31,13 +31,17 @@ export function analyzeComponents(
       continue;
     }
 
-    const classFilePath = getClassPath(entityName, extensions, options);
+    const classFilePath = getClassPath(componentName, extensions, options);
 
-    const classFile = hasBackingClass
+    const classFile = hasClassTypeScript
       ? readFileSync(join(projectRoot, classFilePath), 'utf8')
       : undefined;
 
-    const templateFilePath = getTemplatePath(entityName, extensions, options);
+    const templateFilePath = getTemplatePath(
+      componentName,
+      extensions,
+      options,
+    );
 
     const templateFile = readFileSync(
       join(projectRoot, templateFilePath),
@@ -49,13 +53,13 @@ export function analyzeComponents(
       const Blocks = findBlocks(templateFile);
       const Element = findElement(templateFile);
 
-      signatureMap.set(entityName, {
+      signatureMap.set(componentName, {
         Args,
         Blocks,
         Element,
       });
     } catch (error) {
-      let message = `WARNING: analyzeComponents could not parse \`${entityName}\`. Please update the file manually.`;
+      let message = `WARNING: analyzeComponents could not parse \`${componentName}\`. Please update the file manually.`;
 
       if (error instanceof Error) {
         message += ` (${error.message})`;

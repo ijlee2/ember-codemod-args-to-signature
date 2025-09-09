@@ -24,20 +24,22 @@ export function filterComponents(
 ): ExtensionMap {
   const { projectRoot } = options;
 
-  const filteredExtensionMap: ExtensionMap = new Map();
+  const newExtensionMap: ExtensionMap = new Map();
 
-  for (const [entityName, extensions] of extensionMap) {
-    const isJavaScript = extensions.has('.js');
+  for (const [componentName, extensions] of extensionMap) {
+    const hasClassJavaScript = extensions.has('.js');
 
-    if (isJavaScript) {
+    if (hasClassJavaScript) {
       continue;
     }
 
-    const isTypeScript = (extensions as Set<ComponentExtension>).has('.ts');
+    const hasClassTypeScript = (extensions as Set<ComponentExtension>).has(
+      '.ts',
+    );
 
-    if (isTypeScript) {
+    if (hasClassTypeScript) {
       const filePath = getClassPath(
-        entityName,
+        componentName,
         extensions as Set<ComponentExtension>,
         options,
       );
@@ -49,8 +51,8 @@ export function filterComponents(
       }
     }
 
-    filteredExtensionMap.set(entityName, extensions as Set<ComponentExtension>);
+    newExtensionMap.set(componentName, extensions as Set<ComponentExtension>);
   }
 
-  return filteredExtensionMap;
+  return newExtensionMap;
 }

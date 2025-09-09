@@ -18,13 +18,13 @@ export function updateSignatures(context: Context, options: Options): void {
 
   const fileMap = new Map<FilePath, FileContent>();
 
-  for (const [entityName, signature] of signatureMap) {
-    const extensions = extensionMap.get(entityName)!;
-    const filePath = getClassPath(entityName, extensions, options);
+  for (const [componentName, signature] of signatureMap) {
+    const extensions = extensionMap.get(componentName)!;
+    const filePath = getClassPath(componentName, extensions, options);
 
     const data = {
       entity: {
-        pascalizedName: pascalize(entityName),
+        pascalizedName: pascalize(componentName),
       },
       signature,
     };

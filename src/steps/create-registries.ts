@@ -22,14 +22,14 @@ export function createRegistries(context: Context, options: Options): void {
 
   const fileMap = new Map<FilePath, FileContent>();
 
-  for (const [entityName, extensions] of extensionMap) {
-    const filePath = getClassPath(entityName, extensions, options);
+  for (const [componentName, extensions] of extensionMap) {
+    const filePath = getClassPath(componentName, extensions, options);
 
     const data = {
       entity: {
-        doubleColonizedName: doubleColonize(entityName),
-        name: entityName,
-        pascalizedName: pascalize(entityName),
+        doubleColonizedName: doubleColonize(componentName),
+        name: componentName,
+        pascalizedName: pascalize(componentName),
       },
     };
 
