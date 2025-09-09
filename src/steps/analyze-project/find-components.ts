@@ -1,7 +1,7 @@
 import { findFiles, renamePathByDirectory } from '@codemod-utils/files';
 
 import type { Options, UnfilteredExtensionMap } from '../../types/index.js';
-import { analyzeFilePaths } from '../../utils/components.js';
+import { getExtensionMap } from '../../utils/components.js';
 
 function normalizeComponentNames(
   extensionMap: UnfilteredExtensionMap,
@@ -28,7 +28,7 @@ export function findComponents(options: Options): UnfilteredExtensionMap {
     });
   });
 
-  const extensionMap = analyzeFilePaths(filePaths);
+  const extensionMap = getExtensionMap(filePaths);
 
   if (componentStructure === 'nested') {
     return normalizeComponentNames(extensionMap);

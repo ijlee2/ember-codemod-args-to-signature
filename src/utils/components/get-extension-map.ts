@@ -7,7 +7,7 @@ import type {
   UnfilteredExtensionMap,
 } from '../../types/index.js';
 
-export function analyzeFilePaths(filePaths: string[]): UnfilteredExtensionMap {
+export function getExtensionMap(filePaths: string[]): UnfilteredExtensionMap {
   const extensionMap: UnfilteredExtensionMap = new Map();
 
   filePaths.forEach((filePath) => {
@@ -17,15 +17,15 @@ export function analyzeFilePaths(filePaths: string[]): UnfilteredExtensionMap {
       name: string;
     };
 
-    const entityName = join(dir, name);
+    const componentName = join(dir, name);
 
-    if (extensionMap.has(entityName)) {
-      extensionMap.get(entityName)!.add(ext);
+    if (extensionMap.has(componentName)) {
+      extensionMap.get(componentName)!.add(ext);
 
       return;
     }
 
-    extensionMap.set(entityName, new Set([ext]));
+    extensionMap.set(componentName, new Set([ext]));
   });
 
   return extensionMap;

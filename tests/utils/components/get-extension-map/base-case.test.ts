@@ -1,8 +1,8 @@
 import { assert, test } from '@codemod-utils/tests';
 
-import { analyzeFilePaths } from '../../../../src/utils/components.js';
+import { getExtensionMap } from '../../../../src/utils/components.js';
 
-test('utils | components | analyze-file-paths > base case', function () {
+test('utils | components | get-extension-map > base case', function () {
   const filePaths = [
     'navigation-menu.css',
     'navigation-menu.hbs',
@@ -13,7 +13,7 @@ test('utils | components | analyze-file-paths > base case', function () {
   ];
 
   assert.deepStrictEqual(
-    analyzeFilePaths(filePaths),
+    getExtensionMap(filePaths),
     new Map([
       ['navigation-menu', new Set(['.css', '.hbs', '.ts'])],
       ['ui/form/information', new Set(['.css', '.hbs'])],
