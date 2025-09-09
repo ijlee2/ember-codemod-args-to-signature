@@ -40,11 +40,11 @@ cp -r "tests/fixtures/my-v1-addon/input" "tests/fixtures/my-v1-addon/output"
   --type "v1-addon"
 
 # Update fixtures
-rm -r "tests/fixtures/ember-container-query-glint/output"
-cp -r "tests/fixtures/ember-container-query-glint/input" "tests/fixtures/ember-container-query-glint/output"
+rm -r "tests/fixtures/my-v2-addon/output"
+cp -r "tests/fixtures/my-v2-addon/input" "tests/fixtures/my-v2-addon/output"
 
 ./dist/bin/ember-codemod-args-to-signature.js \
-  --root "tests/fixtures/ember-container-query-glint/output" \
+  --root "tests/fixtures/my-v2-addon/output" \
   --type "v2-addon"
 
 # Update fixtures

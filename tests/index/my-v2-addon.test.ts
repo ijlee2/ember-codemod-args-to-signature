@@ -1,13 +1,10 @@
 import { assertFixture, loadFixture, test } from '@codemod-utils/tests';
 
 import { runCodemod } from '../../src/index.js';
-import {
-  inputProject,
-  outputProject,
-} from '../fixtures/ember-container-query-glint/index.js';
-import { codemodOptions } from '../helpers/shared-test-setups/ember-container-query-glint.js';
+import { inputProject, outputProject } from '../fixtures/my-v2-addon/index.js';
+import { codemodOptions } from '../helpers/shared-test-setups/my-v2-addon.js';
 
-test('index > ember-container-query-glint', function () {
+test('index > my-v2-addon', function () {
   loadFixture(inputProject, codemodOptions);
 
   runCodemod(codemodOptions);
