@@ -1,18 +1,16 @@
-import { join } from 'node:path';
-
 import { findFiles, renamePathByDirectory } from '@codemod-utils/files';
 
 import type { Options, UnfilteredExtensionMap } from '../../types/index.js';
 import { analyzeFilePaths } from '../../utils/components.js';
 
-function normalizeEntityNames(
+function normalizeComponentNames(
   extensionMap: UnfilteredExtensionMap,
 ): UnfilteredExtensionMap {
   return new Map(
-    Array.from(extensionMap.entries()).map(([entityName, extensions]) => {
-      const newEntityName = entityName.replace(/\/index$/, '');
+    Array.from(extensionMap.entries()).map(([oldName, extensions]) => {
+      const newName = oldName.replace(/\/index$/, '');
 
-      return [newEntityName, extensions];
+      return [newName, extensions];
     }),
   );
 }
@@ -20,7 +18,7 @@ function normalizeEntityNames(
 export function findComponents(options: Options): UnfilteredExtensionMap {
   const { componentStructure, projectRoot, src } = options;
 
-  const classFilePaths = findFiles(join(src, '**/*.{js,ts}'), {
+  const filePaths = findFiles(`${src}/**/*.{hbs,js,ts}`, {
     ignoreList: ['**/*.d.ts'],
     projectRoot,
   }).map((filePath) => {
@@ -30,21 +28,10 @@ export function findComponents(options: Options): UnfilteredExtensionMap {
     });
   });
 
-  const templateFilePaths = findFiles(join(src, '**/*.hbs'), {
-    projectRoot,
-  }).map((filePath) => {
-    return renamePathByDirectory(filePath, {
-      from: src,
-      to: '',
-    });
-  });
-
-  const filePaths = [...classFilePaths, ...templateFilePaths].sort();
-
   const extensionMap = analyzeFilePaths(filePaths);
 
   if (componentStructure === 'nested') {
-    return normalizeEntityNames(extensionMap);
+    return normalizeComponentNames(extensionMap);
   }
 
   return extensionMap;
