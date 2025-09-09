@@ -4,10 +4,10 @@ import { runCodemod } from '../../src/index.js';
 import {
   inputProject,
   outputProject,
-} from '../fixtures/ember-container-query-nested/index.js';
-import { codemodOptions } from '../helpers/shared-test-setups/ember-container-query-nested.js';
+} from '../fixtures/my-v1-app-nested/index.js';
+import { codemodOptions } from '../helpers/shared-test-setups/my-v1-app-nested.js';
 
-test('index > ember-container-query-nested', function () {
+test('index > my-v1-app-nested', function () {
   loadFixture(inputProject, codemodOptions);
 
   runCodemod(codemodOptions);

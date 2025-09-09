@@ -48,12 +48,12 @@ cp -r "tests/fixtures/my-v2-addon/input" "tests/fixtures/my-v2-addon/output"
   --type "v2-addon"
 
 # Update fixtures
-rm -r "tests/fixtures/ember-container-query-nested/output"
-cp -r "tests/fixtures/ember-container-query-nested/input" "tests/fixtures/ember-container-query-nested/output"
+rm -r "tests/fixtures/my-v1-app-nested/output"
+cp -r "tests/fixtures/my-v1-app-nested/input" "tests/fixtures/my-v1-app-nested/output"
 
 ./dist/bin/ember-codemod-args-to-signature.js \
   --component-structure nested \
-  --root "tests/fixtures/ember-container-query-nested/output" \
+  --root "tests/fixtures/my-v1-app-nested/output" \
   --type "app"
 
 # Update fixtures

@@ -4,8 +4,8 @@ import { createOptions } from '../../../src/steps/index.js';
 import {
   codemodOptions,
   options,
-} from '../../helpers/shared-test-setups/ember-container-query-nested.js';
+} from '../../helpers/shared-test-setups/my-v1-app-nested.js';
 
-test('steps | create-options > ember-container-query-nested', function () {
+test('steps | create-options > my-v1-app-nested', function () {
   assert.deepStrictEqual(createOptions(codemodOptions), options);
 });

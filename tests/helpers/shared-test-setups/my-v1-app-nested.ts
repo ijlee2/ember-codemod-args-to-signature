@@ -6,7 +6,7 @@ import type {
 
 const codemodOptions: CodemodOptions = {
   componentStructure: 'nested',
-  projectRoot: 'tmp/ember-container-query-nested',
+  projectRoot: 'tmp/my-v1-app-nested',
   projectType: 'app',
 };
 
@@ -299,7 +299,7 @@ const context: Context = {
 
 const options: Options = {
   componentStructure: 'nested',
-  projectRoot: 'tmp/ember-container-query-nested',
+  projectRoot: 'tmp/my-v1-app-nested',
   src: 'app/components',
 };
 
