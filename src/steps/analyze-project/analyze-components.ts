@@ -1,7 +1,13 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-import type { ExtensionMap, Options, SignatureMap } from '../../types/index.js';
+import type {
+  ComponentExtension,
+  ComponentName,
+  ExtensionMap,
+  Options,
+  SignatureMap,
+} from '../../types/index.js';
 import { getClassPath, getTemplatePath } from '../../utils/components.js';
 import {
   findArguments,
@@ -9,12 +15,39 @@ import {
   findElement,
 } from './analyze-components/index.js';
 
+function getFiles(
+  componentName: ComponentName,
+  extensions: Set<ComponentExtension>,
+  options: Options,
+): {
+  classFile: string | undefined;
+  templateFile: string;
+} {
+  const { projectRoot } = options;
+
+  let classFile: string | undefined;
+
+  if (extensions.has('.ts')) {
+    const classFilePath = getClassPath(componentName, extensions, options);
+    classFile = readFileSync(join(projectRoot, classFilePath), 'utf8');
+  }
+
+  const templateFilePath = getTemplatePath(componentName, extensions, options);
+  const templateFile = readFileSync(
+    join(projectRoot, templateFilePath),
+    'utf8',
+  );
+
+  return {
+    classFile,
+    templateFile,
+  };
+}
+
 export function analyzeComponents(
   extensionMap: ExtensionMap,
   options: Options,
 ): SignatureMap {
-  const { projectRoot } = options;
-
   const signatureMap: SignatureMap = new Map();
 
   for (const [componentName, extensions] of extensionMap) {
@@ -30,22 +63,10 @@ export function analyzeComponents(
       continue;
     }
 
-    const hasClassTypeScript = extensions.has('.ts');
-    let classFile: string | undefined;
-
-    if (hasClassTypeScript) {
-      const classFilePath = getClassPath(componentName, extensions, options);
-      classFile = readFileSync(join(projectRoot, classFilePath), 'utf8');
-    }
-
-    const templateFilePath = getTemplatePath(
+    const { classFile, templateFile } = getFiles(
       componentName,
       extensions,
       options,
-    );
-    const templateFile = readFileSync(
-      join(projectRoot, templateFilePath),
-      'utf8',
     );
 
     try {

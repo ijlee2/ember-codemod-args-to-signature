@@ -30,10 +30,11 @@ export function passSignatureToBaseComponent(
 
   const ast = traverse(file, {
     visitCallExpression(path) {
-      if (
-        path.node.callee.type !== 'Identifier' ||
-        path.node.callee.name !== baseComponentName
-      ) {
+      if (path.node.callee.type !== 'Identifier') {
+        return false;
+      }
+
+      if (path.node.callee.name !== 'templateOnlyComponent') {
         return false;
       }
 
