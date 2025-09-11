@@ -1,6 +1,8 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
+import { findTemplateTags, toEcma } from '@codemod-utils/ast-template-tag';
+
 import type {
   ComponentExtension,
   ComponentName,
@@ -24,6 +26,25 @@ function getFiles(
   templateFile: string;
 } {
   const { projectRoot } = options;
+
+  if (extensions.has('.gts')) {
+    const gtsFilePath = getClassPath(componentName, extensions, options);
+    const gtsFile = readFileSync(join(projectRoot, gtsFilePath), 'utf8');
+
+    const ecmaFile = toEcma(gtsFile);
+    const templateTags = findTemplateTags(gtsFile);
+
+    const templateFile = templateTags.reduce((accumulator, templateTag) => {
+      accumulator += templateTag.contents;
+
+      return accumulator;
+    }, '');
+
+    return {
+      classFile: ecmaFile,
+      templateFile,
+    };
+  }
 
   let classFile: string | undefined;
 
@@ -51,7 +72,7 @@ export function analyzeComponents(
   const signatureMap: SignatureMap = new Map();
 
   for (const [componentName, extensions] of extensionMap) {
-    const hasTemplate = extensions.has('.hbs');
+    const hasTemplate = extensions.has('.hbs') || extensions.has('.gts');
 
     if (!hasTemplate) {
       signatureMap.set(componentName, {

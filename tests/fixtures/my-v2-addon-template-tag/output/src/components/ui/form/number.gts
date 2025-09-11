@@ -8,7 +8,24 @@ import { generateErrorMessage } from '../../../utils/components/ui/form.ts';
 import UiFormField from './field.gts';
 import styles from './number.css';
 
-export default class UiFormNumberComponent extends Component {
+interface UiFormNumberSignature {
+  Args: {
+    data: unknown;
+    isDisabled: unknown;
+    isReadOnly: unknown;
+    isRequired: unknown;
+    isWide: unknown;
+    key: unknown;
+    label: unknown;
+    maxValue: unknown;
+    minValue: unknown;
+    onUpdate: unknown;
+    placeholder: unknown;
+    step: unknown;
+  };
+}
+
+export default class UiFormNumber extends Component<UiFormNumberSignature> {
   get errorMessage(): string | undefined {
     const { isRequired } = this.args;
 
@@ -40,40 +57,47 @@ export default class UiFormNumberComponent extends Component {
   }
 
   <template>
-    <UiFormField @errorMessage={{this.errorMessage}} @isWide={{@isWide}}>
-      <:label as |l|>
-        <label data-test-label for={{l.inputId}}>
-          {{@label}}
+  <UiFormField @errorMessage={{this.errorMessage}} @isWide={{@isWide}}>
+  <:label as |l|>
+  <label data-test-label for={{l.inputId}}>
+    {{@label}}
 
-          {{#if @isRequired}}
-            <span aria-hidden="true">
-              *
-            </span>
-          {{/if}}
-        </label>
-      </:label>
+    {{#if @isRequired}}
+      <span aria-hidden="true">
+        *
+      </span>
+    {{/if}}
+  </label>
+  </:label>
 
-      <:field as |f|>
-        <input
-          class={{local
-            styles
-            "input"
-            (if (or @isDisabled @isReadOnly) "is-disabled")
-          }}
-          data-test-field={{@label}}
-          disabled={{@isDisabled}}
-          id={{f.inputId}}
-          max={{@maxValue}}
-          min={{@minValue}}
-          placeholder={{@placeholder}}
-          readonly={{@isReadOnly}}
-          required={{@isRequired}}
-          step={{if @step @step "any"}}
-          type="number"
-          value={{this.value}}
-          {{on "input" this.updateValue}}
-        />
-      </:field>
-    </UiFormField>
+  <:field as |f|>
+  <input
+    class={{local
+      styles
+      "input"
+      (if (or @isDisabled @isReadOnly) "is-disabled")
+    }}
+    data-test-field={{@label}}
+    disabled={{@isDisabled}}
+    id={{f.inputId}}
+    max={{@maxValue}}
+    min={{@minValue}}
+    placeholder={{@placeholder}}
+    readonly={{@isReadOnly}}
+    required={{@isRequired}}
+    step={{if @step @step "any"}}
+    type="number"
+    value={{this.value}}
+    {{on "input" this.updateValue}}
+  />
+  </:field>
+  </UiFormField>
   </template>
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'Ui::Form::Number': typeof UiFormNumber;
+    'ui/form/number': typeof UiFormNumber;
+  }
 }

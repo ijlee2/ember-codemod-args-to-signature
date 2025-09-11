@@ -1,6 +1,8 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
+import { toEcma } from '@codemod-utils/ast-template-tag';
+
 import type {
   ComponentExtension,
   ExtensionMap,
@@ -26,13 +28,15 @@ export function filterComponents(
 
   const filteredEntries = Array.from(extensionMap.entries()).filter(
     ([componentName, extensions]) => {
-      const hasClassJavaScript = extensions.has('.js');
+      const hasClassJavaScript =
+        extensions.has('.gjs') || extensions.has('.js');
 
       if (hasClassJavaScript) {
         return false;
       }
 
-      const hasClassTypeScript = extensions.has('.ts');
+      const hasClassTypeScript =
+        extensions.has('.gts') || extensions.has('.ts');
 
       // hbs file only
       if (!hasClassTypeScript) {
@@ -46,8 +50,9 @@ export function filterComponents(
       );
 
       const file = readFileSync(join(projectRoot, filePath), 'utf8');
+      const ecmaFile = toEcma(file);
 
-      return isSupported(file);
+      return isSupported(ecmaFile);
     },
   );
 

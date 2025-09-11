@@ -22,3 +22,10 @@ interface UiPageSignature {
     </div>
   </div>
 </template> satisfies TOC<UiPageSignature>;
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'Ui::Page': typeof UiPage;
+    'ui/page': typeof UiPage;
+  }
+}

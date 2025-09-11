@@ -14,8 +14,11 @@ test('index > my-v2-addon-template-tag', function () {
 
   assertFixture(outputProject, codemodOptions);
 
-  // Check idempotence
-  runCodemod(codemodOptions);
+  // TODO: Guarantee idempotence
+  // runCodemod(codemodOptions);
 
-  assertFixture(outputProject, codemodOptions);
-}).ignore();
+  // TODO: Guarantee idempotence
+  // runCodemod(codemodOptions);
+
+  // assertFixture(outputProject, codemodOptions);
+});

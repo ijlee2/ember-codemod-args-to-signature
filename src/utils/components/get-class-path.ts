@@ -18,10 +18,14 @@ export function getClassPath(
       ? join(src, componentName, 'index')
       : join(src, componentName);
 
-  // hbs file only. The blueprint for template-only component is in `*.ts`.
-  if (!extensions.has('.ts')) {
+  if (extensions.has('.gts')) {
+    return `${filePath}.gts`;
+  }
+
+  if (extensions.has('.ts')) {
     return `${filePath}.ts`;
   }
 
+  // hbs file only. The blueprint for template-only component is in `*.ts`.
   return `${filePath}.ts`;
 }

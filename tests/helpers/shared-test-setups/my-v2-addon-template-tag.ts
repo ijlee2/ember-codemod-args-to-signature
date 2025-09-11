@@ -11,7 +11,6 @@ const codemodOptions: CodemodOptions = {
 };
 
 const context: Context = {
-  // @ts-expect-error: Not implemented yet
   extensionMap: new Map([
     ['navigation-menu', new Set(['.gts'])],
     ['ui/form', new Set(['.gts'])],

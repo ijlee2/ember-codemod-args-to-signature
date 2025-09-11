@@ -11,7 +11,6 @@ const codemodOptions: CodemodOptions = {
 };
 
 const context: Context = {
-  // @ts-expect-error: Not implemented yet
   extensionMap: new Map([
     ['products/product/card', new Set(['.gts'])],
     ['products/product/details', new Set(['.gts'])],

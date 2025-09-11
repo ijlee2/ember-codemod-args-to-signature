@@ -27,9 +27,9 @@ export function createTemplateOnlyComponents(
   const fileMap = new Map<FilePath, FileContent>();
 
   for (const [componentName, extensions] of extensionMap) {
-    const hasClassTypeScript = extensions.has('.ts');
+    const hasClass = extensions.has('.gts') || extensions.has('.ts');
 
-    if (hasClassTypeScript) {
+    if (hasClass) {
       continue;
     }
 

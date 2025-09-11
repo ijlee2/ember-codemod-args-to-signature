@@ -9,7 +9,21 @@ import { generateErrorMessage } from '../../../utils/components/ui/form.ts';
 import styles from './checkbox.css';
 import UiFormField from './field.gts';
 
-export default class UiFormCheckboxComponent extends Component {
+interface UiFormCheckboxSignature {
+  Args: {
+    data: unknown;
+    isDisabled: unknown;
+    isInline: unknown;
+    isReadOnly: unknown;
+    isRequired: unknown;
+    isWide: unknown;
+    key: unknown;
+    label: unknown;
+    onUpdate: unknown;
+  };
+}
+
+export default class UiFormCheckbox extends Component<UiFormCheckboxSignature> {
   get errorMessage(): string | undefined {
     const { isRequired } = this.args;
 
@@ -45,47 +59,54 @@ export default class UiFormCheckboxComponent extends Component {
   }
 
   <template>
-    <UiFormField
-      @errorMessage={{this.errorMessage}}
-      @isInline={{@isInline}}
-      @isWide={{@isWide}}
-    >
-      <:label as |l|>
-        <label data-test-label id={{concat l.inputId "-label"}}>
-          {{@label}}
+  <UiFormField
+  @errorMessage={{this.errorMessage}}
+  @isInline={{@isInline}}
+  @isWide={{@isWide}}
+  >
+  <:label as |l|>
+  <label data-test-label id={{concat l.inputId "-label"}}>
+    {{@label}}
 
-          {{#if @isRequired}}
-            <span aria-hidden="true">
-              *
-            </span>
-          {{/if}}
-        </label>
-      </:label>
+    {{#if @isRequired}}
+      <span aria-hidden="true">
+        *
+      </span>
+    {{/if}}
+  </label>
+  </:label>
 
-      <:field as |f|>
-        <span
-          aria-checked={{if this.isChecked "true" "false"}}
-          aria-disabled={{if @isDisabled "true" "false"}}
-          aria-labelledby={{concat f.inputId "-label"}}
-          aria-readonly={{if @isReadOnly "true" "false"}}
-          aria-required={{if @isRequired "true" "false"}}
-          class={{local
-            styles
-            "checkbox"
-            (if this.isChecked "is-checked")
-            (if (or @isDisabled @isReadOnly) "is-disabled")
-          }}
-          data-test-field={{@label}}
-          role="checkbox"
-          tabindex={{unless @isDisabled "0"}}
-          {{on "click" this.updateValue}}
-          {{on "keypress" this.updateValueByPressingSpace}}
-        >
-          {{#if this.isChecked}}
-            <span aria-hidden="true">✔</span>
-          {{/if}}
-        </span>
-      </:field>
-    </UiFormField>
+  <:field as |f|>
+  <span
+    aria-checked={{if this.isChecked "true" "false"}}
+    aria-disabled={{if @isDisabled "true" "false"}}
+    aria-labelledby={{concat f.inputId "-label"}}
+    aria-readonly={{if @isReadOnly "true" "false"}}
+    aria-required={{if @isRequired "true" "false"}}
+    class={{local
+      styles
+      "checkbox"
+      (if this.isChecked "is-checked")
+      (if (or @isDisabled @isReadOnly) "is-disabled")
+    }}
+    data-test-field={{@label}}
+    role="checkbox"
+    tabindex={{unless @isDisabled "0"}}
+    {{on "click" this.updateValue}}
+    {{on "keypress" this.updateValueByPressingSpace}}
+  >
+    {{#if this.isChecked}}
+      <span aria-hidden="true">✔</span>
+    {{/if}}
+  </span>
+  </:field>
+  </UiFormField>
   </template>
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'Ui::Form::Checkbox': typeof UiFormCheckbox;
+    'ui/form/checkbox': typeof UiFormCheckbox;
+  }
 }
