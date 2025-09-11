@@ -7,6 +7,8 @@ import {
 } from './builders.js';
 import { isSignature } from './is-signature.js';
 
+const MARKER = 'template_fd9b2463e5f141cfb5666b64daa1f11a';
+
 type Options = {
   baseComponentName: string;
   data: {
@@ -34,12 +36,35 @@ export function passSignatureToBaseComponent(
         return false;
       }
 
-      if (path.node.callee.name !== 'templateOnlyComponent') {
-        return false;
-      }
+      let typeParameters;
 
-      // @ts-expect-error: Assume that types from external packages are correct
-      const typeParameters = path.node.typeParameters;
+      switch (path.node.callee.name) {
+        case 'templateOnlyComponent': {
+          // @ts-expect-error: Assume that types from external packages are correct
+          typeParameters = path.node.typeParameters;
+          break;
+        }
+
+        case MARKER: {
+          const type = path.parentPath.value.type;
+
+          if (type === 'TSSatisfiesExpression') {
+            typeParameters =
+              path.parentPath.value.typeAnnotation.typeParameters;
+          } else if (type === 'VariableDeclarator') {
+            typeParameters =
+              path.parentPath.value.id.typeAnnotation.typeAnnotation
+                .typeParameters;
+          }
+
+          break;
+        }
+
+        // Other cases not supported
+        default: {
+          return false;
+        }
+      }
 
       // When the interface is missing
       if (!typeParameters) {

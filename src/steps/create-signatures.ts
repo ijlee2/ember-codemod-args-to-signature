@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
+import { updateJavaScript } from '@codemod-utils/ast-template-tag';
 import { pascalize } from '@codemod-utils/ember';
 import {
   createFiles,
@@ -29,7 +30,14 @@ export function createSignatures(context: Context, options: Options): void {
 
     try {
       let file = readFileSync(join(projectRoot, filePath), 'utf8');
-      file = createSignature(file, data);
+
+      if (extensions.has('.gts')) {
+        file = updateJavaScript(file, (code) => {
+          return createSignature(code, data);
+        });
+      } else {
+        file = createSignature(file, data);
+      }
 
       fileMap.set(filePath, file);
     } catch (error) {
