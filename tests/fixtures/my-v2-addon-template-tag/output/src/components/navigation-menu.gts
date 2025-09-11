@@ -9,7 +9,12 @@ type MenuItem = {
   route: string;
 };
 
-interface NavigationMenuSignature {}
+interface NavigationMenuSignature {
+  Args: {
+    menuItems: unknown;
+    name: unknown;
+  };
+}
 
 export default <template>
   <nav aria-label={{@name}} data-test-nav={{@name}}>
@@ -28,3 +33,10 @@ export default <template>
     </ul>
   </nav>
 </template> satisfies TOC<NavigationMenuSignature>;
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'NavigationMenu': typeof NavigationMenu;
+    'navigation-menu': typeof NavigationMenu;
+  }
+}

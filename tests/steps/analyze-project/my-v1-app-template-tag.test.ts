@@ -12,4 +12,4 @@ test('steps | analyze-project > my-v1-app-template-tag', function () {
   loadFixture(inputProject, codemodOptions);
 
   assert.deepStrictEqual(analyzeProject(options), context);
-}).ignore();
+});

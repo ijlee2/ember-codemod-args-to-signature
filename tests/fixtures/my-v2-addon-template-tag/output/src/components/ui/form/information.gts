@@ -39,3 +39,10 @@ const UiFormInformationComponent = <template>
 </template> satisfies TOC<UiFormInformationSignature>;
 
 export default UiFormInformationComponent;
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'Ui::Form::Information': typeof UiFormInformation;
+    'ui/form/information': typeof UiFormInformation;
+  }
+}

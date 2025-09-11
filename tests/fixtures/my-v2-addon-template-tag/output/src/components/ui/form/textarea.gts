@@ -8,9 +8,21 @@ import { generateErrorMessage } from '../../../utils/components/ui/form.ts';
 import UiFormField from './field.gts';
 import styles from './textarea.css';
 
-interface Signature {}
+interface UiFormTextareaSignature {
+  Args: {
+    data: unknown;
+    isDisabled: unknown;
+    isReadOnly: unknown;
+    isRequired: unknown;
+    isWide: unknown;
+    key: unknown;
+    label: unknown;
+    onUpdate: unknown;
+    placeholder: unknown;
+  };
+}
 
-export default class UiFormTextareaComponent extends Component<Signature> {
+export default class UiFormTextarea extends Component<UiFormTextareaSignature> {
   get errorMessage(): string | undefined {
     const { isRequired } = this.args;
 
@@ -35,37 +47,44 @@ export default class UiFormTextareaComponent extends Component<Signature> {
   }
 
   <template>
-    <UiFormField @errorMessage={{this.errorMessage}} @isWide={{@isWide}}>
-      <:label as |l|>
-        <label data-test-label for={{l.inputId}}>
-          {{@label}}
+  <UiFormField @errorMessage={{this.errorMessage}} @isWide={{@isWide}}>
+  <:label as |l|>
+  <label data-test-label for={{l.inputId}}>
+    {{@label}}
 
-          {{#if @isRequired}}
-            <span aria-hidden="true">
-              *
-            </span>
-          {{/if}}
-        </label>
-      </:label>
+    {{#if @isRequired}}
+      <span aria-hidden="true">
+        *
+      </span>
+    {{/if}}
+  </label>
+  </:label>
 
-      <:field as |f|>
-        <textarea
-          class={{local
-            styles
-            "textarea"
-            (if (or @isDisabled @isReadOnly) "is-disabled")
-          }}
-          data-test-field={{@label}}
-          disabled={{@isDisabled}}
-          id={{f.inputId}}
-          placeholder={{@placeholder}}
-          readonly={{@isReadOnly}}
-          required={{@isRequired}}
-          rows="4"
-          value={{this.value}}
-          {{on "input" this.updateValue}}
-        ></textarea>
-      </:field>
-    </UiFormField>
+  <:field as |f|>
+  <textarea
+    class={{local
+      styles
+      "textarea"
+      (if (or @isDisabled @isReadOnly) "is-disabled")
+    }}
+    data-test-field={{@label}}
+    disabled={{@isDisabled}}
+    id={{f.inputId}}
+    placeholder={{@placeholder}}
+    readonly={{@isReadOnly}}
+    required={{@isRequired}}
+    rows="4"
+    value={{this.value}}
+    {{on "input" this.updateValue}}
+  ></textarea>
+  </:field>
+  </UiFormField>
   </template>
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'Ui::Form::Textarea': typeof UiFormTextarea;
+    'ui/form/textarea': typeof UiFormTextarea;
+  }
 }

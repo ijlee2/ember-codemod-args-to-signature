@@ -14,8 +14,8 @@ test('index > my-v1-app-template-tag', function () {
 
   assertFixture(outputProject, codemodOptions);
 
-  // Check idempotence
-  runCodemod(codemodOptions);
+  // TODO: Guarantee idempotence
+  // runCodemod(codemodOptions);
 
-  assertFixture(outputProject, codemodOptions);
-}).ignore();
+  // assertFixture(outputProject, codemodOptions);
+});

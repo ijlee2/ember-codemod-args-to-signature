@@ -4,7 +4,17 @@ import { local } from 'embroider-css-modules';
 
 import styles from './field.css';
 
-interface UiFormFieldSignature {}
+interface UiFormFieldSignature {
+  Args: {
+    errorMessage: unknown;
+    isInline: unknown;
+    isWide: unknown;
+  };
+  Blocks: {
+    field: [unknown];
+    label: [unknown];
+  };
+}
 
 const UiFormField: TOC<UiFormFieldSignature> = <template>
   {{#let (uniqueId) as |inputId|}}
@@ -39,3 +49,10 @@ const UiFormField: TOC<UiFormFieldSignature> = <template>
 </template>;
 
 export default UiFormField;
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'Ui::Form::Field': typeof UiFormField;
+    'ui/form/field': typeof UiFormField;
+  }
+}

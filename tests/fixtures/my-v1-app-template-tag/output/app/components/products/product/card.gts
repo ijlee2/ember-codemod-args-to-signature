@@ -19,8 +19,7 @@ interface ProductsProductCardSignature {
   };
 }
 
-const ProductsProductCardComponent: TOC<ProductsProductCardSignature> =
-  <template>
+const ProductsProductCardComponent: TOC<ProductsProductCardSignature> = <template>
     <ContainerQuery
       @features={{hash wide=(width min=320)}}
       @tagName="article"
