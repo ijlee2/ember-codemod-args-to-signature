@@ -1,5 +1,17 @@
 # Changelog
 
+## 3.1.0
+
+### Minor Changes
+
+- [#70](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/70) Supported `\*.{gjs,gts}` files ([@ijlee2](https://github.com/ijlee2))
+
+### Patch Changes
+
+- [#67](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/67) Renamed fixtures ([@ijlee2](https://github.com/ijlee2))
+- [#68](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/68) Refactored code to support `\*.{gjs,gts}` files ([@ijlee2](https://github.com/ijlee2))
+- [#69](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/69) Refactored code ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.0.0
 
 ### Major Changes
