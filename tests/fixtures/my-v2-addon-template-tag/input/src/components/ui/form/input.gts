@@ -24,7 +24,7 @@ interface UiFormInputSignature {
   };
 }
 
-export default class UiFormInputComponent extends Component<UiFormInputSignature> {
+export default class UiFormInput extends Component<UiFormInputSignature> {
   get errorMessage(): string | undefined {
     const { isRequired } = this.args;
 

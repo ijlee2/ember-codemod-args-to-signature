@@ -8,21 +8,9 @@ import { generateErrorMessage } from '../../../utils/components/ui/form.ts';
 import UiFormField from './field.gts';
 import styles from './textarea.css';
 
-interface UiFormTextareaSignature {
-  Args: {
-    data: Record<string, unknown>;
-    isDisabled?: boolean;
-    isReadOnly?: boolean;
-    isRequired?: boolean;
-    isWide?: boolean;
-    key: string;
-    label: string;
-    onUpdate: ({ key, value }: { key: string; value: unknown }) => void;
-    placeholder?: string;
-  };
-}
+interface Signature {}
 
-export default class UiFormTextareaComponent extends Component<UiFormTextareaSignature> {
+export default class UiFormTextareaComponent extends Component<Signature> {
   get errorMessage(): string | undefined {
     const { isRequired } = this.args;
 

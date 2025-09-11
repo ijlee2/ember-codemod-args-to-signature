@@ -8,25 +8,7 @@ import { generateErrorMessage } from '../../../utils/components/ui/form.ts';
 import UiFormField from './field.gts';
 import styles from './number.css';
 
-interface UiFormNumberSignature {
-  Args: {
-    data: Record<string, unknown>;
-    isDisabled?: boolean;
-    isReadOnly?: boolean;
-    isRequired?: boolean;
-    isWide?: boolean;
-    key: string;
-    label: string;
-    maxValue?: number;
-    minValue?: number;
-    onUpdate: ({ key, value }: { key: string; value: unknown }) => void;
-    placeholder?: string;
-    step?: number | 'any';
-    type?: string;
-  };
-}
-
-export default class UiFormNumberComponent extends Component<UiFormNumberSignature> {
+export default class UiFormNumberComponent extends Component {
   get errorMessage(): string | undefined {
     const { isRequired } = this.args;
 

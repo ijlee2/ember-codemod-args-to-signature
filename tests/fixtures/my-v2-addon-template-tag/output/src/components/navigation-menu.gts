@@ -9,14 +9,9 @@ type MenuItem = {
   route: string;
 };
 
-interface NavigationMenuSignature {
-  Args: {
-    menuItems: MenuItem[];
-    name?: string;
-  };
-}
+interface NavigationMenuSignature {}
 
-const NavigationMenuComponent: TOC<NavigationMenuSignature> = <template>
+export default <template>
   <nav aria-label={{@name}} data-test-nav={{@name}}>
     <ul class={{styles.list}}>
       {{#each @menuItems as |menuItem|}}
@@ -32,6 +27,4 @@ const NavigationMenuComponent: TOC<NavigationMenuSignature> = <template>
       {{/each}}
     </ul>
   </nav>
-</template>;
-
-export default NavigationMenuComponent;
+</template> satisfies TOC<NavigationMenuSignature>;

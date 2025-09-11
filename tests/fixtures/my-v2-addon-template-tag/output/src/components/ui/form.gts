@@ -2,7 +2,6 @@ import { concat, hash, uniqueId } from '@ember/helper';
 import { on } from '@ember/modifier';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
-import type { WithBoundArgs } from '@glint/template';
 import { ContainerQuery, width } from 'ember-container-query';
 import { t } from 'ember-intl';
 import { TrackedObject } from 'tracked-built-ins';
@@ -16,42 +15,7 @@ import UiFormNumber from './form/number.gts';
 import UiFormSelect from './form/select.gts';
 import UiFormTextarea from './form/textarea.gts';
 
-interface UiFormSignature {
-  Args: {
-    data?: Record<string, unknown>;
-    instructions?: string;
-    onSubmit: (data: Record<string, unknown>) => Promise<void>;
-    title?: string;
-  };
-  Blocks: {
-    default: [
-      {
-        Checkbox: WithBoundArgs<
-          typeof UiFormCheckbox,
-          'data' | 'isInline' | 'isWide' | 'onUpdate'
-        >;
-        Input: WithBoundArgs<
-          typeof UiFormInput,
-          'data' | 'isWide' | 'onUpdate'
-        >;
-        Number: WithBoundArgs<
-          typeof UiFormNumber,
-          'data' | 'isWide' | 'onUpdate'
-        >;
-        Select: WithBoundArgs<
-          typeof UiFormSelect,
-          'data' | 'isWide' | 'onUpdate'
-        >;
-        Textarea: WithBoundArgs<
-          typeof UiFormTextarea,
-          'data' | 'isWide' | 'onUpdate'
-        >;
-      },
-    ];
-  };
-}
-
-export default class UiFormComponent extends Component<UiFormSignature> {
+export default class UiFormComponent extends Component {
   data = new TrackedObject<Record<string, unknown>>(this.args.data ?? {});
 
   @action async submitForm(event: SubmitEvent): Promise<void> {

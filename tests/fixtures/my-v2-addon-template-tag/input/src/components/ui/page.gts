@@ -11,7 +11,7 @@ interface UiPageSignature {
   };
 }
 
-const UiPageComponent: TOC<UiPageSignature> = <template>
+<template>
   <div class={{styles.container}}>
     <h1 class={{styles.title}}>
       {{@title}}
@@ -21,6 +21,4 @@ const UiPageComponent: TOC<UiPageSignature> = <template>
       {{yield}}
     </div>
   </div>
-</template>;
-
-export default UiPageComponent;
+</template> satisfies TOC<UiPageSignature>;

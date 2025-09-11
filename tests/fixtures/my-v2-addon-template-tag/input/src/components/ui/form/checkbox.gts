@@ -9,21 +9,7 @@ import { generateErrorMessage } from '../../../utils/components/ui/form.ts';
 import styles from './checkbox.css';
 import UiFormField from './field.gts';
 
-interface UiFormCheckboxSignature {
-  Args: {
-    data: Record<string, unknown>;
-    isDisabled?: boolean;
-    isInline?: boolean;
-    isReadOnly?: boolean;
-    isRequired?: boolean;
-    isWide?: boolean;
-    key: string;
-    label: string;
-    onUpdate: ({ key, value }: { key: string; value: unknown }) => void;
-  };
-}
-
-export default class UiFormCheckboxComponent extends Component<UiFormCheckboxSignature> {
+export default class UiFormCheckboxComponent extends Component {
   get errorMessage(): string | undefined {
     const { isRequired } = this.args;
 

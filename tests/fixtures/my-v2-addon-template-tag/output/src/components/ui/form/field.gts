@@ -4,27 +4,9 @@ import { local } from 'embroider-css-modules';
 
 import styles from './field.css';
 
-interface UiFormFieldSignature {
-  Args: {
-    errorMessage?: string;
-    isInline?: boolean;
-    isWide?: boolean;
-  };
-  Blocks: {
-    field: [
-      {
-        inputId: string;
-      },
-    ];
-    label: [
-      {
-        inputId: string;
-      },
-    ];
-  };
-}
+interface UiFormFieldSignature {}
 
-const UiFormFieldComponent: TOC<UiFormFieldSignature> = <template>
+const UiFormField: TOC<UiFormFieldSignature> = <template>
   {{#let (uniqueId) as |inputId|}}
     <div
       class={{local
@@ -56,4 +38,4 @@ const UiFormFieldComponent: TOC<UiFormFieldSignature> = <template>
   {{/let}}
 </template>;
 
-export default UiFormFieldComponent;
+export default UiFormField;
