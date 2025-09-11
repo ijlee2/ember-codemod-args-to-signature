@@ -11,14 +11,14 @@ type Context = {
   signatureMap: SignatureMap;
 };
 
-type UnfilteredComponentExtension = '.hbs' | '.js' | '.ts';
+type UnfilteredComponentExtension = '.gjs' | '.gts' | '.hbs' | '.js' | '.ts';
 
 type UnfilteredExtensionMap = Map<
   ComponentName,
   Set<UnfilteredComponentExtension>
 >;
 
-type ComponentExtension = Exclude<UnfilteredComponentExtension, '.js'>;
+type ComponentExtension = Exclude<UnfilteredComponentExtension, '.gjs' | '.js'>;
 
 type ExtensionMap = Map<ComponentName, Set<ComponentExtension>>;
 
