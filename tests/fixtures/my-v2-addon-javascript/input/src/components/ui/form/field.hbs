@@ -1,0 +1,28 @@
+{{#let (unique-id) as |inputId|}}
+  <div
+    class={{concat
+      "container"
+      (if @isInline " is-inline")
+      (if @isWide " is-wide")
+      (unless @errorMessage " no-feedback")
+    }}
+  >
+    <div class="label">
+      {{yield (hash inputId=inputId) to="label"}}
+    </div>
+
+    <div class="field">
+      {{yield (hash inputId=inputId) to="field"}}
+    </div>
+
+    {{#if @errorMessage}}
+      <div
+        class="feedback is-error"
+        data-test-error-message
+        role="alert"
+      >
+        {{@errorMessage}}
+      </div>
+    {{/if}}
+  </div>
+{{/let}}

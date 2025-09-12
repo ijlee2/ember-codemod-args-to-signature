@@ -4,10 +4,10 @@ import { runCodemod } from '../../src/index.js';
 import {
   inputProject,
   outputProject,
-} from '../fixtures/my-v2-addon-template-tag/index.js';
-import { codemodOptions } from '../helpers/shared-test-setups/my-v2-addon-template-tag.js';
+} from '../fixtures/my-v1-app-javascript/index.js';
+import { codemodOptions } from '../helpers/shared-test-setups/my-v1-app-javascript.js';
 
-test('index > my-v2-addon-template-tag', function () {
+test('index > my-v1-app-javascript', function () {
   loadFixture(inputProject, codemodOptions);
 
   runCodemod(codemodOptions);
