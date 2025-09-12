@@ -9,23 +9,23 @@ importers:
   .:
     dependencies:
       '@codemod-utils/ast-javascript':
-        specifier: ^2.0.6
-        version: 2.0.6
+        specifier: ^2.0.7
+        version: 2.0.7
       '@codemod-utils/ast-template':
-        specifier: ^2.0.2
-        version: 2.0.2
+        specifier: ^2.0.3
+        version: 2.0.3
       '@codemod-utils/ast-template-tag':
         specifier: ^0.5.1
         version: 0.5.1
       '@codemod-utils/blueprints':
-        specifier: ^2.0.2
-        version: 2.0.2
+        specifier: ^2.0.3
+        version: 2.0.3
       '@codemod-utils/ember':
-        specifier: ^3.0.2
-        version: 3.0.2
+        specifier: ^3.0.3
+        version: 3.0.3
       '@codemod-utils/files':
-        specifier: ^3.0.4
-        version: 3.0.4
+        specifier: ^3.0.5
+        version: 3.0.5
       yargs:
         specifier: ^18.0.0
         version: 18.0.0
@@ -37,8 +37,8 @@ importers:
         specifier: ^0.6.0
         version: 0.6.0(encoding@0.1.13)
       '@codemod-utils/tests':
-        specifier: ^2.0.3
-        version: 2.0.3(@sondr3/minitest@0.1.2)
+        specifier: ^2.0.4
+        version: 2.0.4(@sondr3/minitest@0.1.2)
       '@ijlee2-frontend-configs/eslint-config-node':
         specifier: ^2.1.2
         version: 2.1.2(@typescript-eslint/parser@8.43.0(eslint@9.35.0)(typescript@5.9.2))(@typescript-eslint/utils@8.43.0(eslint@9.35.0)(typescript@5.9.2))(eslint-import-resolver-node@0.3.9)(eslint-plugin-import@2.31.0(@typescript-eslint/parser@8.43.0(eslint@9.35.0)(typescript@5.9.2))(eslint@9.35.0))(eslint@9.35.0)(typescript@5.9.2)
@@ -211,32 +211,32 @@ packages:
   '@changesets/write@0.4.0':
     resolution: {integrity: sha512-CdTLvIOPiCNuH71pyDu3rA+Q0n65cmAbXnwWH84rKGiFumFzkmHNT8KHTMEchcxN+Kl8I54xGUhJ7l3E7X396Q==}
 
-  '@codemod-utils/ast-javascript@2.0.6':
-    resolution: {integrity: sha512-UcIdtWxgthxMu2V1sXq9qSFTnkWvUlJJIQGjS0tvtc3PnTiX1/qfvPhdsD8Nt4cWYjDBpNpsKSkCY/UIeAfPLw==}
+  '@codemod-utils/ast-javascript@2.0.7':
+    resolution: {integrity: sha512-/TmvlT11e9g6ypPUt0VMsrPbySzZguaCD6cQlIyPzo0ydTNj1mg+IJTpVQOXUW+tPhbolICg5kdsaB4M0dbkFw==}
     engines: {node: 20.* || >= 22}
 
   '@codemod-utils/ast-template-tag@0.5.1':
     resolution: {integrity: sha512-1SR2JbLrCpLPuNDFax8ohAuglqXkVggY6U7+0kN8tC4hLa5MFYWme7SzNLDmyA+0DDQXhQ9CRXxaHhyxEKiGsA==}
     engines: {node: 20.* || >= 22}
 
-  '@codemod-utils/ast-template@2.0.2':
-    resolution: {integrity: sha512-HOE6Ain9wFDNg70/ZbsntKzZZP1KyhPA7ypWDOAg/p+gz6YZeEcrzRPggBJVNQDFtNUpQCXfD5+MruS9CV0PKw==}
+  '@codemod-utils/ast-template@2.0.3':
+    resolution: {integrity: sha512-akIL3bNSLn53Wn5kDT4XAq9t7BpGISpAVl3kl9yd17nIN+GYsxGyXCpiRi1fx9i4AKc/QcO6Ln/zAfmQeJv7fQ==}
     engines: {node: 20.* || >= 22}
 
-  '@codemod-utils/blueprints@2.0.2':
-    resolution: {integrity: sha512-DPLFECQIvHsm/DUrvJx2i8MNdpc3Ep5LGs7HVesG7M90k2LClCKVIvPCk7zYNVLGeEAuu7csjcCC1uzirQ1Y4w==}
+  '@codemod-utils/blueprints@2.0.3':
+    resolution: {integrity: sha512-Ca6ARzW1pyn9qAymVKQqoNHST3g9etXgQBplcIhfkUXDmwEwcVGKHwJLnpfbpkMkjq1hGtopF2sZ3lWTEk0AJA==}
     engines: {node: 20.* || >= 22}
 
-  '@codemod-utils/ember@3.0.2':
-    resolution: {integrity: sha512-eX6Fxi9YX4chJgAiCbsazfNRH2k3f2c8Dsd3mJpowxILr1A+rcnHjgWaRUqrmJhd+tiXwAutcnGuYY/td74iDA==}
+  '@codemod-utils/ember@3.0.3':
+    resolution: {integrity: sha512-vi2J7HCP9G2XjkAfPKXdftZrqGJmU579TMFlAyJ5xRZpbe09JXdjP8OzGjZv2CDgeEvo5HheyZLCPYMYAspAvg==}
     engines: {node: 20.* || >= 22}
 
-  '@codemod-utils/files@3.0.4':
-    resolution: {integrity: sha512-pf2JALm6VTN+1djhBbYKZV8m8JMsjvVM7/+ioK2o0UdiDlJ+M8sUz7ARAVKCvSU0rEi87/TAV5yYaKHWK3U1vQ==}
+  '@codemod-utils/files@3.0.5':
+    resolution: {integrity: sha512-DkHpvt+NbxTkvnudsr85zLYDsUEDkuS//vSG7LW7kGLTaO12BJujws68phna9W41JqDS5K798S71KA9rM+fa8A==}
     engines: {node: 20.* || >= 22}
 
-  '@codemod-utils/tests@2.0.3':
-    resolution: {integrity: sha512-9MfT3fCWFpl1IAZQdGOrz0fMnKpY3AR8DyNVgnouVePh4JKOvqgDHi0vmZjYLNLVloG7EqJvvoAKANG1voBAsQ==}
+  '@codemod-utils/tests@2.0.4':
+    resolution: {integrity: sha512-Yb17qMAscnrYjAJDl9ols3FSmMocafH7CFcNJKjri87P6OI91IgyjrPJXig6bBVrThvmqzHcFbp9DguZIijDyg==}
     engines: {node: 20.* || >= 22}
     peerDependencies:
       '@sondr3/minitest': ^0.1.2
@@ -378,8 +378,8 @@ packages:
   '@jridgewell/sourcemap-codec@1.5.5':
     resolution: {integrity: sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==}
 
-  '@jridgewell/trace-mapping@0.3.30':
-    resolution: {integrity: sha512-GQ7Nw5G2lTu/BtHTKfXhKHok2WGetd4XYcVKGx00SjAk8GMwgJM3zr6zORiPGuOE+/vkc90KtTosSSvaCjKb2Q==}
+  '@jridgewell/trace-mapping@0.3.31':
+    resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
 
   '@manypkg/find-root@1.1.0':
     resolution: {integrity: sha512-mki5uBvhHzO8kYYix/WRy2WX8S3B5wdVSc9D6KcU5lQNglP2yt58/VfLuAK49glRXChosY8ap2oJ1qgma3GUVA==}
@@ -422,8 +422,8 @@ packages:
   '@tsconfig/strictest@2.0.5':
     resolution: {integrity: sha512-ec4tjL2Rr0pkZ5hww65c+EEPYwxOi4Ryv+0MtjeaSQRJyq322Q27eOQiFbuNgw2hpL4hB1/W/HBGk3VKS43osg==}
 
-  '@tybys/wasm-util@0.10.0':
-    resolution: {integrity: sha512-VyyPYFlOMNylG45GoAe0xDoLwWuowvf92F9kySqzYh8vmYm7D2u4iUJKa1tOUpS70Ku13ASrOkS4ScXFsTaCNQ==}
+  '@tybys/wasm-util@0.10.1':
+    resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
 
   '@types/estree@1.0.8':
     resolution: {integrity: sha512-dWHzHa2WqEXI/O1E9OjrocMTKJl2mSrEolh1Iomrv6U+JuNwaHXsXx9bLu5gG7BUWFIN0skIQJQ/L1rIex4X6w==}
@@ -925,8 +925,8 @@ packages:
   eastasianwidth@0.2.0:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
 
-  electron-to-chromium@1.5.215:
-    resolution: {integrity: sha512-TIvGp57UpeNetj/wV/xpFNpWGb0b/ROw372lHPx5Aafx02gjTBtWnEEcaSX3W2dLM3OSdGGyHX/cHl01JQsLaQ==}
+  electron-to-chromium@1.5.218:
+    resolution: {integrity: sha512-uwwdN0TUHs8u6iRgN8vKeWZMRll4gBkz+QMqdS7DDe49uiK68/UX92lFb61oiFPrpYZNeZIqa4bA7O6Aiasnzg==}
 
   ember-template-recast@6.1.5:
     resolution: {integrity: sha512-VnRN8FzEHQnw/5rCv6Wnq8MVYXbGQbFY+rEufvWV+FO/IsxMahGEud4MYWtTA2q8iG+qJFrDQefNvQ//7MI7Qw==}
@@ -1256,8 +1256,8 @@ packages:
     resolution: {integrity: sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==}
     engines: {node: 6.* || 8.* || >= 10.*}
 
-  get-east-asian-width@1.3.1:
-    resolution: {integrity: sha512-R1QfovbPsKmosqTnPoRFiJ7CF9MLRgb53ChvMZm+r4p76/+8yKDy17qLL2PKInORy2RkZZekuK0efYgmzTkXyQ==}
+  get-east-asian-width@1.4.0:
+    resolution: {integrity: sha512-QZjmEOC+IT1uk6Rx0sX22V6uHWVwbdbxf1faPqJ1QhLdGgsRGCZoyaQBm/piRdJy/D2um6hM1UP7ZEeQ4EkP+Q==}
     engines: {node: '>=18'}
 
   get-intrinsic@1.3.0:
@@ -1296,8 +1296,8 @@ packages:
     resolution: {integrity: sha512-7ACyT3wmyp3I61S4fG682L0VA2RGD9otkqGJIwNUMF1SWUombIIk+af1unuDYgMm082aHYwD+mzJvv9Iu8dsgg==}
     engines: {node: '>=18'}
 
-  globals@16.3.0:
-    resolution: {integrity: sha512-bqWEnJ1Nt3neqx2q5SFfGS8r/ahumIakg3HcwtNlrVlwXIeNumWn/c7Pn/wKzGhf6SaW6H6uWXLqC30STCMchQ==}
+  globals@16.4.0:
+    resolution: {integrity: sha512-ob/2LcVVaVGCYN+r14cnwnoDPUufjiYgSqRhiFD0Q1iI4Odora5RE8Iv1D24hAz5oMophRGkGz+yuvQmmUMnMw==}
     engines: {node: '>=18'}
 
   globalthis@1.0.4:
@@ -2268,7 +2268,7 @@ snapshots:
       '@babel/parser': 7.28.4
       '@babel/types': 7.28.4
       '@jridgewell/gen-mapping': 0.3.13
-      '@jridgewell/trace-mapping': 0.3.30
+      '@jridgewell/trace-mapping': 0.3.31
       jsesc: 3.1.0
 
   '@babel/helper-compilation-targets@7.27.2':
@@ -2488,33 +2488,33 @@ snapshots:
       human-id: 4.1.1
       prettier: 2.8.8
 
-  '@codemod-utils/ast-javascript@2.0.6':
+  '@codemod-utils/ast-javascript@2.0.7':
     dependencies:
       '@babel/parser': 7.28.4
       recast: 0.23.11
 
   '@codemod-utils/ast-template-tag@0.5.1':
     dependencies:
-      '@codemod-utils/ast-javascript': 2.0.6
+      '@codemod-utils/ast-javascript': 2.0.7
       content-tag: 4.0.0
 
-  '@codemod-utils/ast-template@2.0.2':
+  '@codemod-utils/ast-template@2.0.3':
     dependencies:
       ember-template-recast: 6.1.5
     transitivePeerDependencies:
       - supports-color
 
-  '@codemod-utils/blueprints@2.0.2':
+  '@codemod-utils/blueprints@2.0.3':
     dependencies:
       lodash: 4.17.21
 
-  '@codemod-utils/ember@3.0.2': {}
+  '@codemod-utils/ember@3.0.3': {}
 
-  '@codemod-utils/files@3.0.4':
+  '@codemod-utils/files@3.0.5':
     dependencies:
       glob: 11.0.3
 
-  '@codemod-utils/tests@2.0.3(@sondr3/minitest@0.1.2)':
+  '@codemod-utils/tests@2.0.4(@sondr3/minitest@0.1.2)':
     dependencies:
       '@sondr3/minitest': 0.1.2
       fixturify: 3.0.0
@@ -2642,7 +2642,7 @@ snapshots:
       eslint-plugin-simple-import-sort: 12.1.1(eslint@9.35.0)
       eslint-plugin-sort-class-members: 1.21.0(eslint@9.35.0)
       eslint-plugin-typescript-sort-keys: 3.3.0(@typescript-eslint/parser@8.43.0(eslint@9.35.0)(typescript@5.9.2))(eslint@9.35.0)(typescript@5.9.2)
-      globals: 16.3.0
+      globals: 16.4.0
       typescript-eslint: 8.43.0(eslint@9.35.0)(typescript@5.9.2)
     optionalDependencies:
       typescript: 5.9.2
@@ -2686,18 +2686,18 @@ snapshots:
   '@jridgewell/gen-mapping@0.3.13':
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.5
-      '@jridgewell/trace-mapping': 0.3.30
+      '@jridgewell/trace-mapping': 0.3.31
 
   '@jridgewell/remapping@2.3.5':
     dependencies:
       '@jridgewell/gen-mapping': 0.3.13
-      '@jridgewell/trace-mapping': 0.3.30
+      '@jridgewell/trace-mapping': 0.3.31
 
   '@jridgewell/resolve-uri@3.1.2': {}
 
   '@jridgewell/sourcemap-codec@1.5.5': {}
 
-  '@jridgewell/trace-mapping@0.3.30':
+  '@jridgewell/trace-mapping@0.3.31':
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.5.5
@@ -2722,7 +2722,7 @@ snapshots:
     dependencies:
       '@emnapi/core': 1.5.0
       '@emnapi/runtime': 1.5.0
-      '@tybys/wasm-util': 0.10.0
+      '@tybys/wasm-util': 0.10.1
     optional: true
 
   '@nicolo-ribaudo/eslint-scope-5-internals@5.1.1-v1':
@@ -2752,7 +2752,7 @@ snapshots:
 
   '@tsconfig/strictest@2.0.5': {}
 
-  '@tybys/wasm-util@0.10.0':
+  '@tybys/wasm-util@0.10.1':
     dependencies:
       tslib: 2.8.1
     optional: true
@@ -3136,7 +3136,7 @@ snapshots:
   browserslist@4.25.4:
     dependencies:
       caniuse-lite: 1.0.30001741
-      electron-to-chromium: 1.5.215
+      electron-to-chromium: 1.5.218
       node-releases: 2.0.20
       update-browserslist-db: 1.1.3(browserslist@4.25.4)
 
@@ -3307,7 +3307,7 @@ snapshots:
 
   eastasianwidth@0.2.0: {}
 
-  electron-to-chromium@1.5.215: {}
+  electron-to-chromium@1.5.218: {}
 
   ember-template-recast@6.1.5:
     dependencies:
@@ -3766,7 +3766,7 @@ snapshots:
 
   get-caller-file@2.0.5: {}
 
-  get-east-asian-width@1.3.1: {}
+  get-east-asian-width@1.4.0: {}
 
   get-intrinsic@1.3.0:
     dependencies:
@@ -3820,7 +3820,7 @@ snapshots:
 
   globals@15.15.0: {}
 
-  globals@16.3.0: {}
+  globals@16.4.0: {}
 
   globalthis@1.0.4:
     dependencies:
@@ -4549,7 +4549,7 @@ snapshots:
   string-width@7.2.0:
     dependencies:
       emoji-regex: 10.5.0
-      get-east-asian-width: 1.3.1
+      get-east-asian-width: 1.4.0
       strip-ansi: 7.1.2
 
   string.prototype.trim@1.2.10:
