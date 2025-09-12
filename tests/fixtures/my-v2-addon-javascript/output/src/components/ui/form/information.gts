@@ -3,7 +3,7 @@ import { or } from 'ember-truth-helpers';
 
 import styles from './information.css';
 
-const UiFormInformationComponent = <template>
+const UiFormInformation = <template>
   {{#if (or @title @instructions)}}
     <div class={{styles.container}}>
       {{#if @title}}
@@ -29,4 +29,11 @@ const UiFormInformationComponent = <template>
   {{/if}}
 </template>;
 
-export default UiFormInformationComponent;
+export default UiFormInformation;
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'Ui::Form::Information': typeof UiFormInformation;
+    'ui/form/information': typeof UiFormInformation;
+  }
+}

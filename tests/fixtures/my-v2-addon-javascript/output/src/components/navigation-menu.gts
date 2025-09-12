@@ -3,7 +3,14 @@ import { local } from 'embroider-css-modules';
 
 import styles from './navigation-menu.css';
 
-export default <template>
+interface NavigationMenuSignature {
+  Args: {
+    menuItems: unknown;
+    name: unknown;
+  };
+}
+
+const NavigationMenu = <template>
   <nav aria-label={{@name}} data-test-nav={{@name}}>
     <ul class={{styles.list}}>
       {{#each @menuItems as |menuItem|}}
@@ -20,3 +27,13 @@ export default <template>
     </ul>
   </nav>
 </template>;
+
+
+export default NavigationMenu;
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'NavigationMenu': typeof NavigationMenu;
+    'navigation-menu': typeof NavigationMenu;
+  }
+}

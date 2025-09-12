@@ -10,8 +10,7 @@ export function formatPrice(price) {
   return `$${price}`;
 }
 
-const ProductsProductCardComponent =
-  <template>
+const ProductsProductCard = <template>
     <ContainerQuery
       @features={{hash wide=(width min=320)}}
       @tagName="article"
@@ -55,4 +54,11 @@ const ProductsProductCardComponent =
     </ContainerQuery>
   </template>;
 
-export default ProductsProductCardComponent;
+export default ProductsProductCard;
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'Products::Product::Card': typeof ProductsProductCard;
+    'products/product/card': typeof ProductsProductCard;
+  }
+}

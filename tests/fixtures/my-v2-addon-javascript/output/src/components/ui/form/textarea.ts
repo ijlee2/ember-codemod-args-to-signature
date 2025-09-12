@@ -4,7 +4,21 @@ import Component from '@glimmer/component';
 import { generateErrorMessage } from '../../../utils/components/ui/form.js';
 import styles from './textarea.css';
 
-export default class extends Component {
+interface UiFormTextareaSignature {
+  Args: {
+    data: unknown;
+    isDisabled: unknown;
+    isReadOnly: unknown;
+    isRequired: unknown;
+    isWide: unknown;
+    key: unknown;
+    label: unknown;
+    onUpdate: unknown;
+    placeholder: unknown;
+  };
+}
+
+export default class UiFormTextarea extends Component<UiFormTextareaSignature> {
   styles = styles;
 
   get errorMessage() {
@@ -28,5 +42,12 @@ export default class extends Component {
     const { value } = event.target;
 
     onUpdate({ key, value });
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'Ui::Form::Textarea': typeof UiFormTextarea;
+    'ui/form/textarea': typeof UiFormTextarea;
   }
 }

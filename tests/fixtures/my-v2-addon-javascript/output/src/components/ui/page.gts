@@ -1,0 +1,32 @@
+import styles from './page.css';
+
+interface UiPageSignature {
+  Args: {
+    title: unknown;
+  };
+  Blocks: {
+    default: [];
+  };
+}
+
+const UiPage = <template>
+  <div class={{styles.container}}>
+    <h1 class={{styles.title}}>
+      {{@title}}
+    </h1>
+
+    <div class={{styles.content}} id="main-content" tabindex="-1">
+      {{yield}}
+    </div>
+  </div>
+</template>;
+
+
+export default UiPage;
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'Ui::Page': typeof UiPage;
+    'ui/page': typeof UiPage;
+  }
+}

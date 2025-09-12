@@ -4,7 +4,21 @@ import Component from '@glimmer/component';
 import { generateErrorMessage } from '../../../utils/components/ui/form.js';
 import styles from './checkbox.css';
 
-export default class UiFormCheckboxComponent extends Component {
+interface UiFormCheckboxSignature {
+  Args: {
+    data: unknown;
+    isDisabled: unknown;
+    isInline: unknown;
+    isReadOnly: unknown;
+    isRequired: unknown;
+    isWide: unknown;
+    key: unknown;
+    label: unknown;
+    onUpdate: unknown;
+  };
+}
+
+export default class UiFormCheckbox extends Component<UiFormCheckboxSignature> {
   styles = styles;
 
   get errorMessage() {
@@ -39,5 +53,12 @@ export default class UiFormCheckboxComponent extends Component {
     if (event.code === 'Space' || event.key === 'Space') {
       this.updateValue();
     }
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'Ui::Form::Checkbox': typeof UiFormCheckbox;
+    'ui/form/checkbox': typeof UiFormCheckbox;
   }
 }
