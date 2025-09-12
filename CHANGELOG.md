@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.2.0
+
+### Minor Changes
+
+- [#72](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/72) Allowed passing --convert-javascript ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.1.1
 
 ### Patch Changes
