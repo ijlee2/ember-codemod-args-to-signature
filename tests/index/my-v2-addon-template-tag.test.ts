@@ -17,8 +17,5 @@ test('index > my-v2-addon-template-tag', function () {
   // TODO: Guarantee idempotence
   // runCodemod(codemodOptions);
 
-  // TODO: Guarantee idempotence
-  // runCodemod(codemodOptions);
-
   // assertFixture(outputProject, codemodOptions);
 });

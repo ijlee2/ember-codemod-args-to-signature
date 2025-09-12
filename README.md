@@ -56,7 +56,6 @@ For more information, please check the [FAQ](#frequently-asked-questions).
 Must:
 
 - Migrate to the Octane layout (flat or nested). You can leverage the codemods for [classic](https://github.com/ember-codemods/ember-component-template-colocation-migrator) and [pod](https://github.com/ijlee2/ember-codemod-pod-to-octane) layouts.
-- If you have component classes written in JavaScript, change the file extension to `*.ts` to allow the codemod to add `Signature` and `Registry`.
 
 Nice to do:
 
@@ -81,6 +80,18 @@ By default, an Octane project has the flat component structure. Pass `--componen
 
 ```sh
 npx ember-codemod-args-to-signature --component-structure nested
+```
+
+</details>
+
+<details>
+
+<summary>Optional: Convert <code>*.{js,gjs}</code> files</summary>
+
+By default, the codemod ignores component classes written in `*.{js,gjs}`. Pass `--convert-javascript` to allow the codemod to change the file extension to `*.{ts,gts}` and add the component signature.
+
+```sh
+npx ember-codemod-args-to-signature --convert-javascript
 ```
 
 </details>

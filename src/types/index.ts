@@ -1,5 +1,6 @@
 type CodemodOptions = {
   componentStructure: 'flat' | 'nested';
+  convertJavaScript: boolean;
   projectRoot: string;
   projectType: 'app' | 'v1-addon' | 'v2-addon';
 };
@@ -32,6 +33,7 @@ type SignatureMap = Map<ComponentName, Signature>;
 
 type Options = {
   componentStructure: 'flat' | 'nested';
+  convertJavaScript: boolean;
   projectRoot: string;
   src: string;
 };

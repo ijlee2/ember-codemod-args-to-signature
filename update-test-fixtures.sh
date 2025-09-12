@@ -40,6 +40,15 @@ cp -r "tests/fixtures/my-v1-app-classic/input" "tests/fixtures/my-v1-app-classic
   --type "app"
 
 # Update fixtures
+rm -r "tests/fixtures/my-v1-app-javascript/output"
+cp -r "tests/fixtures/my-v1-app-javascript/input" "tests/fixtures/my-v1-app-javascript/output"
+
+./dist/bin/ember-codemod-args-to-signature.js \
+  --convert-javascript \
+  --root "tests/fixtures/my-v1-app-javascript/output" \
+  --type "app"
+
+# Update fixtures
 rm -r "tests/fixtures/my-v1-app-nested/output"
 cp -r "tests/fixtures/my-v1-app-nested/input" "tests/fixtures/my-v1-app-nested/output"
 
@@ -70,6 +79,15 @@ cp -r "tests/fixtures/my-v2-addon/input" "tests/fixtures/my-v2-addon/output"
 
 ./dist/bin/ember-codemod-args-to-signature.js \
   --root "tests/fixtures/my-v2-addon/output" \
+  --type "v2-addon"
+
+# Update fixtures
+rm -r "tests/fixtures/my-v2-addon-javascript/output"
+cp -r "tests/fixtures/my-v2-addon-javascript/input" "tests/fixtures/my-v2-addon-javascript/output"
+
+./dist/bin/ember-codemod-args-to-signature.js \
+  --convert-javascript \
+  --root "tests/fixtures/my-v2-addon-javascript/output" \
   --type "v2-addon"
 
 # Update fixtures

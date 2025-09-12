@@ -17,10 +17,12 @@ function getSrc(projectType: CodemodOptions['projectType']): string {
 }
 
 export function createOptions(codemodOptions: CodemodOptions): Options {
-  const { componentStructure, projectRoot, projectType } = codemodOptions;
+  const { componentStructure, convertJavaScript, projectRoot, projectType } =
+    codemodOptions;
 
   return {
     componentStructure,
+    convertJavaScript,
     projectRoot,
     src: getSrc(projectType),
   };

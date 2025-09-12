@@ -1,5 +1,6 @@
 import {
   analyzeProject,
+  convertToTypeScript,
   createOptions,
   createRegistries,
   createSignatures,
@@ -12,6 +13,7 @@ export function runCodemod(codemodOptions: CodemodOptions): void {
   const options = createOptions(codemodOptions);
 
   // Prepare for migration
+  convertToTypeScript(options);
   const context = analyzeProject(options);
 
   // Update components without backing class
