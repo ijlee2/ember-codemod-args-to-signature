@@ -18,6 +18,11 @@ const argv = yargs(hideBin(process.argv))
     describe: 'Component structure (how your components are colocated)',
     type: 'string',
   })
+  .option('convert-javascript', {
+    default: false,
+    describe: 'Convert *.{js,gjs} files?',
+    type: 'boolean',
+  })
   .option('root', {
     describe: 'Location of your Ember project',
     type: 'string',
@@ -34,6 +39,7 @@ const codemodOptions: CodemodOptions = {
   componentStructure: argv[
     'component-structure'
   ] as CodemodOptions['componentStructure'],
+  convertJavaScript: argv['convert-javascript'],
   projectRoot: argv['root'] ?? process.cwd(),
   projectType: argv['type'],
 };
