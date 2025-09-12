@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.1.1
+
+### Patch Changes
+
+- [#71](https://github.com/ijlee2/ember-codemod-args-to-signature/pull/71) Updated @codemod-utils/\* ([@ijlee2](https://github.com/ijlee2))
+
 ## 3.1.0
 
 ### Minor Changes
